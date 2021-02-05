@@ -36,3 +36,11 @@
 - FK: savedArticleProfileId
 - FK: savedArticleArticleId 
 - savedArticleDateSaved
+
+
+# Relationships
+- Foreign Key **savedArticleProfileId points** to primary key **profileId**
+- Foreign Key **savedArticleArticleId points** to primary key **articleId**
+- Foreign Key **articleCategoryCategoryId** points to primary key **articleId**
+- Foreign Key **savedArticleProfileId** points to primary key **profileId**
+- Foreign Key **articleCategoryCategoryId** points to primary key **categoryId**
