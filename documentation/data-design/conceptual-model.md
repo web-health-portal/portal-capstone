@@ -1,29 +1,5 @@
 #ERD CONCEPTUAL MODEL
 
-##Profile
-- PK: profileId
-- profileFirstName
-- profileLastName
-- profileLanguage
-- profileEmailAddress
-- profileActivationToken
-- profileHash
-- profileImage
-
-##Category
-- PK: categoryId
-- categoryEnglishName
-- categorySpanishName
-
-##ArticleCategory (weak entity)
-- FK: articleCategoryCategoryId
-- FK: articleCategoryArticleId
-
-##SavedArticle (weak entity)
-- FK: savedArticleProfileId
-- FK: savedArticleArticleId 
-- savedArticleDateSaved
-
 ##Article
 - PK: articleId
 - articleEnglishTitle
@@ -36,3 +12,27 @@
 - articleSpanishImageUrl
 - articleSpanishImageAlt
 - articleSpanishUrl
+
+##ArticleCategory (weak entity)
+- FK: articleCategoryCategoryId
+- FK: articleCategoryArticleId
+
+##Category
+- PK: categoryId
+- categoryEnglishName
+- categorySpanishName
+
+##Profile
+- PK: profileId
+- profileFirstName
+- profileLastName
+- profileLanguage
+- profileEmailAddress
+- profileActivationToken
+- profileHash
+- profileImage
+
+##SavedArticle (weak entity)
+- FK: savedArticleProfileId
+- FK: savedArticleArticleId 
+- savedArticleDateSaved
