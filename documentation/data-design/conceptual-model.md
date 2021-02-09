@@ -40,7 +40,6 @@
 
 # Relationships
 - Foreign Key **savedArticleProfileId points** to primary key **profileId**
-- Foreign Key **savedArticleArticleId points** to primary key **articleId**
-- Foreign Key **articleCategoryCategoryId** points to primary key **articleId**
-- Foreign Key **savedArticleProfileId** points to primary key **profileId**
+- Foreign Key **savedArticleArticleId points** to primary key **articleCateId**
+- Foreign Key **articleCategoryArticleId** points to primary key **articleId**
 - Foreign Key **articleCategoryCategoryId** points to primary key **categoryId**
