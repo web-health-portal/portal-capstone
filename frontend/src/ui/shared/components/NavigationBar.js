@@ -4,15 +4,6 @@ import {LanguageToggle} from "./LanguageToggle";
 import {Link} from "react-router-dom";
 
 export const NavigationBar = (props) => {
-
-    // const linkConstructionCallback = (link) => {
-    //     return (
-    //         `
-    //             <Nav.Link href="${link.link}">${link.name}</Nav.Link>
-    //         `
-    //     )
-    // }
-
     return (
         <>
             <Navbar bg="light" expand="lg">
