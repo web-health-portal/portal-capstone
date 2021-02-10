@@ -2,8 +2,8 @@ import React from "react"
 import {NavigationBar} from "./shared/components/NavigationBar";
 
 const navLinks = [
-    {name: "Sign Up", linkTo: "#link-to-sign-up"},
-    {name: "Log In", linkTo: "#link-to-login"}
+    {name: "Sign Up", linkTo: "/sign-up"},
+    {name: "Log In", linkTo: "/log-in"}
     ];
 
 export const Home = () => {
