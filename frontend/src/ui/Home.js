@@ -3,7 +3,7 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 
 const navLinks = [
     {name: "Sign Up", linkTo: "/sign-up"},
-    {name: "Log In", linkTo: "/log-in"}
+    {name: "Log In", linkTo: "/log-in"},
     ];
 
 export const Home = () => {
