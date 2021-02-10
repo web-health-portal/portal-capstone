@@ -5,7 +5,7 @@ import React, {useState} from "react";
 export const LanguageToggle = () => {
     const [radioValue, setRadioValue] = useState('1');
 
-//for English buttons
+    //for English buttons
     const radioButtons = [
         {name: 'English', value: '1'},
         {name: 'Español', value: '2'},
