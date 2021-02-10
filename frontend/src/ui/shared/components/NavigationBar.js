@@ -11,12 +11,10 @@ export const NavigationBar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        {/*example of how to use Link tag*/}
-                        <Link to={"/"} className={"nav-link"}>Home</Link>
                         {/*map props for link name and link location to Link component*/}
                         {props.links.map((link, idx) => (
                             <Link
-                                key={idx} {/*Always need a key because of how ReactDOM renders*/}
+                                key={idx}
                                 to={link.linkTo}
                                 className={"nav-link"}
                             >
