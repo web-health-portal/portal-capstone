@@ -43,9 +43,9 @@ export const Account = () => {
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>
-                        <Row className={"justify-content-center"}>
-                            <FontAwesomeIcon icon={faUser} size="10x" className={"p-4 border d-block rounded-circle"}/>
-                            <FontAwesomeIcon icon={faCamera} size="lg d-block"/>
+                        <Row className={"justify-content-center align-items-center"}>
+                            <FontAwesomeIcon icon={faUser} size="10x" className={"p-4 border rounded-circle"}/>
+                            <FontAwesomeIcon icon={faCamera} size="lg"/>
                         </Row>
                         <Row className={"mt-1 justify-content-center"}>
                             <Form className={"px-3"}>
@@ -75,7 +75,7 @@ export const Account = () => {
                         <Row>
                             <Form inline className={"mx-3"}>
                                 <FormGroup>
-                                    <FormControl type="text" placeholder="Search" className="mr-sm-2 py-3"/>
+                                    <FormControl type="text" placeholder="Search" className="py-3 mr-md-2"/>
                                     <Button variant="primary">Search</Button>
                                 </FormGroup>
                             </Form>
