@@ -61,7 +61,7 @@ export const Account = () => {
                                     <Form.Label>Language:</Form.Label>
                                     <Form.Control as="select">
                                         <option>English</option>
-                                        <option>Spanish</option>
+                                        <option>Español</option>
                                     </Form.Control>
                                 </Form.Group>
                                 <Button variant={"primary"}>Save</Button>
