@@ -3,9 +3,9 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-bootstrap";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {faUser, faHome, faSignOutAlt, faCamera} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser);
+library.add(faUser, faHome, faSignOutAlt, faCamera);
 
 const navLinks = [
     {name: "Home", linkTo: "/"},
@@ -22,6 +22,7 @@ export const Account = () => {
                 <Row>
                     <Col md={4} className={"border-right border-dark"}>
                         <FontAwesomeIcon icon={faUser} size="10x" className={"p-4 border rounded-circle"}/>
+                        <FontAwesomeIcon icon={faCamera} size="lg"/>
                         <Row className={"mt-1"}>
                             <Form className={"px-3"}>
                                 <FormGroup>
@@ -33,7 +34,7 @@ export const Account = () => {
                                     <Form.Control type={"email"} placeholder={"name@your-email.com"}/>
                                 </FormGroup>
                                 <Form.Group controlId="language-selector">
-                                    <Form.Label>Example select</Form.Label>
+                                    <Form.Label>Language:</Form.Label>
                                     <Form.Control as="select">
                                         <option>English</option>
                                         <option>Spanish</option>

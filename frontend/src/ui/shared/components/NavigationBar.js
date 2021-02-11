@@ -16,7 +16,7 @@ export const NavigationBar = (props) => {
                             <Link
                                 key={idx}
                                 to={link.linkTo}
-                                className={"nav-link"}
+                                className={"nav-link px-3"}
                             >
                                 {link.name}
                             </Link>
