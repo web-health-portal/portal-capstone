@@ -45,7 +45,7 @@ export const Account = () => {
                     <Col md={4} className={"border-right border-dark md-auto"}>
                         <Row className={"justify-content-center align-items-center"}>
                             <FontAwesomeIcon icon={faUser} size="10x" className={"p-4 border rounded-circle"}/>
-                            <FontAwesomeIcon icon={faCamera} size="lg"/>
+                            <FontAwesomeIcon icon={faCamera} size="lg" className={"mx-2"}/>
                         </Row>
                         <Row className={"mt-1 justify-content-center"}>
                             <Form className={"px-3"}>
@@ -74,9 +74,9 @@ export const Account = () => {
                         <h3>Search Saved Articles</h3>
                         <Row>
                             <Form inline className={"mx-3"}>
-                                <FormGroup>
-                                    <FormControl type="text" placeholder="Search" className="py-3 mr-md-2"/>
-                                    <Button variant="primary">Search</Button>
+                                <FormGroup className={"container d-flex justify-content-between"}>
+                                    <FormControl type="text" placeholder="Search Your Articles" className="mr-md-2"/>
+                                    <Button variant="primary" className={"py-sm-2 ml-1"}>Search</Button>
                                 </FormGroup>
                             </Form>
                         </Row>
