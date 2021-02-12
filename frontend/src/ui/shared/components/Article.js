@@ -4,6 +4,12 @@ import {Link} from "react-router-dom";
 
 
 export const Article = (props) => {
+    const convertTimestampToDate = (timestamp) => {
+        //Takes in UNIX timestamp and converts to {Day of week} {Month} {Day of month} {Full year}
+        let date = new Date(timestamp * 1000);
+        return date.toDateString();
+    }
+
     return (
         <>
             <Container className={"pt-4"}>
@@ -23,12 +29,16 @@ export const Article = (props) => {
                                     </a>
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className={"px-3"}>
                                 {/*Categories for article*/}
-                                <p className={"px-3"}>
+                                <p>
                                     {/*map over article categories to display in p tag*/}
-                                    {props.articles.articleCategories.forEach(category => category.categoryEnglishName)}
                                     {props.articles.articleCategories[0].categoryEnglishName}
+                                </p>
+                                <p>
+                                    Date Published: {convertTimestampToDate(props.articles.articleEnglishDate)}
+                                    {/*{console.log(new Date(Number.parseInt(props.articles.articleEnglishDate)).toDateString())}*/}
+
                                 </p>
                             </Row>
                             <Row>
@@ -38,7 +48,7 @@ export const Article = (props) => {
                     </Col>
                 </Row>
             </Container>
-
+            {/*TODO: Need footer component with link to API per terms of use*/}
         </>
     )
 }
