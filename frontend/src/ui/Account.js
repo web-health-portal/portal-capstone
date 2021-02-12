@@ -76,7 +76,7 @@ export const Account = () => {
                             <Form inline className={"mx-3"}>
                                 <FormGroup className={"container d-flex justify-content-between"}>
                                     <FormControl type="text" placeholder="Search Your Articles" className="mr-md-2"/>
-                                    <Button variant="primary" className={"py-sm-2 ml-1"}>Search</Button>
+                                    <Button variant="primary" className={"py-sm-2 ml-"}>Search</Button>
                                 </FormGroup>
                             </Form>
                         </Row>
