@@ -32,6 +32,7 @@ export const Article = (props) => {
                             <Row className={"px-3"}>
                                 {/*Categories for article*/}
                                 <p>
+                                    <strong>Categories: </strong>
                                     {/*map over article categories to display in p tag*/}
                                     {props.articles.articleCategories[0].categoryEnglishName}
                                 </p>
