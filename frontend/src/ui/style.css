@@ -17,3 +17,12 @@
 .GitHub:hover {
     transform: translateY(-2px);
 }
+
+.name {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.description {
+    font-size: 20px;
+}
