@@ -1,5 +1,7 @@
 import React from "react"
 import {NavigationBar} from "./shared/components/NavigationBar";
+import {Button, Container, Image, Row, Col, Form} from "react-bootstrap";
+
 
 const navLinks = [
     {name: "Sign Up", linkTo: "/sign-up"},
@@ -10,7 +12,6 @@ export const Home = () => {
     return (
         <>
             <NavigationBar links={navLinks}/>
-            <h1>Home</h1>
-        </>
+            <h1 className={mx-3}>Welcome</h1>
     )
 }
