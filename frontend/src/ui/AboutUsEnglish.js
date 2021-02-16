@@ -21,7 +21,7 @@ export const AboutUs = () => {
             {/*DEVELOPERS TITLE*/}
                 <Container className="text-center mt-4 mb-5">
                     <h1>Developers</h1>
-                    <p className="description"> SaluDuo is committed to providing equitable information and resources by delivering high quality articles and support services to our diverse communities. Our team is driven to aid the spanish speaking-population by compiling a data base extracted from a reputable source named My Health Finder. We are committed to give quick access to   </p>
+                    <p className="description"> SaluDuo is committed to providing equitable information and resources by delivering high quality articles and support services to our diverse communities. Our team is driven to aid the spanish speaking-population by compiling a data base extracted from a reputable source named My Health Finder. We are committed to display bilingual information and give quick access to our users to translate helpful information with a click of a button. </p>
                 </Container>
 
             {/*DEVELOPERS NAME & DETAILS*/}
