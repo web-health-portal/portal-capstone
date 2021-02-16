@@ -13,7 +13,7 @@ export const Footer = () => {
                     <img width="200px" src="https://health.gov/themes/custom/healthfinder/images/MyHF.svg" alt="Health Finder Logo"/>
                 </a>
                 </Col>
-            <Col xs={8}  lg={6} className="Devs mt-4 mr-5">
+            <Col xs={8}  lg={6} className="Devs mt-4 mr-2">
                 <a href="http://localhost:3000/about-us">
                     <p>Meet the Developers</p>
                 </a>
