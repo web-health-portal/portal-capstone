@@ -1,7 +1,8 @@
 import React from "react";
 import {NavigationBar} from "./shared/components/NavigationBar";
+import {Footer} from "./shared/components/Footer";
 import {Container, Image, Row, Col} from "react-bootstrap";
-import profileicon from "./profileicon.png"
+import elizabethprofilepicture from "./elizabeth-profile-picture.png"
 import kylemayerprofilepicture from "./kyle-mayer-profile-picture.jpg"
 import ramonprofilepicture from "./ramon-profile-picture.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,6 +13,7 @@ import './style.css'
 const navLinks = [
     {name: "Home", linkTo: "/Home"},
 ];
+
 
 export const AboutUs = () => {
     return (
@@ -30,13 +32,13 @@ export const AboutUs = () => {
 
                     {/*Developer #1*/}
                         <Col className="mb-4" xs={6} md={4} lg={3}>
-                            <Image className="img-fluid" src={profileicon} roundedCircle alt="Profile Picture"/>
+                            <Image className="img-fluid" src={elizabethprofilepicture} roundedCircle alt="Profile Picture"/>
                         </Col>
 
                     {/*TEXT #1*/}
                         <Col className="mb-4" xs={9} md={6} lg={9}>
                             <h2 className="name mt-4">Elizabeth Hines</h2>
-                            <p className="description">Tiramisu biscuit cake gingerbread bear claw macaroon gummi bears. Liquorice chocolate I love marzipan. Pudding macaroon chocolate liquorice cake cotton candy caramels chocolate bar marshmallow. Marzipan gingerbread candy danish muffin dessert. I love cookie I love I love. Chocolate bar dragée cotton candy. Ice cream muffin caramels liquorice cupcake biscuit gummi bears.</p>
+                            <p className="description">Studying in the humanities helped me understand the world around me. Several years in the hospitality industry has taught me skills in problem-solving and the importance of coaction. In learning to code I look forward to bettering my community through bettering myself.</p>
 
                             {/*Link to LinkedIn*/}
                             <a href="https://www.linkedin.com/in/elizabethhines2140/" className="linkedIn">
@@ -92,6 +94,8 @@ export const AboutUs = () => {
                         </Col>
                 </Row>
             </Container>
+
+            <Footer/>
 
         </>
     )
