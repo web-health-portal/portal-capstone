@@ -1,5 +1,7 @@
 /*FOOTER START*/
-
+.Footer{
+    background-color: darkcyan;
+}
 .logo {
     transition: transform 250ms;
     display: inline-block;

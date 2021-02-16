@@ -1,13 +1,13 @@
 import React from "react"
 import {ModalFooter, Col, Row,} from "react-bootstrap";
-import "./style.css"
+import "./component.css"
 
 
 export const Footer = () => {
     return (
         <>
 
-            <ModalFooter className="Footer mt-5 justify-content-center align-content-center bg-dark">
+            <ModalFooter  className="Footer mt-5 justify-content-center align-content-center">
                 <Col xs={6}  lg={5}>
                 <a className="logo" href="https://health.gov/myhealthfinder">
                     <img width="200px" src="https://health.gov/themes/custom/healthfinder/images/MyHF.svg" alt="Health Finder Logo"/>
