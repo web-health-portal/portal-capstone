@@ -1,6 +1,4 @@
 import React from "react";
-import {NavigationBar} from "./shared/components/NavigationBar";
-import {Footer} from "./shared/components/Footer";
 import {Container, Image, Row, Col} from "react-bootstrap";
 import elizabethprofilepicture from "./elizabeth-profile-picture.png"
 import kylemayerprofilepicture from "./kyle-mayer-profile-picture.jpg"
@@ -10,16 +8,9 @@ import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import './style.css'
 
 
-// const navLinks = [
-//     {name: "Home", linkTo: "/Home"},
-// ];
-
-
 export const AboutUs = () => {
     return (
         <>
-            {/*<NavigationBar links={navLinks}/>*/}
-
             {/*DEVELOPERS TITLE*/}
                 <Container className="text-center mt-4 mb-5">
                     <h1>Developers</h1>
@@ -94,9 +85,6 @@ export const AboutUs = () => {
                         </Col>
                 </Row>
             </Container>
-
-            <Footer/>
-
         </>
     )
 }
