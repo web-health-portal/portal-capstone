@@ -4,6 +4,7 @@ import { Home } from './Home'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import {AboutUs} from "./AboutUsEnglish";
+import {Footer} from "./shared/components/Footer";
 
 
 
@@ -15,6 +16,7 @@ export const App = () => (
                 <Route exact path='/' component={Home} />
                 <Route component={FourOhFour} />
             </Switch>
+            <Footer/>
         </BrowserRouter>
 
     </>
