@@ -3,15 +3,10 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-bootstrap";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUser, faHome, faSignOutAlt, faCamera} from "@fortawesome/free-solid-svg-icons";
+import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {Article} from "./shared/components/Article";
 
-library.add(faUser, faHome, faSignOutAlt, faCamera);
-
-const navLinks = [
-    {name: "Home", linkTo: "/"},
-    {name: "Log Out", linkTo: "/log-out"},
-];
+library.add(faCamera, faUser);
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -38,7 +33,6 @@ const placeHolderArticle = {
 export const Account = () => {
     return (
         <>
-            <NavigationBar links={navLinks}/>
             <h1 className={"mx-3"}>Account</h1>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
