@@ -1,5 +1,13 @@
 /*FOOTER START*/
 
+.logo {
+    transition: transform 250ms;
+    display: inline-block;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+}
 
 .Devs {
     font-size: 30px;

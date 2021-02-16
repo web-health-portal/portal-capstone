@@ -9,7 +9,7 @@ export const Footer = () => {
 
             <ModalFooter className="Footer mt-5 justify-content-center align-content-center bg-dark">
                 <Col xs={6}  lg={5}>
-                <a href="https://health.gov/myhealthfinder">
+                <a className="logo" href="https://health.gov/myhealthfinder">
                     <img width="200px" src="https://health.gov/themes/custom/healthfinder/images/MyHF.svg" alt="Health Finder Logo"/>
                 </a>
                 </Col>
