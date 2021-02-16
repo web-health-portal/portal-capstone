@@ -10,15 +10,15 @@ import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import './style.css'
 
 
-const navLinks = [
-    {name: "Home", linkTo: "/Home"},
-];
+// const navLinks = [
+//     {name: "Home", linkTo: "/Home"},
+// ];
 
 
 export const AboutUs = () => {
     return (
         <>
-            <NavigationBar links={navLinks}/>
+            {/*<NavigationBar links={navLinks}/>*/}
 
             {/*DEVELOPERS TITLE*/}
                 <Container className="text-center mt-4 mb-5">
