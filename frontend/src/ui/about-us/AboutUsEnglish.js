@@ -1,8 +1,8 @@
 import React from "react";
 import {Container, Image, Row, Col} from "react-bootstrap";
-import elizabethprofilepicture from "./elizabeth-profile-picture.png"
-import kylemayerprofilepicture from "./kyle-mayer-profile-picture.jpg"
-import ramonprofilepicture from "./ramon-profile-picture.jpg"
+import elizabethprofilepicture from "../images/elizabeth-profile-picture.png"
+import kylemayerprofilepicture from "../images/kyle-mayer-profile-picture.jpg"
+import ramonprofilepicture from "../images/ramon-profile-picture.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import './style.css'

@@ -1,8 +1,8 @@
 import React from "react"
-import {NavigationBar} from "./shared/components/NavigationBar";
+import {NavigationBar} from "../shared/components/NavigationBar";
 import {Button, Container, Image, Row, Col, Form, FormLabel} from "react-bootstrap";
 // import {Article} from "./shared/components/Article";
-import backgroundimage from "./background image.png";
+import backgroundimage from "../images/background image.png";
 
 const navLinks = [
     {name: "Sign Up", linkTo: "/sign-up"},
