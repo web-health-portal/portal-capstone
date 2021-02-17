@@ -1,7 +1,8 @@
 import React from "react"
 import {Button, Container, Image, Row, Col, Form, FormLabel} from "react-bootstrap";
 import {Article} from "./shared/components/Article";
-import backgroundimage from "./background image.png";
+// import backgroundimage from "./background image.png";
+import from
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -29,9 +30,8 @@ export const Home = () => {
     return (
         <>
             <Container>
-
                 <Form.Group>
-                    <FormLabel>Search for articles on a variety of health topics.</FormLabel>
+                    <FormLabel><h1>Search for articles on a variety of health topics.</h1></FormLabel>
                     <Form.Control type="text" placeholder="Search Health Topics and Articles"/>
                     <Button variant="primary" size="sm">Search</Button>
                 <p>SaluDuo is a bilingual health portal with articles in both English and Spanish, covering a variety of topics to keep you informed and healthy. Search here to find articles from our API, and make an account with us to build your own library of articles you'd like to come back to.</p>
