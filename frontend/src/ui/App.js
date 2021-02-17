@@ -1,14 +1,14 @@
 import {BrowserRouter} from 'react-router-dom'
 import {Route, Switch} from 'react-router'
-import {Home} from './Home'
+import {Home} from './home/Home'
 import {FourOhFour} from './FourOhFour'
 import React from 'react'
 import './shared/components/component.css'
 
-import {Account} from "./Account";
+import {Account} from "./account/Account";
 import {NavigationBar} from "./shared/components/NavigationBar";
 
-import {AboutUs} from "./AboutUsEnglish";
+import {AboutUs} from "./about-us/AboutUsEnglish";
 import {Footer} from "./shared/components/Footer";
 
 

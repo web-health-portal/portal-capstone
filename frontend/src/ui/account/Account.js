@@ -1,10 +1,10 @@
 import React from "react"
-import {NavigationBar} from "./shared/components/NavigationBar";
+import {NavigationBar} from "../shared/components/NavigationBar";
 import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-bootstrap";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
-import {Article} from "./shared/components/Article";
+import {Article} from "../shared/components/Article";
 
 library.add(faCamera, faUser);
 
