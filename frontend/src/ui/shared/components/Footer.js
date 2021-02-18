@@ -21,7 +21,7 @@ export const Footer = () => {
 
                         <ul>
                             <li className="mb-3">
-                                Site structure designed by <a className="logo ml-2" href="http://localhost:3000/about-us">SaluDuo</a>
+                                Site structured designed by <a className="logo ml-2" href="http://localhost:3000/about-us">SaluDuo</a>
                             </li>
                         </ul>
                     </div>
