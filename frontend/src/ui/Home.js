@@ -1,8 +1,9 @@
 import React from "react"
-import {Button, Container, Image, Row, Col, Form, FormLabel, Jumbotron} from "react-bootstrap";
+import {Button, Container, Image, Row, Col, FormControl, FormLabel, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "./shared/components/Article.js";
-import backgroundimage from "./backgroundimage.png"
+import backgroundImage from "./backgroundimage.png"
 import "./styles.css"
+import * as url from "url";
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -29,16 +30,18 @@ const placeHolderArticle = {
 export const Home = () => {
     return (
         <>
-        <Jumbotron style={{ backgroundImage: `url(${backgroundimage})`, backgroundSize: 'fluid' }}>
-            <Container>
-                <FormGroup controlId="formBasicPassword">
-                    <FormLabel><h1>Search here for health articles and topics.</h1></FormLabel>
-                    <FormControl type="search" placeholder="Search" />
-                </FormGroup>
-                <Button variant="primary" type="search">Search</Button>
-                <h6 className="mb-3">SaluDuo is an English/Spanish bilingual health portal featuring articles to help keep you informed and healthy. Search for what you'd like, and create an account with us to build your own library of articles you wish to come back to.</h6>
-        </Container>
+        <Container>
+        <Jumbotron>
+            <Jumbotron className={backgroundImage}>
+            <FormGroup controlId="searchArticles">
+                <FormLabel><h1 className="text-center mt-p">Search here for health-related articles and topics.</h1></FormLabel>
+                <FormControl type="search" placeholder="What would you like to know more about?" />
+            </FormGroup>
+            <Button variant="primary" type="search">Search</Button>
+                <h6 className="text-center">SaluDuo is an English/Spanish bilingual health portal featuring articles to help keep you informed and healthy. Search for what you'd like, and create an account with us to build your own library of articles you wish to come back to.</h6>
+            </Jumbotron>
         </Jumbotron>
+        </Container>
 
         <Container>
             <Container className="text-center">
