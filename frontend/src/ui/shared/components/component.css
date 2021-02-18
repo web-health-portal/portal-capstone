@@ -11,17 +11,23 @@
 
 .logo {
     transition: transform 250ms;
-    display: inline-block;
 }
 
 .logo:hover {
     transform: translateY(-2px);
 }
 
-.devs {
-    font-size: 25px;
-    color: black;
+ul {
+    list-style-type: none;
 }
+
+li {
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 
 
 /*FOOTER END*/
