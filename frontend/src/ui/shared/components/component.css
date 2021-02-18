@@ -1,7 +1,14 @@
 /*FOOTER START*/
-.Footer{
+#footer {
+    margin-top: 10em;
+    border-top: 2px solid;
+    border-color: black;
+}
+
+.modal-footer {
     background-color: white;
 }
+
 .logo {
     transition: transform 250ms;
     display: inline-block;
@@ -12,8 +19,7 @@
 }
 
 .devs {
-    margin-top: 50px;
-    font-size: 20px;
+    font-size: 25px;
     color: black;
 }
 
