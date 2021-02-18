@@ -1,7 +1,6 @@
 import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "./shared/components/Article.js";
-import backgroundImage from "./backgroundimage.png"
 import "./styles.css"
 
 // temporary placeholder to show an example article
@@ -30,7 +29,7 @@ export const Home = () => {
     return (
         <>
         <Container className="text-center">
-            <Jumbotron className={backgroundImage}>
+            <Jumbotron className="background-image">
                 <h1>Search here for health-related articles and topics.</h1>
             <FormGroup className="container d-flex justify-content-md-between" controlId="searchArticles">
                 <FormControl type="search" placeholder="What would you like to know more about?"/>
