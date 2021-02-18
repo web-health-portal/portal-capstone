@@ -1,19 +1,33 @@
 /*FOOTER START*/
-.Footer{
-    background-color: darkcyan;
+#footer {
+    margin-top: 10em;
+    border-top: 2px solid;
+    border-color: black;
 }
+
+.modal-footer {
+    background-color: white;
+}
+
 .logo {
     transition: transform 250ms;
-    display: inline-block;
 }
 
 .logo:hover {
     transform: translateY(-2px);
 }
 
-.Devs {
-    font-size: 30px;
+ul {
+    list-style-type: none;
 }
+
+li {
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 
 
 /*FOOTER END*/
