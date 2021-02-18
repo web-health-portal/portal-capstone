@@ -1,7 +1,7 @@
 import React from "react"
 import {Button, Container, Image, Row, Col, Form, FormLabel} from "react-bootstrap";
 import {Article} from "./shared/components/Article";
-import backgroundimage from "./background image.png";
+import backgroundimage from "../images/backgroundimage.png";
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -28,33 +28,36 @@ const placeHolderArticle = {
 export const Home = () => {
     return (
         <>
-            <Container>
+        <Container>
+            <div className="p-5 text-center bg-image" style="backgroundimage: url("../images/backgroundimage.png"); height: 400px;">
+            <div className="d-flex justify-content-center align-items-center h-100">
+                <div className="text-white">
+                    <h1 className="mb-3">Heading</h1>
+                    <h4 className="mb-3">Subheading</h4>
+                    <a className="btn btn-outline-light btn-lg" href="#!" role="button">Call to action</a>
+                </div>
+            </div>
+        </div>
+        </div>
+</Container>
 
-                <Form.Group>
-                    <FormLabel>Search for articles on a variety of health topics.</FormLabel>
-                    <Form.Control type="text" placeholder="Search Health Topics and Articles"/>
-                    <Button variant="primary" size="sm">Search</Button>
-                <p>SaluDuo is a bilingual health portal with articles in both English and Spanish, covering a variety of topics to keep you informed and healthy. Search here to find articles from our API, and make an account with us to build your own library of articles you'd like to come back to.</p>
-                </Form.Group>
-            </Container>
-
-            <Container>
-                <h4>Popular Articles</h4>
-                <Row>
-                    <Col md="6">
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                    </Col>
-                    <Col md="6">
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                        <Article articles={placeHolderArticle}/>
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    )
+    <Container>
+        <h4>Popular Articles</h4>
+        <Row>
+            <Col md="6">
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+            </Col>
+            <Col md="6">
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+                <Article articles={placeHolderArticle}/>
+            </Col>
+        </Row>
+    </Container>
+</>
+)
 }
