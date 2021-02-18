@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Container, Image, Row, Col, FormControl, FormLabel, FormGroup, Jumbotron} from "react-bootstrap";
+import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "./shared/components/Article.js";
 import backgroundImage from "./backgroundimage.png"
 import "./styles.css"
@@ -30,11 +30,11 @@ export const Home = () => {
     return (
         <>
         <Container className="text-center">
-            <Jumbotron className="backgroundImage">
-            <FormGroup controlId="searchArticles">
-                <FormLabel><h2>Search here for health-related articles and topics.</h2></FormLabel>
+            <Jumbotron className={backgroundImage}>
+                <h2>Search here for health-related articles and topics.</h2>
+            <FormGroup className="container d-flex justify-content-md-between" controlId="searchArticles">
                 <FormControl type="search" placeholder="What would you like to know more about?"/>
-                <Button variant="primary" type="search">Search</Button>
+                <Button variant="primary mx-2" type="search">Search</Button>
             </FormGroup>
                 <h6>SaluDuo is an English/Spanish bilingual health portal featuring articles to help keep you informed and healthy. Search for what you'd like, and create an account with us to build your own library of articles you wish to come back to.</h6>
             </Jumbotron>
