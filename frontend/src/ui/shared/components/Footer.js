@@ -8,17 +8,30 @@ export const Footer = () => {
         <>
 
             <ModalFooter  className="Footer mt-5 justify-content-center align-content-center">
-                <Col xs={6}  lg={5}>
+
                 <a className="logo" href="https://health.gov/myhealthfinder">
                     <img width="200px" src="https://health.gov/themes/custom/healthfinder/images/MyHF.svg" alt="Health Finder Logo"/>
                 </a>
-                </Col>
-            <Col xs={8}  lg={6} className="Devs mt-4 mr-2">
                 <a href="http://localhost:3000/about-us">
-                    <p>Meet the Developers</p>
+                    <p className="devs">Meet the Developers</p>
                 </a>
-            </Col>
+
             </ModalFooter>
+
+            {/*<ModalFooter  className="Footer mt-5 justify-content-center align-content-center">*/}
+            {/*    <Col xs={6}  lg={5}>*/}
+            {/*    <a className="logo" href="https://health.gov/myhealthfinder">*/}
+            {/*        <img width="200px" src="https://health.gov/themes/custom/healthfinder/images/MyHF.svg" alt="Health Finder Logo"/>*/}
+            {/*    </a>*/}
+            {/*    </Col>*/}
+            {/*<Col xs={8}  lg={6} className="mr-2">*/}
+            {/*    <a href="http://localhost:3000/about-us">*/}
+            {/*        <p className="devs">Meet the Developers</p>*/}
+            {/*    </a>*/}
+            {/*</Col>*/}
+            {/*</ModalFooter>*/}
+
+
 
         </>
     )

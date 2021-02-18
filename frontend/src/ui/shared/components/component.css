@@ -1,6 +1,6 @@
 /*FOOTER START*/
 .Footer{
-    background-color: darkcyan;
+    background-color: white;
 }
 .logo {
     transition: transform 250ms;
@@ -11,8 +11,10 @@
     transform: translateY(-2px);
 }
 
-.Devs {
-    font-size: 30px;
+.devs {
+    margin-top: 50px;
+    font-size: 20px;
+    color: black;
 }
 
 
