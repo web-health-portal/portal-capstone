@@ -1,14 +1,8 @@
 import React from "react"
-<<<<<<< HEAD:frontend/src/ui/home/Home.js
-import {Button, Container, Image, Row, Col, Form, FormLabel} from "react-bootstrap";
-import {Article} from "./shared/components/Article";
-import backgroundimage from "../images/backgroundimage.png";
-=======
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
-import {Article} from "./shared/components/Article.js";
-import backgroundImage from "./backgroundimage.png"
-import "./styles.css"
->>>>>>> home:frontend/src/ui/Home.js
+import {Article} from "../shared/components/Article.js";
+import backgroundImage from "../images/backgroundimage.png"
+import "../styles.css"
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -35,23 +29,6 @@ const placeHolderArticle = {
 export const Home = () => {
     return (
         <>
-<<<<<<< HEAD:frontend/src/ui/home/Home.js
-            <Container>
-                <div className="p-5 text-center bg-image" style="backgroundimage: url("./images/backgroundimage.png"); height: 400px;">
-                        <div className="d-flex justify-content-center align-items-center h-100">
-                            <div className="text-white">
-                                <h1 className="mb-3">Heading</h1>
-                                <h4 className="mb-3">Subheading</h4>
-                                <a className="btn btn-outline-light btn-lg" href="#!" role="button"
-                                >Call to action</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Container>
-
-            <Container>
-=======
         <Container className="text-center">
             <Jumbotron className={backgroundImage}>
                 <h1>Search here for health-related articles and topics.</h1>
@@ -67,7 +44,6 @@ export const Home = () => {
 
         <Container>
             <Container className="text-center">
->>>>>>> home:frontend/src/ui/Home.js
                 <h4>Popular Articles</h4>
                 <h6>Have a look at some of the most-read pages from our API:</h6>
             </Container>
