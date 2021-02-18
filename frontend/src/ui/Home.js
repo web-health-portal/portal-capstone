@@ -31,12 +31,14 @@ export const Home = () => {
         <>
         <Container className="text-center">
             <Jumbotron className={backgroundImage}>
-                <h2>Search here for health-related articles and topics.</h2>
+                <h1>Search here for health-related articles and topics.</h1>
             <FormGroup className="container d-flex justify-content-md-between" controlId="searchArticles">
                 <FormControl type="search" placeholder="What would you like to know more about?"/>
-                <Button variant="primary mx-2" type="search">Search</Button>
+                <Button variant="primary mx-2" type="search">Search!</Button>
             </FormGroup>
-                <h6>SaluDuo is an English/Spanish bilingual health portal featuring articles to help keep you informed and healthy. Search for what you'd like, and create an account with us to build your own library of articles you wish to come back to.</h6>
+                <p>SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.</p>
+                <p>Search for what you'd like.</p>
+                <p>Create an account with us to build your own library of articles you wish to come back to.</p>
             </Jumbotron>
         </Container>
 
