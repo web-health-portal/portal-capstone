@@ -1,7 +1,8 @@
 import React from "react"
-import {Button, Container, Image, Row, Col, Form, FormLabel} from "react-bootstrap";
-import {Article} from "./shared/components/Article";
-import backgroundimage from "../images/backgroundimage.png";
+import {Button, Container, Image, Row, Col, Form, FormLabel, Jumbotron} from "react-bootstrap";
+import {Article} from "./shared/components/Article.js";
+import backgroundimage from "./backgroundimage.png"
+import "./styles.css"
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -28,36 +29,37 @@ const placeHolderArticle = {
 export const Home = () => {
     return (
         <>
-        <Container>
-            <div className="p-5 text-center bg-image" style="backgroundimage: url("../images/backgroundimage.png"); height: 400px;">
-            <div className="d-flex justify-content-center align-items-center h-100">
-                <div className="text-white">
-                    <h1 className="mb-3">Heading</h1>
-                    <h4 className="mb-3">Subheading</h4>
-                    <a className="btn btn-outline-light btn-lg" href="#!" role="button">Call to action</a>
-                </div>
-            </div>
-        </div>
-        </div>
-</Container>
+        <Jumbotron style={{ backgroundImage: `url(${backgroundimage})`, backgroundSize: 'fluid' }}>
+            <Container>
+                <FormGroup controlId="formBasicPassword">
+                    <FormLabel><h1>Search here for health articles and topics.</h1></FormLabel>
+                    <FormControl type="search" placeholder="Search" />
+                </FormGroup>
+                <Button variant="primary" type="search">Search</Button>
+                <h6 className="mb-3">SaluDuo is an English/Spanish bilingual health portal featuring articles to help keep you informed and healthy. Search for what you'd like, and create an account with us to build your own library of articles you wish to come back to.</h6>
+        </Container>
+        </Jumbotron>
 
-    <Container>
-        <h4>Popular Articles</h4>
-        <Row>
-            <Col md="6">
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-            </Col>
-            <Col md="6">
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-                <Article articles={placeHolderArticle}/>
-            </Col>
-        </Row>
-    </Container>
+        <Container>
+            <Container className="text-center">
+                <h4>Popular Articles</h4>
+                <h6>Have a look at some of the most-read pages from our API:</h6>
+            </Container>
+                <Row>
+                    <Col md="6">
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                </Col>
+                <Col md="6">
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                </Col>
+            </Row>
+        </Container>
 </>
 )
 }
