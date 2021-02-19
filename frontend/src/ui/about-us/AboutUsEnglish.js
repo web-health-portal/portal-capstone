@@ -5,7 +5,7 @@ import kylemayerprofilepicture from "../images/kyle-mayer-profile-picture.jpg"
 import ramonprofilepicture from "../images/ramon-profile-picture.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
-import 'style.css'
+import '/frontend/src/ui/about-us/style.css'
 
 
 export const AboutUs = () => {
