@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {Modal, Form, Button} from "react-bootstrap";
 
-export const SignUpModal = () => {
-    const [show, setShow] = useState(false);
+export const SignUpModal = ({showModal}) => {
+    const [show, setShow] = useState({showModal});
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
