@@ -1,7 +1,7 @@
 import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "../shared/components/Article.js";
-import "./styles.css"
+import "../home/styles.css"
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
