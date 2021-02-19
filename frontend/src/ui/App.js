@@ -10,6 +10,7 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
 import {Footer} from "./shared/components/Footer";
+import {SearchResults} from "./search-results/SearchResults";
 
 
 export const App = () => (
@@ -17,10 +18,11 @@ export const App = () => (
         <BrowserRouter>
             <NavigationBar/>
             <Switch>
+                <Route exact path='/search-results' component={SearchResults}/>
                 <Route exact path='/account' component={Account}/>
-                <Route exact path='/about-us' component={AboutUs} />
-                <Route exact path='/' component={Home} />
-                <Route component={FourOhFour} />
+                <Route exact path='/about-us' component={AboutUs}/>
+                <Route exact path='/' component={Home}/>
+                <Route component={FourOhFour}/>
             </Switch>
             <Footer/>
         </BrowserRouter>

@@ -1,7 +1,6 @@
 import React from "react"
-import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
-import {Article} from "../shared/components/Article.js";
-import "../home/styles.css"
+import {Button, Col, Container, Form, FormControl, FormGroup, Row} from "react-bootstrap";
+import {Article} from "../shared/components/Article";
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -25,36 +24,41 @@ const placeHolderArticle = {
     ],
 }
 
-export const Home = () => {
+export const SearchResults = ({keyword}) => {
+    //set prop to dummy value for now
+    keyword = "diabetes";
     return (
         <>
-        <Container>
-            <Jumbotron className="background-image img-fluid">
-                <Container className="text-center p-1 mb-1 bg-light text-dark">
-                    <h1>Search here for health-related articles and topics.</h1>
-                    SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.
-                    <p>Create an account with us to build your own library of articles you wish to come back to.</p>
-                </Container>
-                    <FormGroup className="container p-1 d-flex justify-content-md-between" controlId="searchArticles">
-                    <FormControl type="search" placeholder="What can we help you with?"/>
-                    <Button variant="primary mx-2" type="search">Search!</Button>
-                    </FormGroup>
-            </Jumbotron>
-        </Container>
-
-        <Container>
-            <Container className="text-center">
-                <h4>Popular Articles</h4>
-                <h6>Have a look at some of the most-read pages from our API:</h6>
-            </Container>
+        <Container className={"pt-4"}>
+            <Col md={8} className={"pt-3"}>
+                <h3>Search Results for {keyword}</h3>
                 <Row>
-                    <Col md="6">
+                    <Form inline className={"mx-3"}>
+                        <FormGroup className={"container d-flex justify-content-between"}>
+                            <FormControl type="text" placeholder="Another Search" className="mr-md-2"/>
+                            <Button variant="primary" className={"py-sm-2 ml-2"}>Search</Button>
+                        </FormGroup>
+                    </Form>
+                </Row>
+            </Col>
+        </Container>
+        <Container>
+            <Row>
+                <Col lg={6}>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                 </Col>
-                <Col md="6">
+                <Col lg={6}>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
+                    <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
                     <Article articles={placeHolderArticle}/>
@@ -62,6 +66,7 @@ export const Home = () => {
                 </Col>
             </Row>
         </Container>
-</>
+
+    </>
 )
 }

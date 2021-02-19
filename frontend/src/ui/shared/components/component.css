@@ -1,7 +1,15 @@
 /*FOOTER START*/
-.Footer{
-    background-color: darkcyan;
+section {
+    margin-top: 10em;
+    border-top: 2px solid;
+    border-color: black;
 }
+
+.PF {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .logo {
     transition: transform 250ms;
     display: inline-block;
@@ -10,10 +18,5 @@
 .logo:hover {
     transform: translateY(-2px);
 }
-
-.Devs {
-    font-size: 30px;
-}
-
 
 /*FOOTER END*/
