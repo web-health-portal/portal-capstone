@@ -29,7 +29,7 @@ export const AboutUs = () => {
                     {/*TEXT #1*/}
                     <Col className="mb-4" xs={10} md={6} lg={9}>
                         <h2 className="name mt-4">Elizabeth Hines</h2>
-                        <p className="description">Estudiar hospitalidad me ayudó a valorar y comprender el mundo que me rodea. Varios años trabajando en la industria de la hospitalidad me ayudo a incrementar mi conocimiento en resolver problemas y la importancia de En esta nueva etapa de mi carrera de programadora espero poder mejorarme a mi misma con el fin de poder ayudar a la comunidad en un futuro.</p>
+                        <p className="description">Estudiar hospitalidad me ayudó a valorar y comprender el mundo que me rodea. Varios años trabajando en la industria de la hospitalidad me ayudo a incrementar mi conocimiento en resolver problemas y la importancia de poder comunicarme y cooperar con la comunidad. En esta nueva etapa de mi carrera de programadora espero poder mejorarme a mi misma con el fin de poder ayudar a la comunidad en un futuro.</p>
 
                         {/*Link to LinkedIn*/}
                         <a href="https://www.linkedin.com/in/elizabethhines2140/" className="linkedIn">
