@@ -28,16 +28,17 @@ const placeHolderArticle = {
 export const Home = () => {
     return (
         <>
-        <Container className="text-center">
-            <Jumbotron className="background-image">
-                <h1>Search here for health-related articles and topics.</h1>
-            <FormGroup className="container d-flex justify-content-md-between" controlId="searchArticles">
-                <FormControl type="search" placeholder="What would you like to know more about?"/>
-                <Button variant="primary mx-2" type="search">Search!</Button>
-            </FormGroup>
-                <p>SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.</p>
-                <p>Search for what you'd like.</p>
-                <p>Create an account with us to build your own library of articles you wish to come back to.</p>
+        <Container>
+            <Jumbotron className="background-image img-fluid">
+                <Container className="text-center p-1 mb-1 bg-light text-dark">
+                    <h1>Search here for health-related articles and topics.</h1>
+                    SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.
+                    <p>Create an account with us to build your own library of articles you wish to come back to.</p>
+                </Container>
+                    <FormGroup className="container p-1 d-flex justify-content-md-between" controlId="searchArticles">
+                    <FormControl type="search" placeholder="What can we help you with?"/>
+                    <Button variant="primary mx-2" type="search">Search!</Button>
+                    </FormGroup>
             </Jumbotron>
         </Container>
 
