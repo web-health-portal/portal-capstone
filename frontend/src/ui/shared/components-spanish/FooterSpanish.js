@@ -1,6 +1,6 @@
 import React from "react"
 import {Col,Row} from "react-bootstrap";
-import "./component.css"
+import "../component.css"
 
 
 export const FooterSpanish = () => {

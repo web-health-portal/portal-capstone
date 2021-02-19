@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router'
 import {Home} from './home/Home'
 import {FourOhFour} from './FourOhFour'
 import React from 'react'
-import './shared/components/component.css'
+import './shared/component.css'
 
 import {Account} from "./account/Account";
 import {NavigationBar} from "./shared/components/NavigationBar";
