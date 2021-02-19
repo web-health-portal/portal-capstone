@@ -3,7 +3,7 @@ import {Col,Row} from "react-bootstrap";
 import "./component.css"
 
 
-export const Footer = () => {
+export const FooterSpanish = () => {
     return (
         <>
             <section>

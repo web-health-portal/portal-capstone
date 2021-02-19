@@ -11,6 +11,7 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 import {AboutUs} from "./about-us/AboutUsEnglish";
 import {Footer} from "./shared/components/Footer";
 import {SearchResults} from "./search-results/SearchResults";
+import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 
 
 export const App = () => (
@@ -25,6 +26,7 @@ export const App = () => (
                 <Route component={FourOhFour}/>
             </Switch>
             <Footer/>
+            <FooterSpanish/>
         </BrowserRouter>
 
     </>
