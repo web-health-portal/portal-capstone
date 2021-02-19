@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import {Modal, Form, Button} from "react-bootstrap";
 
-export const LogInModal = () {
-    const [show, setShow] = useState(false);
+export const LogInModal = ({showModal}) => {
+    const [show, setShow] = useState({showModal});
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -20,15 +20,14 @@ export const LogInModal = () {
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control type="email" placeholder="Enter email"/>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Password"/>
                         </Form.Group>
                     </Form>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose}>Log In</Button>

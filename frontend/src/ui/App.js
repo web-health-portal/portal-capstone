@@ -11,6 +11,8 @@ import {NavigationBar} from "./shared/components/NavigationBar";
 import {AboutUs} from "./about-us/AboutUsEnglish";
 import {Footer} from "./shared/components/Footer";
 import {SearchResults} from "./search-results/SearchResults";
+import {LogInModal} from "./shared/components/LogInModal";
+import {SignUpModal} from "./shared/components/SignUpModal";
 
 
 export const App = () => (
@@ -18,6 +20,8 @@ export const App = () => (
         <BrowserRouter>
             <NavigationBar/>
             <Switch>
+                <Route exact path='/log-in' component={LogInModal}/>
+                <Route exact path='/sign-up' component={SignUpModal}/>
                 <Route exact path='/search-results' component={SearchResults}/>
                 <Route exact path='/account' component={Account}/>
                 <Route exact path='/about-us' component={AboutUs}/>
