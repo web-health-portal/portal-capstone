@@ -8,7 +8,7 @@ import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import './style.css'
 
 
-export const AboutUs = () => {
+export const AboutUsSpanish = () => {
     return (
         <>
             {/*DEVELOPERS TITLE*/}
@@ -22,12 +22,12 @@ export const AboutUs = () => {
                 <Row className="justify-content-center align-content-center">
 
                     {/*Developer #1*/}
-                    <Col className="mb-4" xs={8} md={4} lg={3}>
+                    <Col className="mb-4" xs={8} md={5} lg={3}>
                         <Image className="img-fluid" src={elizabethprofilepicture} roundedCircle alt="Profile Picture"/>
                     </Col>
 
                     {/*TEXT #1*/}
-                    <Col className="mb-4" xs={10} md={6} lg={9}>
+                    <Col className="mb-4" xs={10} md={9} lg={9}>
                         <h2 className="name mt-4">Elizabeth Hines</h2>
                         <p className="description">Estudiar hospitalidad me ayudó a valorar y comprender el mundo que me rodea. Varios años trabajando en la industria de la hospitalidad me ayudo a incrementar mi conocimiento en resolver problemas y la importancia de poder comunicarme y cooperar con la comunidad. En esta nueva etapa de mi carrera de programadora espero poder mejorarme a mi misma con el fin de poder ayudar a la comunidad en un futuro.</p>
 
@@ -43,12 +43,12 @@ export const AboutUs = () => {
                     </Col>
 
                     {/*Developer #2*/}
-                    <Col className="mb-4" xs={8} md={4} lg={3}>
+                    <Col className="mb-4" xs={8} md={5} lg={3}>
                         <Image className="img-fluid" src={kylemayerprofilepicture} roundedCircle alt="Profile Picture"/>
                     </Col>
 
                     {/*TEXT #2*/}
-                    <Col className="mb-4" xs={10} md={6} lg={9}>
+                    <Col className="mb-4" xs={10} md={9} lg={9}>
                         <h2 className="name mt-4">Kyle Mayer</h2>
                         <p className="description">Solucionador de problemas apasionado y con gran dedicación a expandir mi conocimiento de habilidades tanto como sea posible todos los días. Mi carrera anterior como chef profesional me enseñó a ser organizado, metódico y a trabajar en equipo para entregar productos de calidad de manera eficaz y oportuna.</p>
 
@@ -64,12 +64,12 @@ export const AboutUs = () => {
                     </Col>
 
                     {/*Developer #3*/}
-                    <Col className="mb-4" xs={8} md={4} lg={3}>
+                    <Col className="mb-4" xs={8} md={5} lg={3}>
                         <Image className="img-fluid" src={ramonprofilepicture} roundedCircle alt="Profile Picture"/>
                     </Col>
 
                     {/*TEXT #3*/}
-                    <Col className="mb-4" xs={10} md={6} lg={9}>
+                    <Col className="mb-4" xs={10} md={9} lg={9}>
                         <h2 className="name mt-4">Ramon Pantoja</h2>
                         <p className="description">Soy un emprendedor motivado con una aptitud para el aprendizaje continuo, con la habilidad de realizar múltiples tareas, lo que garantiza que los proyectos se completen de manera eficaz y oportuna. Habilidad de trabajar en equipo con éxito en varios entornos desafiantes y de ritmo rápido.</p>
 

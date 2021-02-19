@@ -9,9 +9,10 @@ import {Account} from "./account/Account";
 import {NavigationBar} from "./shared/components/NavigationBar";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
+import {AboutUsSpanish} from "./about-us/AboutUsSpanish";
 import {Footer} from "./shared/components/Footer";
-import {SearchResults} from "./search-results/SearchResults";
 import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
+import {SearchResults} from "./search-results/SearchResults";
 import {LogInModal} from "./shared/components/LogInModal";
 import {SignUpModal} from "./shared/components/SignUpModal";
 
@@ -31,7 +32,7 @@ export const App = () => (
                 <Route component={FourOhFour}/>
             </Switch>
             <Footer/>
-            <FooterSpanish/>
+            {/*<FooterSpanish/>*/}
         </BrowserRouter>
 
     </>
