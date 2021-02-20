@@ -2,6 +2,8 @@ import React from "react"
 import {Nav, Navbar} from "react-bootstrap";
 import {LanguageToggle} from "./LanguageToggle";
 import {Link} from "react-router-dom";
+import {LogInModal} from "./LogInModal";
+import {SignUpModal} from "./SignUpModal";
 
 export const NavigationBar = () => {
     return (
@@ -13,9 +15,9 @@ export const NavigationBar = () => {
                     <Nav className="ml-auto">
                         <Link to="/" className={"nav-link px-3"}>Home</Link>
                         <Link to="/account" className={"nav-link px-3"}>Account</Link>
-                        <Link to="/log-in" className={"nav-link px-3"}>Log In</Link>
+                        <LogInModal/>
                         <Link to="/log-out" className={"nav-link px-3"}>Log Out</Link>
-                        <Link to="/sign-up" className={"nav-link px-3"}>Sign Up</Link>
+                        <SignUpModal/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

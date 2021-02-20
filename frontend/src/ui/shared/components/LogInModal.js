@@ -1,16 +1,18 @@
 import React, {useState} from "react";
 import {Modal, Form, Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
-export const LogInModal = ({showModal}) => {
-    const [show, setShow] = useState({showModal});
+export const LogInModal = () => {
+    const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <>
-            {/*<<<<< how to connect to log-in link>>>>>>>*/}
-
+            <Link className={"nav-link px-3"} onClick={handleShow}>
+                Log In
+            </Link>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Welcome back!</Modal.Title>
