@@ -15,10 +15,10 @@ EXPOSE $PORT 9229 9230
 RUN mkdir /home/node/app
 
 
-WORKDIR ./home/node/app
+WORKDIR /home/node/app
 
 
-RUN chown node:node ./
+RUN chown -R node:node ./
 
 USER node
 
