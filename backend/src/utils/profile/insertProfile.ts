@@ -9,7 +9,7 @@ export async function insertProfile(profile: Profile) : Promise<string>{
         //query is a string for holding a sql statement (prepared statement)
         const query : string = "define insert sql statement here";
         const [rows] = await mySqlConnection.execute(query, profile);
-        return "profile successfully inserted";
+        return "article successfully inserted";
     }
     catch(error) {
         console.error(error.msg);
