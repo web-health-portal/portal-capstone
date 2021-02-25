@@ -33,10 +33,10 @@ CREATE TABLE profile (
     profileActivationToken CHAR(97),
     profileEmailAddress VARCHAR (128) NOT NULL,
     profileFirstName VARCHAR (128) NOT NULL,
-    profileLastName VARCHAR (128) NOT NULL,
-    profileLanguage CHAR (7) NOT NULL,
     profileHash CHAR(97) NOT NULL,
     profileImage VARCHAR(255),
+    profileLastName VARCHAR (128) NOT NULL,
+    profileLanguage CHAR (7) NOT NULL,
     UNIQUE(profileEmailAddress),
     PRIMARY KEY (profileId)
 );
