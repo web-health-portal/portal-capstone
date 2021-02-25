@@ -30,11 +30,11 @@ CREATE TABLE category (
 
 CREATE TABLE profile (
     profileId BINARY(16) NOT NULL,
+    profileActivationToken CHAR(97),
+    profileEmailAddress VARCHAR (128) NOT NULL,
     profileFirstName VARCHAR (128) NOT NULL,
     profileLastName VARCHAR (128) NOT NULL,
     profileLanguage CHAR (7) NOT NULL,
-    profileEmailAddress VARCHAR (128) NOT NULL,
-    profileActivationToken CHAR(97),
     profileHash CHAR(97) NOT NULL,
     profileImage VARCHAR(255),
     UNIQUE(profileEmailAddress),
@@ -42,17 +42,21 @@ CREATE TABLE profile (
 );
 
 CREATE TABLE articleCategory (
-   articleCategoryCategoryID BINARY(16) NOT NULL,
-   articleCategoryArticleID BINARY(16) NOT NULL,
-   FOREIGN KEY(articleCategoryCategoryID) REFERENCES category(categoryId),
-   FOREIGN KEY(articleCategoryArticleID)  REFERENCES article(articleId),
-   PRIMARY KEY (articleCategoryCategoryID, articleCategoryArticleID)
+   articleCategoryArticleId BINARY(16) NOT NULL,
+   articleCategoryCategoryId BINARY(16) NOT NULL,
+   INDEX (articleCategoryArticleId),
+   INDEX (articleCategoryCategoryId),
+   FOREIGN KEY(articleCategoryArticleId)  REFERENCES article(articleId),
+   FOREIGN KEY(articleCategoryCategoryId) REFERENCES category(categoryId),
+   PRIMARY KEY (articleCategoryArticleId, articleCategoryCategoryId)
 );
 
 CREATE TABLE savedArticle (
-    savedArticleProfileId BINARY(16) NOT NULL,
     savedArticleArticleId BINARY(16) NOT NULL,
-    FOREIGN KEY(savedArticleProfileId) REFERENCES profile(profileId),
+    savedArticleProfileId BINARY(16) NOT NULL,
+    INDEX (savedArticleArticleId),
+    INDEX (savedArticleProfileId),
     FOREIGN KEY(savedArticleArticleId) REFERENCES article(articleId),
+    FOREIGN KEY(savedArticleProfileId) REFERENCES profile(profileId),
     PRIMARY KEY(savedArticleProfileId, savedArticleArticleId)
 );
