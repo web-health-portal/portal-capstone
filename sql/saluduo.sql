@@ -15,9 +15,9 @@ CREATE TABLE article (
     articleEnglishUrl VARCHAR (255),
     articleSpanishTitle VARCHAR(255),
     articleSpanishDate DATETIME (6),
-    articleSpanishImageUrl VARCHAR (500),
+    articleSpanishImageUrl VARCHAR (255),
     articleSpanishImageAlt VARCHAR (128),
-    articleSpanishUrl VARCHAR (500),
+    articleSpanishUrl VARCHAR (255),
     PRIMARY KEY (articleId)
 );
 
@@ -40,6 +40,7 @@ CREATE TABLE profile (
     UNIQUE(profileEmailAddress),
     PRIMARY KEY (profileId)
 );
+
 CREATE TABLE articleCategory (
    articleCategoryCategoryID BINARY(16) NOT NULL,
    articleCategoryArticleID BINARY(16) NOT NULL,
