@@ -7,13 +7,13 @@ import {profileValidator} from "./profile.validator";
 
 export const ProfileRoute = Router();
 ProfileRoute.route('/')
-  .post(putProfileController);
+    .post(putProfileController);
 
 ProfileRoute.route("/:profileId")
-  .get(
-    asyncValidatorController([
-      check("profileId", "please provide a valid profileId").isUUID()
-    ])
-    , getProfile
-  )
-  .put(isLoggedIn, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
+    .get(
+        asyncValidatorController([
+            check("profileId", "please provide a valid profileId").isUUID()
+        ])
+        , getProfile
+    )
+    .put(isLoggedIn, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
