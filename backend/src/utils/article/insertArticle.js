@@ -41,24 +41,24 @@ var database_utils_1 = require("../database.utils");
 var uuid_1 = require("uuid");
 function insertArticle(article) {
     return __awaiter(this, void 0, void 0, function () {
-        var mySqlConnection, query, rows, error_1;
+        var mySqlConnection, query, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, database_utils_1.connect()];
                 case 1:
                     mySqlConnection = _a.sent();
                     query = "INSERT into article (articleId, articleEnglishTitle, articleEnglishDate, articleEnglishImageUrl, articleEnglishImageAlt, articleSpanishTitle, articleSpanishDate, articleSpanishImageUrl, articleSpanishUrl)\n            VALUES((UUID_TO_BIN(" + uuid_1.v4() + "), :articleEnglishId, :articleEnglishTitle, :articleEnglishDate, :articleEnglishImageUrl, :articleEnglishImageAlt, :articleSpanishTitle, :articleSpanishDate, :articleSpanishUrl)";
-                    return [4 /*yield*/, mySqlConnection.execute(query, article)];
+                    // const [rows] = await mySqlConnection.execute(query, article);
+                    console.log();
+                    console.log("article successfully inserted");
+                    return [2 /*return*/, "article successfully inserted"];
                 case 2:
-                    rows = (_a.sent())[0];
-                    return [2 /*return*/, "profile successfully inserted"];
-                case 3:
                     error_1 = _a.sent();
                     console.error(error_1.msg);
                     return [2 /*return*/, error_1.msg];
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     });

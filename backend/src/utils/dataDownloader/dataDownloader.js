@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var axios_1 = require("axios");
+var insertArticle_1 = require("../article/insertArticle");
 function dataDownloader() {
     function main() {
         return __awaiter(this, void 0, void 0, function () {
@@ -45,9 +46,9 @@ function dataDownloader() {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        keywords = ["cancer", "diabetes", "healthy habits",];
+                        keywords = ["cancer", "diabetes", "stroke", "obesity"];
                         return [4 /*yield*/, keywords.forEach(function (keyword) {
-                                downloadArticles(keyword)["catch"](function (error) { return console.error(error); });
+                                downloadArticles(keyword); //.catch(error => console.error(error));
                             })];
                     case 1:
                         _a.sent();
@@ -69,57 +70,74 @@ function dataDownloader() {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _a.trys.push([0, 7, , 8]);
                         language = "en";
                         //check how many words in keyword: if more than one word, format string appropriately.
                         if (keyword.split(" ").length > 1) {
                             keyword = keyword.split(" ").join("%20");
                         }
+                        //checking keywords are correct
                         console.log(keyword);
                         /* GET ENGLISH ARTICLE DATA */
-                        console.log("BEFORE ENGLISH ARTICLE REQUEST");
+                        console.log("BEFORE ENGLISH ARTICLE REQUEST", keyword);
                         return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=" + language + "&keyword=" + keyword)];
                     case 1:
                         articleEnglishRequest = _a.sent();
-                        console.log("AFTER ENGLISH ARTICLE REQUEST");
-                        englishArticles = articleEnglishRequest.data.Result.Resources.Resource;
+                        console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
+                        //extract array of objects containing English articles
+                        console.log("BEFORE ASSIGNING ENGLISH RESOURCE ARRAY", keyword);
+                        englishArticles = articleEnglishRequest === null || articleEnglishRequest === void 0 ? void 0 : articleEnglishRequest.data.Result.Resources.Resource;
                         //check data returned from API
                         // console.log(englishArticles);
                         /* GET SPANISH ARTICLE DATA */
                         //switch language to get spanish articles
                         language = "es";
                         //extract array of objects containing Spanish articles
-                        console.log("BEFORE SPANISH ARTICLE REQUEST");
+                        console.log("BEFORE SPANISH ARTICLE REQUEST", keyword);
                         return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=" + language + "&keyword=" + keyword)];
                     case 2:
                         articleSpanishRequest = _a.sent();
-                        console.log("AFTER ENGLISH ARTICLE REQUEST");
+                        console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
+                        console.log("BEFORE ASSIGNING SPANISH RESOURCE ARRAY", keyword);
                         spanishArticles = articleSpanishRequest.data.Result.Resources.Resource;
-                        console.log("REQUESTS COMPLETE");
-                        //iterate over articles and set corresponding attributes of interface object
-                        for (i = 0; i < spanishArticles.length; ++i) {
-                            article = {
-                                articleId: null,
-                                articleEnglishTitle: englishArticles[i].Title,
-                                articleEnglishDate: englishArticles[i].LastUpdate,
-                                articleEnglishImageUrl: englishArticles[i].ImageUrl,
-                                articleEnglishImageAlt: englishArticles[i].ImageAlt,
-                                articleEnglishUrl: englishArticles[i].AccessibleVersion,
-                                articleSpanishTitle: spanishArticles[i].Title,
-                                articleSpanishDate: spanishArticles[i].LastUpdate,
-                                articleSpanishImageUrl: spanishArticles[i].ImageUrl,
-                                articleSpanishImageAlt: spanishArticles[i].ImageAlt,
-                                articleSpanishUrl: spanishArticles[i].AccessibleVersion
-                            };
-                            console.log(article);
-                            //insert article into database using MySql enabled function
-                            //await insertArticle(article);
-                        }
-                        return [3 /*break*/, 4];
+                        console.log("REQUESTS COMPLETE", keyword);
+                        i = 0;
+                        _a.label = 3;
                     case 3:
+                        if (!(i < spanishArticles.length)) return [3 /*break*/, 6];
+                        if (spanishArticles[i] === 'undefined' || englishArticles[i] === 'undefined') {
+                            //article is undefined: continue loop at next step
+                            return [3 /*break*/, 5];
+                        }
+                        article = {
+                            articleId: null,
+                            articleEnglishTitle: englishArticles[i].Title,
+                            articleEnglishDate: englishArticles[i].LastUpdate,
+                            articleEnglishImageUrl: englishArticles[i].ImageUrl,
+                            articleEnglishImageAlt: englishArticles[i].ImageAlt,
+                            articleEnglishUrl: englishArticles[i].AccessibleVersion,
+                            articleSpanishTitle: spanishArticles[i].Title,
+                            articleSpanishDate: spanishArticles[i].LastUpdate,
+                            articleSpanishImageUrl: spanishArticles[i].ImageUrl,
+                            articleSpanishImageAlt: spanishArticles[i].ImageAlt,
+                            articleSpanishUrl: spanishArticles[i].AccessibleVersion
+                        };
+                        // console.log(article);
+                        //insert article into database using MySql enabled function
+                        return [4 /*yield*/, insertArticle_1.insertArticle(article)];
+                    case 4:
+                        // console.log(article);
+                        //insert article into database using MySql enabled function
+                        _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        ++i;
+                        return [3 /*break*/, 3];
+                    case 6: return [3 /*break*/, 8];
+                    case 7:
                         error_2 = _a.sent();
                         throw new Error(error_2);
-                    case 4: return [2 /*return*/];
+                    case 8: return [2 /*return*/];
                 }
             });
         });
