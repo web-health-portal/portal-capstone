@@ -1,5 +1,5 @@
 export interface PartialProfile {
-    profileId: string,
+    profileId: string|null,
     profileFirstName: string,
     profileLastName: string,
     profileLanguage: string,
@@ -9,7 +9,7 @@ export interface PartialProfile {
 
 
 export interface Profile {
-    profileId: string,
+    profileId: string|null,
     profileFirstName: string,
     profileLastName: string,
     profileLanguage: string,

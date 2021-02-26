@@ -1,0 +1,34 @@
+import {NextFunction, Request, Response} from "express";
+import {getProfileByProfileActivationToken} from "../../utils/profile/getProfileByProfileActivationToken";
+import {Profile} from "../../utils/interfaces/Profile";
+import {updateProfileByProfileId} from "../../utils/profile/updateProfileByProfileId";
+
+
+export async function activationController(request: Request, response: Response, nextFunction: NextFunction) {
+  const {activation} = request.params
+  try {
+
+    const profile = await getProfileByProfileActivationToken(activation)
+
+    const activationFailed = () => response.json({
+      status: 400,
+      data: null,
+      message: "Account activation has failed. Have you already activated this account"
+    });
+
+    const activationSucceeded = async (profile: Profile) => {
+      const updatedProfile = {...profile, profileActivationToken: null}
+      await updateProfileByProfileId(updatedProfile)
+      return response.json({
+        status: 200,
+        data: null,
+        message: "Account activation was successful"
+      });
+    }
+
+    profile ? await activationSucceeded(profile) : activationFailed()
+
+  } catch (error) {
+    return response.json({status: 500, data: null, message: error.message})
+  }
+}
