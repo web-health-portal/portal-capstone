@@ -27,6 +27,7 @@ export async function signupProfileController(request: Request, response: Respon
 <p><a href="${basePath}">Verify</a></p>
 `
 
+        //TODO: edit this
         const mailgunMessage = {
             from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN}>`,
             to: profileEmailAddress,
