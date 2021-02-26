@@ -22,6 +22,7 @@ export const signupValidator: Schema = {
         trim: true,
         isLength: {
             errorMessage: 'Language must be between 1 and 7 characters',
+            //TODO: check for exact match - Español or English
             options: {min: 1, max: 7}
         }
     },
@@ -31,6 +32,7 @@ export const signupValidator: Schema = {
         },
         trim: true
     },
+    //TODO: check confirm password vs password
     profilePassword: {
         isLength: {
             errorMessage: 'Password must be at least eight characters',
