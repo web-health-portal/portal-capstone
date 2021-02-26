@@ -27,12 +27,11 @@ export async function signupProfileController(request: Request, response: Respon
 <p><a href="${basePath}">Verify</a></p>
 `
 
-        //TODO: edit this
         const mailgunMessage = {
-            from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN}>`,
+            from: `SaluDuo <sign-up@${process.env.MAILGUN_DOMAIN}>`,
             to: profileEmailAddress,
-            subject: "One step closer to Sticky Head -- Account Activation",
-            text: 'Test email text',
+            subject: "Please verify your email with SaluDuo",
+            text: "Email Verification",
             html: message
         }
 
