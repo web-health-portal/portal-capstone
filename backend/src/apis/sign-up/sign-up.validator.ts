@@ -32,7 +32,6 @@ export const signupValidator: Schema = {
         },
         trim: true
     },
-    //TODO: check confirm password vs password
     profilePassword: {
         isLength: {
             errorMessage: 'Password must be at least eight characters',
@@ -49,4 +48,15 @@ export const signupValidator: Schema = {
         trim: true,
         escape: true
     },
+    // //TODO: check confirm password vs password
+    // checkPasswordMatch: {
+    //     matches: {
+    //         options: {
+    //
+    //         }
+    //     }
+    //
+    //
+    // }
+
 };
