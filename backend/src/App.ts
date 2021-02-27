@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import IndexRoutes from './apis/index.route'
 import {logInRoute} from "./apis/log-in/log-in.route";
 import {ProfileRoute} from './apis/profile/profile.route'
-import session, {MemoryStore} from "express-session";
+import session from "express-session";
 import passport from "passport";
 import {passportStrategy} from "./apis/log-in/log-in.controller";
 const MemoryStore = require('memorystore')(session);
