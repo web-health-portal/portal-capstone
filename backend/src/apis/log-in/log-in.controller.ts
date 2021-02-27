@@ -15,7 +15,7 @@ export async function logInController(request: Request, response: Response, next
 
         const {profilePassword} = request.body;
 
-
+        // QUESTION* ASK MORE INFORMATION BELOW THIS CODE
         passport.authenticate(
             'local',
             {session: false},
