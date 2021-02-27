@@ -7,6 +7,7 @@ import {ProfileRoute} from './apis/profile/profile.route'
 import session, {MemoryStore} from "express-session";
 import passport from "passport";
 import {passportStrategy} from "./apis/log-in/log-in.controller";
+const MemoryStore = require('memorystore')(session);
 
 // The following class creates the app and instantiates the server
 export class App {
