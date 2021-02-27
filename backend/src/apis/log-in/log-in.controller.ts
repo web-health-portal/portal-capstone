@@ -21,9 +21,9 @@ export async function logInController(request: Request, response: Response, next
             {session: false},
             async (err: any, passportUser: Profile) => {
                 console.log(passportUser)
-                const {profileId, profileAtHandle, profileAvatarUrl, profileEmailAddress} = passportUser;
+                const {profileId, profileEmailAddress} = passportUser;
                 const signature: string = uuid();
-                const authorization: string = generateJwt({profileId, profileAtHandle, profileAvatarUrl, profileEmailAdress}, signature);
+                const authorization: string = generateJwt({profileId, profileEmailAddress}, signature);
 
                 const signInFailed = (message: string) => response.json({
                     status: 400,
