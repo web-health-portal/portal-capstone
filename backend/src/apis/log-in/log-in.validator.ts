@@ -7,7 +7,7 @@ export const logInValidator = {
         trim: true,
         escape: true
     },
-    profileEmail: {
+    profileEmailAddress: {
         isEmail: {
             errorMessage: 'Please provide a valid email'
         },
