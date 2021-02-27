@@ -5,7 +5,7 @@ import {logInController} from "./log-in.controller";
 
 const { checkSchema } = require('express-validator');
 
-export const logInRouter = Router();
+export const logInRoute = Router();
 
-logInRouter.route('/')
+logInRoute.route('/')
     .post(asyncValidatorController(checkSchema(logInValidator)), logInController);
