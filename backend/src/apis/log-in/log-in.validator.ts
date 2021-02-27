@@ -1,4 +1,4 @@
-export const signInValidator = {
+export const logInValidator = {
     profilePassword: {
         isLength: {
             errorMessage: 'Password must be at least eight characters',

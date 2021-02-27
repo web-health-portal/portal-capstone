@@ -2,6 +2,7 @@ import express, {Application} from 'express'
 import morgan from 'morgan'
 // Routes
 import {indexRoute} from './apis/index.route'
+import { SignInRouter} from "./apis/log-in/log-in.route";
 import {ProfileRoute} from './apis/profile/profile.route'
 import session, {MemoryStore} from "express-session";
 import passport from "passport";
@@ -49,6 +50,7 @@ export class App {
         // TODO add our defined "/apis"/routes here
         this.app.use('/apis', indexRoute)
         this.app.use('/apis/profile', ProfileRoute)
+        this.app.use('')
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

@@ -6,10 +6,10 @@ import passportLocal, {Strategy} from 'passport-local';
 import uuid from "uuid";
 import {generateJwt, validatePassword} from "../../utils/auth.utils";
 import {Profile} from "../../utils/interfaces/Profile";
-import {selectProfileByProfileEmail} from "../../utils/profile/selectProfileByProfileEmail";
+import {getProfileByProfileEmail} from "../../utils/profile/getProfileByProfileEmail";
 import exp from "constants";
 
-export async function signInController(request: Request, response: Response, nextFunction: NextFunction) {
+export async function logInController(request: Request, response: Response, nextFunction: NextFunction) {
 
     try {
 
@@ -21,9 +21,9 @@ export async function signInController(request: Request, response: Response, nex
             {session: false},
             async (err: any, passportUser: Profile) => {
                 console.log(passportUser)
-                const {profileId, profileAtHandle, profileAvatarUrl, profileEmail, profilePhone} = passportUser;
+                const {profileId, profileAtHandle, profileAvatarUrl, profileEmailAddress} = passportUser;
                 const signature: string = uuid();
-                const authorization: string = generateJwt({profileId, profileAtHandle, profileAvatarUrl, profileEmail, profilePhone}, signature);
+                const authorization: string = generateJwt({profileId, profileAtHandle, profileAvatarUrl, profileEmailAdress}, signature);
 
                 const signInFailed = (message: string) => response.json({
                     status: 400,
@@ -72,7 +72,7 @@ export const  passportStrategy: Strategy = new LocalStrategy(
     async (email, password, done) => {
         try {
 
-            const profile: Profile | undefined = await selectProfileByProfileEmail(email);
+            const profile: Profile | undefined = await getProfileByProfileEmail(email);
 
             return profile ? done(null, profile) : done(undefined, undefined, {message: 'Incorrect username or password'});
         } catch (error) {
