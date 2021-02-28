@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import session from "express-session";
 import passport from "passport";
 const MemoryStore = require('memorystore')(session);
+import csrf from "csurf";
 // Routes
 import IndexRoutes from './apis/index.route'
 import {logInRoute} from "./apis/log-in/log-in.route";
