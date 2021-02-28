@@ -1,13 +1,15 @@
 import express, {Application} from 'express'
 import morgan from 'morgan'
+import session from "express-session";
+import passport from "passport";
+const MemoryStore = require('memorystore')(session);
 // Routes
 import IndexRoutes from './apis/index.route'
 import {logInRoute} from "./apis/log-in/log-in.route";
 import {ProfileRoute} from './apis/profile/profile.route'
-import session from "express-session";
-import passport from "passport";
 import {passportStrategy} from "./apis/log-in/log-in.controller";
-const MemoryStore = require('memorystore')(session);
+import SignUpRoute from "./apis/sign-up/sign-up.route";
+import {LogOutRoute} from "./apis/log-out/log-out.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -53,6 +55,8 @@ export class App {
         this.app.use('/apis', IndexRoutes)
         this.app.use('/apis/profile', ProfileRoute)
         this.app.use('/apis/log-in', logInRoute)
+        this.app.use('/apis/sign-up', SignUpRoute)
+        this.app.use('/apis/log-out', LogOutRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
