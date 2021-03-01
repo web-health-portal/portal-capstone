@@ -3,7 +3,7 @@ import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
 import {getPartialProfileByProfileId} from "../../utils/profile/getPartialProfileByProfileId";
 import {Status} from "../../utils/interfaces/Status";
 import {getProfileByProfileId} from "../../utils/profile/getProfileByProfileId";
-import {updateProfileByProfileId} from "../../utils/profile/updateProfileByProfileId";
+import {updateProfile} from "../../utils/profile/updateProfile";
 
 export async function putProfileController(request: Request, response: Response): Promise<Response> {
     try {
@@ -15,7 +15,7 @@ export async function putProfileController(request: Request, response: Response)
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
             const previousProfile: Profile = await getPartialProfileByProfileId(<string>partialProfile.profileId)
             const newProfile: Profile = {...previousProfile, ...partialProfile}
-            await updateProfileByProfileId(newProfile)
+            await updateProfile(newProfile)
             return response.json({status: 200, data: null, message: "Profile successfully updated"})
         }
 

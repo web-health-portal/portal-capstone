@@ -19,7 +19,7 @@ export async function signupProfileController(request: Request, response: Respon
         const {profileFirstName, profileLastName, profileEmailAddress, profileLanguage, profilePassword} = request.body;
         const profileHash = await setHash(profilePassword);
         const profileActivationToken = setActivationToken();
-        const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}activation/${profileActivationToken}`
+        const basePath = `${request.protocol}://${request.get('host')}${request.originalUrl}/activation/${profileActivationToken}`
         console.log(profileActivationToken)
 
         const message = `<h2>Welcome to SaluDuo.</h2>
@@ -53,7 +53,7 @@ export async function signupProfileController(request: Request, response: Respon
         emailComposer.compile().build((error: any, message: Buffer) => {
             const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
 
-            console.log(message.toString("ascii"))
+            // console.log(message.toString("ascii"))
             const compiledEmail = {
                 to: profileEmailAddress,
                 message: message.toString("ascii")

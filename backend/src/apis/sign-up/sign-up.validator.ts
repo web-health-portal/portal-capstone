@@ -22,17 +22,16 @@ export const signupValidator: Schema = {
         trim: true,
         //check exact match for Español or English
         matches: {
-            options: ['Español', 'English'],
+            options: [new RegExp(/Español|English/)],
             errorMessage: 'Language must be Español or English'
         },
     },
-    profileEmail: {
+    profileEmailAddress: {
         isEmail: {
             errorMessage: 'Please provide a valid email'
         },
         trim: true
     },
-    //TODO: check confirm password vs password
     profilePassword: {
         isLength: {
             errorMessage: 'Password must be at least eight characters',
