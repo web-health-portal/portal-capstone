@@ -17,6 +17,7 @@ export async function activationController(request: Request, response: Response,
     });
 
     const activationSucceeded = async (profile: Profile) => {
+      console.log("in activation succeeded")
       const updatedProfile = {...profile, profileActivationToken: null}
       await updateProfile(updatedProfile)
       return response.json({
@@ -25,7 +26,6 @@ export async function activationController(request: Request, response: Response,
         message: "Account activation was successful"
       });
     }
-
     profile ? await activationSucceeded(profile) : activationFailed()
 
   } catch (error) {
