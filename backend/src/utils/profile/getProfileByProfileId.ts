@@ -11,7 +11,6 @@ export async function getProfileByProfileId(profileId: string) {
         // @ts-ignore is required so that rows can be interacted with like the array it is
         return rows.length !== 0 ? {...rows[0]} : undefined;
     } catch (error) {
-        console.error(error.msg);
-        return error.msg;
+        throw new Error(error);
     }
 }

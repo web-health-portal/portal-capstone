@@ -9,8 +9,7 @@ export async function getProfileByProfileEmail(profileEmail: string) {
 
 		// @ts-ignore is required so that rows can be interacted with like the array it is
 		return rows.length !== 0 ? {...rows[0]} : undefined;
-	} catch (e) {
-		console.error(e)
-		return undefined
+	} catch (error) {
+	    throw new Error(error);
 	}
 }

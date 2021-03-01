@@ -12,7 +12,6 @@ export async function getPartialProfileByProfileId(profileId: string) {
         return rows.length !== 0 ? {...rows[0]} : undefined;
     }
     catch(error) {
-        console.error(error.msg);
-        return error.msg;
+        throw new Error(error);
     }
 }
