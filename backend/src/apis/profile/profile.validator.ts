@@ -25,10 +25,11 @@ export const profileValidator: Schema = {
     profileLanguage: {
         escape: true,
         trim: true,
-        isLength: {
-            errorMessage: 'Language must be between 1 and 7 characters',
-            options: {min: 1, max: 7}
-        }
+        //check exact match for Español or English
+        matches: {
+            options: [new RegExp(/Español|English/)],
+            errorMessage: 'Language must be Español or English'
+        },
     },
     profileEmail: {
         isEmail: {
