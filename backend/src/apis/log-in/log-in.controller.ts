@@ -39,8 +39,11 @@ export async function logInController(request: Request, response: Response, next
                     // }
 
                     if (request.session) {
+                        //@ts-ignore mismatch with express session typing
                         request.session.profile = passportUser;
+                        //@ts-ignore mismatch with express session typing
                         request.session.jwt = authorization;
+                        //@ts-ignore mismatch with express session typing
                         request.session.signature = signature;
                     }
 
