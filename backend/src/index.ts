@@ -1,7 +1,7 @@
-import { App } from './App'
+import {App} from './App'
 
 // instantiate new app and pass it a port as an argument to start with (4200)
-async function main () {
+async function main() {
     try {
         const app = new App(4200)
         await app.listen()
@@ -10,4 +10,4 @@ async function main () {
     }
 }
 
-main()
+main().catch(error => console.error(error));
