@@ -1,7 +1,7 @@
 import express, {Application} from 'express'
 import morgan from 'morgan'
-import session from "express-session";
-import passport from "passport";
+const session = require("express-session");
+const passport = require("passport");
 const MemoryStore = require('memorystore')(session);
 import csrf from "csurf";
 // Routes

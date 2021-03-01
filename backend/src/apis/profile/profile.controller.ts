@@ -9,6 +9,7 @@ export async function putProfileController(request: Request, response: Response)
     try {
         const {profileId} = request.params
         const {profileFirstName, profileLastName, profileLanguage, profileEmailAddress, profileImage} = request.body
+        //@ts-ignore mismatch with express session typing
         const profileIdFromSession: string = <string>request.session?.profile.profileId
 
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
