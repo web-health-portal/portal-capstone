@@ -53,7 +53,7 @@ export async function signupProfileController(request: Request, response: Respon
         emailComposer.compile().build((error: any, message: Buffer) => {
             const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
 
-            console.log(message.toString("ascii"))
+            // console.log(message.toString("ascii"))
             const compiledEmail = {
                 to: profileEmailAddress,
                 message: message.toString("ascii")
