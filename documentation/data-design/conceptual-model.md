@@ -19,6 +19,7 @@
 
 ##Category
 - PK: categoryId
+- categoryMyHealthFinderId
 - categoryEnglishName
 - categorySpanishName
 
