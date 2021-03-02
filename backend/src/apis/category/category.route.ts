@@ -1,17 +1,19 @@
-import { Router } from 'express';
-import {getAllCategoryController} from './category.controller';
-import { asyncValidatorController } from '../../utils/controllers/asyncValidator.controller';
-import { categoryValidator } from './category.validator';
+import {getCategory, putCategoryController} from "./category.controller";
+import {Router} from "express";
+import {asyncValidatorController} from "../../utils/controllers/asyncValidator.controller";
+import {check, checkSchema} from "express-validator";
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
-const { checkSchema } = require('express-validator');
+import {categoryValidator} from "./category.validator";
 
-const router = Router();
+export const CategoryRoute = Router();
+CategoryRoute.route('/')
+    .post(putCategoryController);
 
-router.route("/categoryProfileId/:categoryProfileId").get(getAllCategoryController)
-
-// Every new route is instantiated below. It will include the controller name and the type of action (get, post, delete, put, patch)
-router.route('/')
-    .get( getAllCategoryController)
-    .post(isLoggedIn, asyncValidatorController(checkSchema(categoryValidator)), postCategory);
-
-export default router;
+CategoryRoute.route("/:categoryId")
+    .get(
+        asyncValidatorController([
+            check("categoryId").isUUID()
+        ])
+        , getCategory
+    )
+    .put(isLoggedIn, asyncValidatorController(checkSchema(categoryValidator)), putCategoryController)
