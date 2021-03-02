@@ -5,9 +5,9 @@ import {check, checkSchema} from "express-validator";
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 import {categoryValidator} from "./category.validator";
 
-export const CategoryRoute = Router();
+export const categoryRoute = Router();
 
-CategoryRoute.route("/:categoryId")
+categoryRoute.route("/:categoryId")
     .get(
         asyncValidatorController([
             check("categoryId").isUUID()
