@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {selectAllCategories} from "../../utils/category/selectAllCategories";
+import {getCategoryByCategoryId} from "../../utils/category/getCategoryByCategoryId";
 import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
 import {getPartialProfileByProfileId} from "../../utils/profile/getPartialProfileByProfileId";
 import {updateProfile} from "../../utils/profile/updateProfile";
@@ -15,6 +16,20 @@ export async function getAllCategoryController(request: Request, response: Respo
         return response.json(status);
     } catch(error) {
         console.log(error);
+    }
+}
+
+export async function getCategory(request: Request, response: Response): Promise<Response> {
+    try {
+        const {categoryId} = request.params;
+        const mySqlResult = await getCategoryByCategoryId(<string>categoryId);
+        const data = mySqlResult ?? null
+        const status: Status = {status: 200, data, message: null}
+        return response.json(status)
+
+    } catch (error) {
+        return (response.json({status: 400, data: null, message: error.message}))
+
     }
 }
 
@@ -43,16 +58,4 @@ export async function getAllCategoryController(request: Request, response: Respo
 //     }
 // }
 
-// export async function getCategory(request: Request, response: Response): Promise<Response> {
-//         try {
-//             const {categoryId} = request.params;
-//             const mySqlResult = await getCategoryByCategoryId(<string>categoryId);
-//             const data = mySqlResult ?? null
-//             const status: Status = {status: 200, data, message: null}
-//             return response.json(status)
-//
-//         } catch (error) {
-//             return (response.json({status: 400, data: null, message: error.message}))
-//
-//         }
-//     }
+
