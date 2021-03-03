@@ -22,7 +22,7 @@ Request this for both both languages and merge them?
 function dataDownloader(): Promise<any> {
     async function main() {
         try {
-            await fetchAllCategories();
+            const categories = await fetchAllCategories();
         } catch (error) {
             console.error(error)
         }
@@ -99,23 +99,75 @@ function dataDownloader(): Promise<any> {
 
     async function fetchAllCategories() {
         // GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
-        // GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
         const englishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category');
+        // GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
         const spanishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category');
 
+        //get total categories returned from API
         const totalCategories = englishCategories.data.Result.Total;
+
+        //create array to collect categories
+        let categories = [];
+
+        //create arrays for topics in English and Spanish
+        let topicsEnglish = [];
+        let topicsSpanish = [];
 
         // console.log(englishCategories.data.Result.Items);
         // console.log(englishCategories.data);
-        for (let i = 0; i < totalCategories; i++) {
 
+        //iterate for number of categories in API
+        for (let i = 0; i < totalCategories; i++) {
+            //create Category per interface
             let category: Category = {
+                //TODO: set uuidv1
                 categoryId: null,
                 categoryEnglishName: englishCategories.data.Result.Items.Item[i].Title,
                 categorySpanishName: spanishCategories.data.Result.Items.Item[i].Title
             }
-            console.log(category);
+            //TODO: insertCategory()
+
+            let currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
+            console.log(await fetchTopicsByCategoryId(currentCategoryId));
+
+            //add category to array for categories
+            categories.push(category);
         }
+
+        // console.log(categories);
+        //return an array of Category objects
+        return categories;
+    }
+
+    async function fetchTopicsByCategoryId(categoryId: number) {
+        let topicsEnglish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=${categoryId}`);
+        let topicsSpanish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=${categoryId}`);
+        // console.log(topicsEnglish.data.Result.Resources);
+        topicsEnglish = topicsEnglish.data.Result.Resources.Resource;
+        topicsSpanish = topicsSpanish.data.Result.Resources.Resource;
+
+        //TODO: build article by interface
+        // const article: Article = {
+        //     articleId: null, //null for now: UUID will be set by the insertArticle function
+        //     articleEnglishTitle: englishArticles[i].Title,
+        //     articleEnglishDate: englishArticles[i].LastUpdate,
+        //     articleEnglishImageUrl: englishArticles[i].ImageUrl,
+        //     articleEnglishImageAlt: englishArticles[i].ImageAlt,
+        //     articleEnglishUrl: englishArticles[i].AccessibleVersion,
+        //     articleSpanishTitle: spanishArticles[i].Title,
+        //     articleSpanishDate: spanishArticles[i].LastUpdate,
+        //     articleSpanishImageUrl: spanishArticles[i].ImageUrl,
+        //     articleSpanishImageAlt: spanishArticles[i].ImageAlt,
+        //     articleSpanishUrl: spanishArticles[i].AccessibleVersion
+        // }
+        //TODO: insertArticle
+        //TODO: insertArticleCategory
+        //return an object containing two arrays each containing topics by category id for that language
+        return {topicsEnglish: topicsEnglish, topicsSpanish: topicsSpanish};
+    }
+
+    function convertTimestampToMySQLDate(timestamp: number) {
+
     }
 
 }

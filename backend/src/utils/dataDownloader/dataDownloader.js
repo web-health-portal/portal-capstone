@@ -52,14 +52,14 @@ Request this for both both languages and merge them?
 function dataDownloader() {
     function main() {
         return __awaiter(this, void 0, void 0, function () {
-            var error_1;
+            var categories, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, fetchAllCategories()];
                     case 1:
-                        _a.sent();
+                        categories = _a.sent();
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
@@ -139,27 +139,65 @@ function dataDownloader() {
     // }
     function fetchAllCategories() {
         return __awaiter(this, void 0, void 0, function () {
-            var englishCategories, spanishCategories, totalCategories, i, category;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var englishCategories, spanishCategories, totalCategories, categories, topicsEnglish, topicsSpanish, i, category, currentCategoryId, _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, axios_1["default"]('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category')];
                     case 1:
-                        englishCategories = _a.sent();
+                        englishCategories = _c.sent();
                         return [4 /*yield*/, axios_1["default"]('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category')];
                     case 2:
-                        spanishCategories = _a.sent();
+                        spanishCategories = _c.sent();
                         totalCategories = englishCategories.data.Result.Total;
-                        // console.log(englishCategories.data.Result.Items);
-                        // console.log(englishCategories.data);
-                        for (i = 0; i < totalCategories; i++) {
-                            category = {
-                                categoryId: null,
-                                categoryEnglishName: englishCategories.data.Result.Items.Item[i].Title,
-                                categorySpanishName: spanishCategories.data.Result.Items.Item[i].Title
-                            };
-                            console.log(category);
-                        }
-                        return [2 /*return*/];
+                        categories = [];
+                        topicsEnglish = [];
+                        topicsSpanish = [];
+                        i = 0;
+                        _c.label = 3;
+                    case 3:
+                        if (!(i < totalCategories)) return [3 /*break*/, 6];
+                        category = {
+                            categoryId: null,
+                            categoryEnglishName: englishCategories.data.Result.Items.Item[i].Title,
+                            categorySpanishName: spanishCategories.data.Result.Items.Item[i].Title
+                        };
+                        currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
+                        // console.log(currentCategoryId);
+                        _b = (_a = console).log;
+                        return [4 /*yield*/, fetchTopicsByCategoryId(currentCategoryId)];
+                    case 4:
+                        // console.log(currentCategoryId);
+                        _b.apply(_a, [_c.sent()]);
+                        //add category to array for categories
+                        categories.push(category);
+                        _c.label = 5;
+                    case 5:
+                        i++;
+                        return [3 /*break*/, 3];
+                    case 6: 
+                    // console.log(categories);
+                    //return an array of Category objects
+                    return [2 /*return*/, categories];
+                }
+            });
+        });
+    }
+    function fetchTopicsByCategoryId(categoryId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var topicsEnglish, topicsSpanish;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=" + categoryId)];
+                    case 1:
+                        topicsEnglish = _a.sent();
+                        return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=" + categoryId)];
+                    case 2:
+                        topicsSpanish = _a.sent();
+                        // console.log(topicsEnglish.data.Result.Resources);
+                        topicsEnglish = topicsEnglish.data.Result.Resources.Resource;
+                        topicsSpanish = topicsSpanish.data.Result.Resources.Resource;
+                        //return an object containing two arrays each containing topics by category id for that language
+                        return [2 /*return*/, { topicsEnglish: topicsEnglish, topicsSpanish: topicsSpanish }];
                 }
             });
         });
