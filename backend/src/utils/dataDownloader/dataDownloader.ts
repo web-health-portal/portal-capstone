@@ -3,6 +3,21 @@ import {Article} from "../interfaces/Article";
 import {insertArticle} from "../article/insertArticle";
 
 
+/*
+Initial ideas:
+GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
+GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
+GET all English topics https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=topic
+GET all Spanish topics https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=topic
+Use those topic IDs and category IDs to GET all the topics and categories by ID for each language. It might be easier to insert all of the categories this way, but there is a better way to GET all topics.
+The articles are essentially topics here and you can get them by data.Result.Resources. This is where the array of objects containing our articles lives. You can all GET all by leaving off the topicID in the request URL like this: https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en
+Request this for both both languages and merge them?
+ */
+
+//handle categories first
+//build insert
+
+
 function dataDownloader(): Promise<any> {
     async function main() {
         try {
