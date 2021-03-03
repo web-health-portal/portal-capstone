@@ -1,6 +1,5 @@
 export interface Category {
-    categoryId: string,
-    categoryMyHealthFinderId: string,
+    categoryId: string | null,
     categoryEnglishName: string,
     categorySpanishName: string
 }

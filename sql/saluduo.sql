@@ -23,7 +23,6 @@ CREATE TABLE article (
 
 CREATE TABLE category (
     categoryId BINARY(16) NOT NULL,
-    categoryMyHealthFinderId INT,
     categoryEnglishName VARCHAR(255),
     categorySpanishName VARCHAR(255),
     PRIMARY KEY (categoryId)
