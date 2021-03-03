@@ -6,7 +6,7 @@ export async function insertArticleCategory(articleCategory: ArticleCategory) : 
         //establish connection with the database
         const mySqlConnection = await connect();
         //query is a string for holding a sql statement (prepared statement)
-        const query : string = 'INSERT into  articleCategory(articleCategoryCategoryId, articleCategoryArticleId) VALUES(:articleCategoryCategoryId, :articleCategoryArticleId)';
+        const query : string = 'INSERT into  articleCategory(articleCategoryCategoryId, articleCategoryArticleId) VALUES(UUID_TO_BIN(:articleCategoryCategoryId), UUID_TO_BIN(:articleCategoryArticleId))';
         const [rows] = await mySqlConnection.execute(query, articleCategory);
         return "articleCategory successfully inserted";
     }
