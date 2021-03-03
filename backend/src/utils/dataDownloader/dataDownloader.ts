@@ -14,6 +14,9 @@ The articles are essentially topics here and you can get them by data.Result.Res
 Request this for both both languages and merge them?
  */
 
+//handle categories first
+//build insert
+
 
 function dataDownloader(): Promise<any> {
     async function main() {
