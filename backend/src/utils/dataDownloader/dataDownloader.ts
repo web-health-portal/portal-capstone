@@ -1,7 +1,11 @@
 import axios from "axios";
+import {v1 as uuid} from "uuid";
 import {Article} from "../interfaces/Article";
 import {insertArticle} from "../article/insertArticle";
 import {Category} from "../interfaces/Category";
+import {insertCategory} from "../category/insertCategory";
+import {insertArticleCategory} from "../articleCategory/insertArticleCategory"
+import {ArticleCategory} from "../interfaces/ArticleCategory";
 
 
 /*
@@ -22,7 +26,7 @@ Request this for both both languages and merge them?
 function dataDownloader(): Promise<any> {
     async function main() {
         try {
-            const categories = await fetchAllCategories();
+            await fetchInsertAllCategories();
         } catch (error) {
             console.error(error)
         }
@@ -30,74 +34,8 @@ function dataDownloader(): Promise<any> {
 
     return main();
 
-    //could be download articles
-//     async function downloadArticles(keyword: string) {
-//         try {
-//             //set params for the query string
-//             let language: string = "en";
-//
-//             //check how many words in keyword: if more than one word, format string appropriately.
-//             if (keyword.split(" ").length > 1) {
-//                 keyword = keyword.split(" ").join("%20");
-//             }
-//             //checking keywords are correct
-//             console.log(keyword);
-//
-//             /* GET ENGLISH ARTICLE DATA */
-//             console.log("BEFORE ENGLISH ARTICLE REQUEST", keyword);
-//             //TODO: add if/ternary to check if undefined first
-//             const articleEnglishRequest = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=${language}&keyword=${keyword}`);
-//             console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
-//             //extract array of objects containing English articles
-//             console.log("BEFORE ASSIGNING ENGLISH RESOURCE ARRAY", keyword);
-//             const englishArticles = articleEnglishRequest?.data.Result.Resources.Resource;
-//             //check data returned from API
-//             // console.log(englishArticles);
-//
-//             /* GET SPANISH ARTICLE DATA */
-//             //switch language to get spanish articles
-//             language = "es";
-//             //extract array of objects containing Spanish articles
-//             console.log("BEFORE SPANISH ARTICLE REQUEST", keyword);
-//             //TODO: add if/ternary to check if undefined first
-//             const articleSpanishRequest = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=${language}&keyword=${keyword}`)
-//             console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
-//
-//             console.log("BEFORE ASSIGNING SPANISH RESOURCE ARRAY", keyword);
-//             const spanishArticles = articleSpanishRequest.data.Result.Resources.Resource;
-//             console.log("REQUESTS COMPLETE", keyword);
-//
-//             //iterate over articles and set corresponding attributes of interface object
-//             for (let i = 0; i < spanishArticles.length; ++i) {
-//                 if (spanishArticles[i] === 'undefined' || englishArticles[i] === 'undefined') {
-//                     //article is undefined: continue loop at next step
-//                     continue;
-//                 }
-//                 const article: Article = {
-//                     articleId: null, //null for now: UUID will be set by the insertArticle function
-//                     articleEnglishTitle: englishArticles[i].Title,
-//                     articleEnglishDate: englishArticles[i].LastUpdate,
-//                     articleEnglishImageUrl: englishArticles[i].ImageUrl,
-//                     articleEnglishImageAlt: englishArticles[i].ImageAlt,
-//                     articleEnglishUrl: englishArticles[i].AccessibleVersion,
-//                     articleSpanishTitle: spanishArticles[i].Title,
-//                     articleSpanishDate: spanishArticles[i].LastUpdate,
-//                     articleSpanishImageUrl: spanishArticles[i].ImageUrl,
-//                     articleSpanishImageAlt: spanishArticles[i].ImageAlt,
-//                     articleSpanishUrl: spanishArticles[i].AccessibleVersion
-//                 }
-//                 // console.log(article);
-//                 //insert article into database using MySql enabled function
-//                 await insertArticle(article);
-//             }
-//         } catch
-//             (error) {
-//             throw new Error(error);
-//         }
-//     }
-// }
 
-    async function fetchAllCategories() {
+    async function fetchInsertAllCategories() {
         // GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
         const englishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category');
         // GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
@@ -106,70 +44,86 @@ function dataDownloader(): Promise<any> {
         //get total categories returned from API
         const totalCategories = englishCategories.data.Result.Total;
 
-        //create array to collect categories
-        let categories = [];
-
-        //create arrays for topics in English and Spanish
-        let topicsEnglish = [];
-        let topicsSpanish = [];
-
-        // console.log(englishCategories.data.Result.Items);
-        // console.log(englishCategories.data);
-
-        //iterate for number of categories in API
+        //iterate through categories
         for (let i = 0; i < totalCategories; i++) {
             //create Category per interface
             let category: Category = {
-                //TODO: set uuidv1
-                categoryId: null,
+                categoryId: <string>uuid(),
                 categoryEnglishName: englishCategories.data.Result.Items.Item[i].Title,
                 categorySpanishName: spanishCategories.data.Result.Items.Item[i].Title
             }
-            //TODO: insertCategory()
 
+            //insert category into db
+            //TODO: insert category
+            // await insertCategory(category);
+
+            //grab current category id from API
             let currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
-            console.log(await fetchTopicsByCategoryId(currentCategoryId));
 
-            //add category to array for categories
-            categories.push(category);
-        }
+            let articlesEnglish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=${currentCategoryId}`);
+            let articlesSpanish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=${currentCategoryId}`);
+            const totalTopics = articlesEnglish.data.Result.Total;
+
+            articlesEnglish = articlesEnglish.data.Result.Resources.Resource;
+            articlesSpanish = articlesSpanish.data.Result.Resources.Resource;
+
+            //iterate through articles, build article object by interface, and finally
+            //insert article and articleCategory
+            for (let i = 0; i < totalTopics; i++) {
+                let article: Article = {
+                    articleId: <string>uuid(), //null for now: UUID will be set by the insertArticle function
+                    // @ts-ignore
+                    articleEnglishTitle: articlesEnglish[i].Title,
+                    // @ts-ignore
+                    articleEnglishDate: convertTimestampToMySQLDate(articlesEnglish[i].LastUpdate),
+                    // @ts-ignore
+                    articleEnglishImageUrl: articlesEnglish[i].ImageUrl,
+                    // @ts-ignore
+                    articleEnglishImageAlt: articlesEnglish[i].ImageAlt,
+                    // @ts-ignore
+                    articleEnglishUrl: articlesEnglish[i].AccessibleVersion,
+                    // @ts-ignore
+                    articleSpanishTitle: articlesSpanish[i].Title,
+                    // @ts-ignore
+                    articleSpanishDate: articlesSpanish[i].LastUpdate,
+                    // @ts-ignore
+                    articleSpanishImageUrl: articlesSpanish[i].ImageUrl,
+                    // @ts-ignore
+                    articleSpanishImageAlt: articlesSpanish[i].ImageAlt,
+                    // @ts-ignore
+                    articleSpanishUrl: articlesSpanish[i].AccessibleVersion
+                }
+                //check data
+                console.log(article);
+                //TODO: insertArticle
+                // await insertArticle(article);
+
+                //build out weak entity for articleCategory using interface
+                let articleCategory: ArticleCategory = {
+                    articleCategoryArticleId: <string>article.articleId,
+                    articleCategoryCategoryId: <string>category.categoryId
+                }
+                //TODO: insertArticleCategory
+                // await insertArticleCategory(articleCategory);
+                console.log(articleCategory);
+
+            } //END for loop articles
+
+        } //END for loop categories
 
         // console.log(categories);
-        //return an array of Category objects
-        return categories;
-    }
 
-    async function fetchTopicsByCategoryId(categoryId: number) {
-        let topicsEnglish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=${categoryId}`);
-        let topicsSpanish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=${categoryId}`);
-        // console.log(topicsEnglish.data.Result.Resources);
-        topicsEnglish = topicsEnglish.data.Result.Resources.Resource;
-        topicsSpanish = topicsSpanish.data.Result.Resources.Resource;
 
-        //TODO: build article by interface
-        // const article: Article = {
-        //     articleId: null, //null for now: UUID will be set by the insertArticle function
-        //     articleEnglishTitle: englishArticles[i].Title,
-        //     articleEnglishDate: englishArticles[i].LastUpdate,
-        //     articleEnglishImageUrl: englishArticles[i].ImageUrl,
-        //     articleEnglishImageAlt: englishArticles[i].ImageAlt,
-        //     articleEnglishUrl: englishArticles[i].AccessibleVersion,
-        //     articleSpanishTitle: spanishArticles[i].Title,
-        //     articleSpanishDate: spanishArticles[i].LastUpdate,
-        //     articleSpanishImageUrl: spanishArticles[i].ImageUrl,
-        //     articleSpanishImageAlt: spanishArticles[i].ImageAlt,
-        //     articleSpanishUrl: spanishArticles[i].AccessibleVersion
-        // }
-        //TODO: insertArticle
-        //TODO: insertArticleCategory
-        //return an object containing two arrays each containing topics by category id for that language
-        return {topicsEnglish: topicsEnglish, topicsSpanish: topicsSpanish};
-    }
+        function convertTimestampToMySQLDate(timestamp: number) {
+            //MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format.
+            let date = new Date(timestamp * 1000);
+            //build date time string to be a format that MySQL expects
+            let dateTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours() + 1}-${date.getMinutes() + 1}-${date.getSeconds() + 1}`;
 
-    function convertTimestampToMySQLDate(timestamp: number) {
+            return dateTime;
+        }
 
     }
-
 }
 
 dataDownloader().catch(error => console.error(error));

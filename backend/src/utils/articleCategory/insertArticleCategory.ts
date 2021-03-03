@@ -1,7 +1,7 @@
 import {connect} from "../database.utils";
 import {ArticleCategory} from "../interfaces/ArticleCategory";
 
-export async function insertArticle(articleCategory: ArticleCategory) : Promise<string>{
+export async function insertArticleCategory(articleCategory: ArticleCategory) : Promise<string>{
     try {
         //establish connection with the database
         const mySqlConnection = await connect();

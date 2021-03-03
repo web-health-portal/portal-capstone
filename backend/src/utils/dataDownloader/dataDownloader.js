@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var axios_1 = require("axios");
+var uuid_1 = require("uuid");
 /*
 Initial ideas:
 GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
@@ -52,14 +53,14 @@ Request this for both both languages and merge them?
 function dataDownloader() {
     function main() {
         return __awaiter(this, void 0, void 0, function () {
-            var categories, error_1;
+            var error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, fetchAllCategories()];
+                        return [4 /*yield*/, fetchInsertAllCategories()];
                     case 1:
-                        categories = _a.sent();
+                        _a.sent();
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
@@ -71,133 +72,86 @@ function dataDownloader() {
         });
     }
     return main();
-    //could be download articles
-    //     async function downloadArticles(keyword: string) {
-    //         try {
-    //             //set params for the query string
-    //             let language: string = "en";
-    //
-    //             //check how many words in keyword: if more than one word, format string appropriately.
-    //             if (keyword.split(" ").length > 1) {
-    //                 keyword = keyword.split(" ").join("%20");
-    //             }
-    //             //checking keywords are correct
-    //             console.log(keyword);
-    //
-    //             /* GET ENGLISH ARTICLE DATA */
-    //             console.log("BEFORE ENGLISH ARTICLE REQUEST", keyword);
-    //             //TODO: add if/ternary to check if undefined first
-    //             const articleEnglishRequest = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=${language}&keyword=${keyword}`);
-    //             console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
-    //             //extract array of objects containing English articles
-    //             console.log("BEFORE ASSIGNING ENGLISH RESOURCE ARRAY", keyword);
-    //             const englishArticles = articleEnglishRequest?.data.Result.Resources.Resource;
-    //             //check data returned from API
-    //             // console.log(englishArticles);
-    //
-    //             /* GET SPANISH ARTICLE DATA */
-    //             //switch language to get spanish articles
-    //             language = "es";
-    //             //extract array of objects containing Spanish articles
-    //             console.log("BEFORE SPANISH ARTICLE REQUEST", keyword);
-    //             //TODO: add if/ternary to check if undefined first
-    //             const articleSpanishRequest = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=${language}&keyword=${keyword}`)
-    //             console.log("AFTER ENGLISH ARTICLE REQUEST", keyword);
-    //
-    //             console.log("BEFORE ASSIGNING SPANISH RESOURCE ARRAY", keyword);
-    //             const spanishArticles = articleSpanishRequest.data.Result.Resources.Resource;
-    //             console.log("REQUESTS COMPLETE", keyword);
-    //
-    //             //iterate over articles and set corresponding attributes of interface object
-    //             for (let i = 0; i < spanishArticles.length; ++i) {
-    //                 if (spanishArticles[i] === 'undefined' || englishArticles[i] === 'undefined') {
-    //                     //article is undefined: continue loop at next step
-    //                     continue;
-    //                 }
-    //                 const article: Article = {
-    //                     articleId: null, //null for now: UUID will be set by the insertArticle function
-    //                     articleEnglishTitle: englishArticles[i].Title,
-    //                     articleEnglishDate: englishArticles[i].LastUpdate,
-    //                     articleEnglishImageUrl: englishArticles[i].ImageUrl,
-    //                     articleEnglishImageAlt: englishArticles[i].ImageAlt,
-    //                     articleEnglishUrl: englishArticles[i].AccessibleVersion,
-    //                     articleSpanishTitle: spanishArticles[i].Title,
-    //                     articleSpanishDate: spanishArticles[i].LastUpdate,
-    //                     articleSpanishImageUrl: spanishArticles[i].ImageUrl,
-    //                     articleSpanishImageAlt: spanishArticles[i].ImageAlt,
-    //                     articleSpanishUrl: spanishArticles[i].AccessibleVersion
-    //                 }
-    //                 // console.log(article);
-    //                 //insert article into database using MySql enabled function
-    //                 await insertArticle(article);
-    //             }
-    //         } catch
-    //             (error) {
-    //             throw new Error(error);
-    //         }
-    //     }
-    // }
-    function fetchAllCategories() {
+    function fetchInsertAllCategories() {
         return __awaiter(this, void 0, void 0, function () {
-            var englishCategories, spanishCategories, totalCategories, categories, topicsEnglish, topicsSpanish, i, category, currentCategoryId, _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            // console.log(categories);
+            function convertTimestampToMySQLDate(timestamp) {
+                //MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format.
+                var date = new Date(timestamp * 1000);
+                //build date time string to be a format that MySQL expects
+                var dateTime = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "-" + (date.getHours() + 1) + "-" + (date.getMinutes() + 1) + "-" + (date.getSeconds() + 1);
+                return dateTime;
+            }
+            var englishCategories, spanishCategories, totalCategories, i, category, currentCategoryId, articlesEnglish, articlesSpanish, totalTopics, i_1, article, articleCategory;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0: return [4 /*yield*/, axios_1["default"]('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category')];
                     case 1:
-                        englishCategories = _c.sent();
+                        englishCategories = _a.sent();
                         return [4 /*yield*/, axios_1["default"]('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category')];
                     case 2:
-                        spanishCategories = _c.sent();
+                        spanishCategories = _a.sent();
                         totalCategories = englishCategories.data.Result.Total;
-                        categories = [];
-                        topicsEnglish = [];
-                        topicsSpanish = [];
                         i = 0;
-                        _c.label = 3;
+                        _a.label = 3;
                     case 3:
-                        if (!(i < totalCategories)) return [3 /*break*/, 6];
+                        if (!(i < totalCategories)) return [3 /*break*/, 7];
                         category = {
-                            categoryId: null,
+                            categoryId: uuid_1.v1(),
                             categoryEnglishName: englishCategories.data.Result.Items.Item[i].Title,
                             categorySpanishName: spanishCategories.data.Result.Items.Item[i].Title
                         };
                         currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
-                        // console.log(currentCategoryId);
-                        _b = (_a = console).log;
-                        return [4 /*yield*/, fetchTopicsByCategoryId(currentCategoryId)];
+                        return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=" + currentCategoryId)];
                     case 4:
-                        // console.log(currentCategoryId);
-                        _b.apply(_a, [_c.sent()]);
-                        //add category to array for categories
-                        categories.push(category);
-                        _c.label = 5;
+                        articlesEnglish = _a.sent();
+                        return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=" + currentCategoryId)];
                     case 5:
+                        articlesSpanish = _a.sent();
+                        totalTopics = articlesEnglish.data.Result.Total;
+                        articlesEnglish = articlesEnglish.data.Result.Resources.Resource;
+                        articlesSpanish = articlesSpanish.data.Result.Resources.Resource;
+                        //iterate through articles, build article object by interface, and finally
+                        //insert article and articleCategory
+                        for (i_1 = 0; i_1 < totalTopics; i_1++) {
+                            article = {
+                                articleId: uuid_1.v1(),
+                                // @ts-ignore
+                                articleEnglishTitle: articlesEnglish[i_1].Title,
+                                // @ts-ignore
+                                articleEnglishDate: convertTimestampToMySQLDate(articlesEnglish[i_1].LastUpdate),
+                                // @ts-ignore
+                                articleEnglishImageUrl: articlesEnglish[i_1].ImageUrl,
+                                // @ts-ignore
+                                articleEnglishImageAlt: articlesEnglish[i_1].ImageAlt,
+                                // @ts-ignore
+                                articleEnglishUrl: articlesEnglish[i_1].AccessibleVersion,
+                                // @ts-ignore
+                                articleSpanishTitle: articlesSpanish[i_1].Title,
+                                // @ts-ignore
+                                articleSpanishDate: articlesSpanish[i_1].LastUpdate,
+                                // @ts-ignore
+                                articleSpanishImageUrl: articlesSpanish[i_1].ImageUrl,
+                                // @ts-ignore
+                                articleSpanishImageAlt: articlesSpanish[i_1].ImageAlt,
+                                // @ts-ignore
+                                articleSpanishUrl: articlesSpanish[i_1].AccessibleVersion
+                            };
+                            //check data
+                            console.log(article);
+                            articleCategory = {
+                                articleCategoryArticleId: article.articleId,
+                                articleCategoryCategoryId: category.categoryId
+                            };
+                            //TODO: insertArticleCategory
+                            // await insertArticleCategory(articleCategory);
+                            console.log(articleCategory);
+                        } //END for loop articles
+                        _a.label = 6;
+                    case 6:
                         i++;
                         return [3 /*break*/, 3];
-                    case 6: 
-                    // console.log(categories);
-                    //return an array of Category objects
-                    return [2 /*return*/, categories];
-                }
-            });
-        });
-    }
-    function fetchTopicsByCategoryId(categoryId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var topicsEnglish, topicsSpanish;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=" + categoryId)];
-                    case 1:
-                        topicsEnglish = _a.sent();
-                        return [4 /*yield*/, axios_1["default"]("https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=" + categoryId)];
-                    case 2:
-                        topicsSpanish = _a.sent();
-                        // console.log(topicsEnglish.data.Result.Resources);
-                        topicsEnglish = topicsEnglish.data.Result.Resources.Resource;
-                        topicsSpanish = topicsSpanish.data.Result.Resources.Resource;
-                        //return an object containing two arrays each containing topics by category id for that language
-                        return [2 /*return*/, { topicsEnglish: topicsEnglish, topicsSpanish: topicsSpanish }];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
