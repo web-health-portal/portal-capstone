@@ -1,11 +1,6 @@
 import {Request, Response} from "express";
-import {insertArticle} from "../../utils/interfaces/insertArticle";
 import {selectAllArticles} from "../../utils/interfaces/selectAllArticles";
-import {getPopularArticles} from "../../utils/interfaces/getPopularArticles";
-import {getSavedArticlesBySavedArticleProfileId} from "../../utils/interfaces/getSavedArticlesBySavedArticleProfileId";
-import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
-import {getPartialProfileByProfileId} from "../../utils/profile/getPartialProfileByProfileId";
-import {updateProfile} from "../../utils/profile/updateProfile";
+import {Status} from "../../utils/interfaces/Status";
 
 
 export async function getAllArticleController(request: Request, response: Response): Promise<Response | void> {
@@ -19,8 +14,6 @@ export async function getAllArticleController(request: Request, response: Respon
         console.log(error);
     }
 }
-
-export async function
 
 
 export async function getArticle(request : Request, response: Response): Promise<Response>{
