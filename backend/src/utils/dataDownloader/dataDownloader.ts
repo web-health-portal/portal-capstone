@@ -26,7 +26,7 @@ Request this for both both languages and merge them?
 function dataDownloader(): Promise<any> {
     async function main() {
         try {
-            await fetchInsertAllCategories();
+            await fetchAndInsertAllDataFromApi();
         } catch (error) {
             console.error(error)
         }
@@ -35,7 +35,7 @@ function dataDownloader(): Promise<any> {
     return main();
 
 
-    async function fetchInsertAllCategories() {
+    async function fetchAndInsertAllDataFromApi() {
         // GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
         const englishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category');
         // GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
@@ -55,7 +55,8 @@ function dataDownloader(): Promise<any> {
 
             //insert category into db
             //TODO: insert category
-            // await insertCategory(category);
+            console.log(category);
+            await insertCategory(category);
 
             //grab current category id from API
             let currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
@@ -85,7 +86,7 @@ function dataDownloader(): Promise<any> {
                     // @ts-ignore
                     articleSpanishTitle: articlesSpanish[i].Title,
                     // @ts-ignore
-                    articleSpanishDate: articlesSpanish[i].LastUpdate,
+                    articleSpanishDate: convertTimestampToMySQLDate(articlesSpanish[i].LastUpdate),
                     // @ts-ignore
                     articleSpanishImageUrl: articlesSpanish[i].ImageUrl,
                     // @ts-ignore
@@ -94,9 +95,10 @@ function dataDownloader(): Promise<any> {
                     articleSpanishUrl: articlesSpanish[i].AccessibleVersion
                 }
                 //check data
-                console.log(article);
+                // console.log(article);
                 //TODO: insertArticle
-                // await insertArticle(article);
+                console.log(article);
+                await insertArticle(article);
 
                 //build out weak entity for articleCategory using interface
                 let articleCategory: ArticleCategory = {
@@ -104,8 +106,8 @@ function dataDownloader(): Promise<any> {
                     articleCategoryCategoryId: <string>category.categoryId
                 }
                 //TODO: insertArticleCategory
-                // await insertArticleCategory(articleCategory);
-                console.log(articleCategory);
+                await insertArticleCategory(articleCategory);
+                // console.log(articleCategory);
 
             } //END for loop articles
 
@@ -118,7 +120,7 @@ function dataDownloader(): Promise<any> {
             //MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format.
             let date = new Date(timestamp * 1000);
             //build date time string to be a format that MySQL expects
-            let dateTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours() + 1}-${date.getMinutes() + 1}-${date.getSeconds() + 1}`;
+            let dateTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
 
             return dateTime;
         }
