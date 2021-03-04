@@ -12,6 +12,7 @@ CREATE TABLE article (
     articleEnglishDate DATETIME (6),
     articleEnglishImageUrl VARCHAR (255),
     articleEnglishImageAlt VARCHAR (128),
+    articleMyHealthFinderId INT,
     articleEnglishUrl VARCHAR (255),
     articleSpanishTitle VARCHAR(255),
     articleSpanishDate DATETIME (6),
