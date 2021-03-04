@@ -10,6 +10,7 @@ export async function selectAllCategories() {
         const mySqlQuery = 'SELECT BIN_TO_UUID(categoryId) AS categoryId, categoryEnglishName, categorySpanishName FROM category';
 
         const [rows] = await mySqlConnection.execute(mySqlQuery)
+        await mySqlConnection.end();
         return rows;
     } catch (error) {
         throw error.message
