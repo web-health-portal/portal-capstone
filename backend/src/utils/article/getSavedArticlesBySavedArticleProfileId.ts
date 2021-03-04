@@ -1,8 +1,7 @@
 import {connect} from "../database.utils";
 import {Article} from "../interfaces/Article";
-import { v4 as uuidv4 } from 'uuid';
-
-export async function insertArticle(article: Article) : Promise<string>{
+\
+export async function getSavedArticlesBySavedArticleProfileId(SavedArticleBySavedArticleProfileId: string) : Promise<string>{
     try {
         //establish connection with the database
         const mySqlConnection = await connect();

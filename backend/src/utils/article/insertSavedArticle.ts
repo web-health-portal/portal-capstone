@@ -11,8 +11,8 @@ export async function insertSavedArticle(savedArticle: Article) : Promise<string
             VALUES((UUID_TO_BIN(${uuidv4()}), :articleEnglishId, :articleEnglishTitle, :articleEnglishDate, :articleEnglishImageUrl, :articleEnglishImageAlt, :articleSpanishTitle, :articleSpanishDate, :articleSpanishUrl)`;
         // const [rows] = await mySqlConnection.execute(query, article);
         console.log();
-        console.log("article successfully inserted");
-        return "article successfully inserted";
+        console.log("article successfully saved");
+        return "article successfully saved";
     }
     catch(error) {
         console.error(error.msg);

@@ -15,16 +15,16 @@ export async function getAllArticleController(request: Request, response: Respon
     }
 }
 
-
-export async function getArticle(request : Request, response: Response): Promise<Response>{
-    try {
-        const {articleId} = request.params;
-        const mySqlResult = await selectArticlesbySavedArticleProfileId(<string>articleId);
-        const data = mySqlResult ?? null
-        const status: Status = {status: 200, data, message: null}
-        return response.json(status)
-
-    } catch (error) {
-        return (response.json({status:400, message: null, data}))
-    }
-}
+//
+// export async function getArticle(request : Request, response: Response): Promise<Response>{
+//     try {
+//         const {articleId} = request.params;
+//         const mySqlResult = await selectArticlesbySavedArticleProfileId(<string>articleId);
+//         const data = mySqlResult ?? null
+//         const status: Status = {status: 200, data, message: null}
+//         return response.json(status)
+//
+//     } catch (error) {
+//         return (response.json({status:400, message: null, data}))
+//     }
+// }
