@@ -1,11 +1,12 @@
 import axios from "axios";
 import {v1 as uuid} from "uuid";
 import {Article} from "../interfaces/Article";
-import {insertArticle} from "../article/insertArticle";
+import {ArticleCategory} from "../interfaces/ArticleCategory";
 import {Category} from "../interfaces/Category";
+import {insertArticle} from "../article/insertArticle";
 import {insertCategory} from "../category/insertCategory";
 import {insertArticleCategory} from "../articleCategory/insertArticleCategory"
-import {ArticleCategory} from "../interfaces/ArticleCategory";
+import {getArticleMyHealthFinderIdByMyHealthFinderId} from "../article/getArticleMyHealthFinderIdByMyHealthFinderId";
 
 
 /*
@@ -26,7 +27,7 @@ Request this for both both languages and merge them?
 function dataDownloader(): Promise<any> {
     async function main() {
         try {
-            await fetchAndInsertAllDataFromApi();
+            await fetchAndInsertAllDataFromApi().catch(error => console.log(error));
         } catch (error) {
             console.error(error)
         }
@@ -54,67 +55,80 @@ function dataDownloader(): Promise<any> {
             }
 
             //insert category into db
-            //TODO: insert category
+            console.log("inserting category");
             console.log(category);
             await insertCategory(category);
 
             //grab current category id from API
             let currentCategoryId = englishCategories.data.Result.Items.Item[i].Id;
 
+            //make a request to the API using axios
             let articlesEnglish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=${currentCategoryId}`);
             let articlesSpanish = await axios(`https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=es&categoryId=${currentCategoryId}`);
+            //get value of total for topics/articles
             const totalTopics = articlesEnglish.data.Result.Total;
 
+            //these two hold the arrays of topics/articles
             articlesEnglish = articlesEnglish.data.Result.Resources.Resource;
             articlesSpanish = articlesSpanish.data.Result.Resources.Resource;
 
-            //iterate through articles, build article object by interface, and finally
-            //insert article and articleCategory
+            /*
+             * iterate through articles, build article object by interface, and finally
+             * insert article and articleCategory
+             */
             for (let i = 0; i < totalTopics; i++) {
-                let article: Article = {
-                    articleId: <string>uuid(), //null for now: UUID will be set by the insertArticle function
-                    // @ts-ignore
-                    articleEnglishTitle: articlesEnglish[i].Title,
-                    // @ts-ignore
-                    articleEnglishDate: convertTimestampToMySQLDate(articlesEnglish[i].LastUpdate),
-                    // @ts-ignore
-                    articleEnglishImageUrl: articlesEnglish[i].ImageUrl,
-                    // @ts-ignore
-                    articleEnglishImageAlt: articlesEnglish[i].ImageAlt,
-                    // @ts-ignore
-                    articleEnglishUrl: articlesEnglish[i].AccessibleVersion,
-                    // @ts-ignore
-                    articleSpanishTitle: articlesSpanish[i].Title,
-                    // @ts-ignore
-                    articleSpanishDate: convertTimestampToMySQLDate(articlesSpanish[i].LastUpdate),
-                    // @ts-ignore
-                    articleSpanishImageUrl: articlesSpanish[i].ImageUrl,
-                    // @ts-ignore
-                    articleSpanishImageAlt: articlesSpanish[i].ImageAlt,
-                    // @ts-ignore
-                    articleSpanishUrl: articlesSpanish[i].AccessibleVersion
-                }
-                //check data
-                // console.log(article);
-                //TODO: insertArticle
-                console.log(article);
-                await insertArticle(article);
+                //@ts-ignore
+                const myHealthFinderId: string = <string>articlesEnglish[i].Id;
+                console.log("before awaiting getArticleMyHealthFinderIdByMyHealthFinderId");
+                const result = await getArticleMyHealthFinderIdByMyHealthFinderId(myHealthFinderId);
+                const articleMyHealthFinderId = <string>result?.articleMyHealthFinderId ?? undefined;
+                //check if article already exists -> use that as article id
+                // @ts-ignore
+                if (myHealthFinderId !== articleMyHealthFinderId) {
+                    //build article by interface Article
+                    let article: Article = {
+                        articleId: <string>uuid(),
+                        // @ts-ignore
+                        articleEnglishTitle: articlesEnglish[i].Title,
+                        // @ts-ignore
+                        articleEnglishDate: convertTimestampToMySQLDate(articlesEnglish[i].LastUpdate),
+                        // @ts-ignore
+                        articleMyHealthFinderId: articlesEnglish[i].Id,
+                        // @ts-ignore
+                        articleEnglishImageUrl: articlesEnglish[i].ImageUrl,
+                        // @ts-ignore
+                        articleEnglishImageAlt: articlesEnglish[i].ImageAlt,
+                        // @ts-ignore
+                        articleEnglishUrl: articlesEnglish[i].AccessibleVersion,
+                        // @ts-ignore
+                        articleSpanishTitle: articlesSpanish[i].Title,
+                        // @ts-ignore
+                        articleSpanishDate: convertTimestampToMySQLDate(articlesSpanish[i].LastUpdate),
+                        // @ts-ignore
+                        articleSpanishImageUrl: articlesSpanish[i].ImageUrl,
+                        // @ts-ignore
+                        articleSpanishImageAlt: articlesSpanish[i].ImageAlt,
+                        // @ts-ignore
+                        articleSpanishUrl: articlesSpanish[i].AccessibleVersion
+                    }
 
-                //build out weak entity for articleCategory using interface
-                let articleCategory: ArticleCategory = {
-                    articleCategoryArticleId: <string>article.articleId,
-                    articleCategoryCategoryId: <string>category.categoryId
-                }
-                //TODO: insertArticleCategory
-                await insertArticleCategory(articleCategory);
-                // console.log(articleCategory);
+                    //log data
+                    console.log("inserting article");
+                    console.log(article);
+                    await insertArticle(article);
 
+                    //build out weak entity for articleCategory using interface
+                    let articleCategory: ArticleCategory = {
+                        articleCategoryArticleId: <string>article.articleId,
+                        articleCategoryCategoryId: <string>category.categoryId
+                    }
+                    console.log("inserting article category");
+                    console.log(articleCategory);
+                    await insertArticleCategory(articleCategory);
+                } //END if statement to check for duplicate articles
             } //END for loop articles
 
         } //END for loop categories
-
-        // console.log(categories);
-
 
         function convertTimestampToMySQLDate(timestamp: number) {
             //MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format.
@@ -124,8 +138,7 @@ function dataDownloader(): Promise<any> {
 
             return dateTime;
         }
-
-    }
-}
+    } //END fetchAndInsertAllDateFromApiFunction function
+} //END dataDownloaderFunction
 
 dataDownloader().catch(error => console.error(error));

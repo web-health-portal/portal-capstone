@@ -12,12 +12,12 @@ CREATE TABLE article (
     articleEnglishDate DATETIME (6),
     articleEnglishImageUrl VARCHAR (255),
     articleEnglishImageAlt VARCHAR (128),
-    articleMyHealthFinderId INT,
-    articleEnglishUrl VARCHAR (255),
+    articleMyHealthFinderId VARCHAR(64),
+    articleEnglishUrl VARCHAR (255) NOT NULL,
     articleSpanishTitle VARCHAR(255),
     articleSpanishDate DATETIME (6),
     articleSpanishImageUrl VARCHAR (255),
-    articleSpanishImageAlt VARCHAR (128),
+    articleSpanishImageAlt VARCHAR (128) NOT NULL,
     articleSpanishUrl VARCHAR (255),
     PRIMARY KEY (articleId)
 );

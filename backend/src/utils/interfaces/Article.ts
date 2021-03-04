@@ -1,6 +1,6 @@
 export interface Article {
     articleId: string | null,
-    articleMyHealthFinderId: number,
+    articleMyHealthFinderId: string,
     articleEnglishTitle: string,
     articleEnglishDate: string,
     articleEnglishImageUrl: string,
