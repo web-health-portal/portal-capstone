@@ -1,7 +1,5 @@
-
 import {Category} from "../interfaces/Category";
 import {connect} from "../database.utils";
-import {v1 as uuid} from "uuid";
 
 export async function insertCategory(category: Category) {
     try {
