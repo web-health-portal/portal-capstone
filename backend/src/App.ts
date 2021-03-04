@@ -11,6 +11,7 @@ import {ProfileRoute} from './apis/profile/profile.route'
 import {passportStrategy} from "./apis/log-in/log-in.controller";
 import SignUpRoute from "./apis/sign-up/sign-up.route";
 import {LogOutRoute} from "./apis/log-out/log-out.route";
+import {savedArticleRoute} from "./apis/saved-article/savedArticle.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -58,6 +59,7 @@ export class App {
         this.app.use('/apis/log-in', logInRoute)
         this.app.use('/apis/sign-up', SignUpRoute)
         this.app.use('/apis/log-out', LogOutRoute)
+        this.app.use('/apis/savedArticles', savedArticleRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
