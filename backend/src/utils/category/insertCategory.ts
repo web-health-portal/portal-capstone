@@ -14,4 +14,4 @@ export async function insertCategory(category: Category) {
     }
 }
 
-insertCategory({categoryId: <string>uuid(), categoryEnglishName: "english", categorySpanishName: "spanish"}).catch()
+// insertCategory({categoryId: <string>uuid(), categoryEnglishName: "english1", categorySpanishName: "spanish1"}).catch()

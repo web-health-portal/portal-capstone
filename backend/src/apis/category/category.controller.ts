@@ -11,7 +11,7 @@ export async function getAllCategoryController(request: Request, response: Respo
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch(error) {
-        console.log(error);
+        return (response.json({status: 500, data: null, message: error}))
     }
 }
 
