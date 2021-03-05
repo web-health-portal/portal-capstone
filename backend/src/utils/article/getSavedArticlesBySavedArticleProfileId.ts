@@ -1,6 +1,6 @@
 import {connect} from "../database.utils";
 import {Article} from "../interfaces/Article";
-\
+
 export async function getSavedArticlesBySavedArticleProfileId(SavedArticleBySavedArticleProfileId: string) : Promise<string>{
     try {
         //establish connection with the database

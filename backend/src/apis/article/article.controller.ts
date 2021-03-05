@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {selectAllArticles} from "../../utils/interfaces/selectAllArticles";
+import {selectAllArticles} from "../../utils/article/selectAllArticles";
 import {Status} from "../../utils/interfaces/Status";
 
 
