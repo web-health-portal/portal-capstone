@@ -1,14 +1,17 @@
-import {Tweet} from "../interfaces/Tweet";
 import {connect} from "../database.utils";
+import {SavedArticle} from "../interfaces/SavedArticle";
 
-export async function deleteSavedArticle {
+export async function deleteSavedArticle(savedArticle: SavedArticle) {
     try {
         const mySqlConnection = await connect()
-        const mySqlQuery = "INSERT INTO] tweet(tweetId, tweetProfileId, tweetContent, tweetDate ) VALUES(UUID_TO_BIN(UUID()), UUID_TO_BIN(:tweetProfileId), :tweetContent, NOW())";
+        const mySqlQuery = "'DELETE FROM `article` WHERE savedArticleArticleId = UUID_TO_BIN(:savedArticleArticleId) AND savedArticleProfileId = UUID_TO_BIN(:savedArticleProfileId)'";
 
-        const [rows] = await mySqlConnection.execute(mySqlQuery, tweet)
-        return "Tweet created successfully"
-    } catch (error) {
+        await mySqlConnection.execute(mySqlQuery, savedArticle)
+        return "article deleted successfully"
+    }
+
+    catch (error) {
         console.log(error)
+        throw error.message
     }
 }

@@ -1,17 +1,16 @@
-import { Router } from 'express';
-import {getAllTweetsController, getTweetsByTweetProfileIdController, postTweet} from './tweet.controller';
-import { asyncValidatorController } from '../../utils/controllers/asyncValidator.controller';
-import { tweetValidator } from './tweet.validator';
+import {Router} from 'express';
+import {asyncValidatorController} from '../../utils/controllers/asyncValidator.controller';
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
-const { checkSchema } = require('express-validator');
+const {checkSchema} = require('express-validator');
+
 
 const router = Router();
 
-router.route("/tweetProfileId/:tweetProfileId").get(getTweetsByTweetProfileIdController)
+router.route("/ArticleProfileId/:ArticleProfileId").get(getSavedArticleController)
 
 // Every new route is instantiated below. It will include the controller name and the type of action (get, post, delete, put, patch)
 router.route('/')
-    .get( getAllTweetsController)
+    .get( getSavedArticleController)
     .post(isLoggedIn, asyncValidatorController(checkSchema(tweetValidator)), postTweet);
 
 export default router;

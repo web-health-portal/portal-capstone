@@ -1,50 +1,35 @@
-import {Request, Response, NextFunction} from 'express';
+import {Request, Response} from 'express';
+//WHAT AM I DOING WHAT IS HAPPENING WHAT WHAT WHAT///
 
-// Interfaces (represent the DB model and types of the columns associated with a specific DB table)
-import {Tweet} from '../../utils/interfaces/Tweet';
-import {Status} from '../../utils/interfaces/Status';
 import {Profile} from "../../utils/interfaces/Profile";
-import {insertTweet} from "../../utils/tweet/insertTweet"
-import {selectAllTweets} from "../../utils/tweet/selectAllTweets";
-import {selectTweetsByTweetProfileId} from "../../utils/tweet/selectTweetsByTweetProfileId";
+import {Article} from "../../utils/interfaces/Article";
+import {deleteSavedArticle} from "../../utils/saved-article/deleteSavedArticle";
+import {insertSavedArticle} from "../../utils/saved-article/insertSavedArticle";
+import {SavedArticle} from "../../utils/interfaces/SavedArticle";
 
-const {validationResult} = require('express-validator');
 
-export async function getAllTweetsController(request: Request, response: Response): Promise<Response | void> {
+export async function savedArticle(request: Request, response: Response) {
 
     try {
-        const data = await selectAllTweets()
-        // return the response
-        const status: Status = {status: 200, message: null, data};
-        return response.json(status);
-    } catch(error) {
-        console.log(error);
-    }
-}
+        const {savedArticle} = request.body;
+        const savedArticle: Article = request.session?.article
+        const profile: Profile = request.session?.profile
+        const savedArticleProfileId = profile.profileId
 
-export async function getTweetsByTweetProfileIdController(request : Request, response: Response, nextFunction: NextFunction){
-    const     {tweetProfileId} = request.params
-    const data  = await selectTweetsByTweetProfileId(tweetProfileId)
-    return response.json({status:200, message: null, data})
-}
-
-export async function postTweet(request: Request, response: Response) {
-    try {
-
-        const {tweetContent} = request.body;
-
-        const tweetProfileId = <string>request.session?.profile.profileId
-
-        const tweet: Tweet = {
-            tweetId: null,
-            tweetProfileId,
-            tweetContent,
-            tweetDate: null
+        const savedArticle: SavedArticle = {
+            savedArticleArticleId,
+            savedArticleProfileId,
         }
-        const result = await insertTweet(tweet)
+        const select = await savedArticleIdId(save)
+        if (select[0]){
+            const result = await deleteSavedArticle(save)
+        }else{
+            const result = await insertSavedArticle(save)
+        }
+
         const status: Status = {
             status: 200,
-            message: result ?? 'Tweet successfully created',
+            message: 'Article successfully saved',
             data: null
         };
         return response.json(status);
@@ -53,16 +38,3 @@ export async function postTweet(request: Request, response: Response) {
         console.log(error);
     }
 }
-
-
-
-// export async function deleteTweet(request: Request, response: Response) {
-// 	try {
-// 		const {tweetId} = request.body;
-// 		const result = await deleteTweet(tweetId)
-// 		const status: Status = {status: 200, data, message: null}
-// 		return response.json(status)
-// 	} catch (error) {
-// 		console.log(error)
-// 	}
-// }
