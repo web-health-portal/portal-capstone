@@ -69,7 +69,7 @@ const LocalStrategy = passportLocal.Strategy;
 
 export const  passportStrategy: Strategy = new LocalStrategy(
     {
-        usernameField: 'profileEmail',
+        usernameField: 'profileEmailAddress',
         passwordField: "profilePassword"
     },
     async (email, password, done) => {
