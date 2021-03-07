@@ -5,12 +5,12 @@ import {getAllArticleController} from "./article.controller";
 
 export const ArticleRoute = Router();
 
-articleRoute.route("/:articleId")
+ArticleRoute.route("/:articleId")
     .get(
         asyncValidatorController([
             check("articleId").isUUID()
         ])
     )
-articleRoute.route("/")
+ArticleRoute.route("/")
     .get
         (getAllArticleController)
