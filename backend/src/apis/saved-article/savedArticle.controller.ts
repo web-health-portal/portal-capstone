@@ -1,35 +1,37 @@
 import {Request, Response} from 'express';
-//WHAT AM I DOING WHAT IS HAPPENING WHAT WHAT WHAT///
 
 import {Profile} from "../../utils/interfaces/Profile";
-import {Article} from "../../utils/interfaces/Article";
 import {deleteSavedArticle} from "../../utils/saved-article/deleteSavedArticle";
 import {insertSavedArticle} from "../../utils/saved-article/insertSavedArticle";
 import {SavedArticle} from "../../utils/interfaces/SavedArticle";
+import {Status} from "../../utils/interfaces/Status";
 
 
 export async function savedArticle(request: Request, response: Response) {
 
     try {
-        const {savedArticle} = request.body;
-        const savedArticle: Article = request.session?.article
+        const {savedArticleArticleId} = request.body;
+        // @ts-ignore - mismatch with session in typescript
         const profile: Profile = request.session?.profile
-        const savedArticleProfileId = profile.profileId
+        const savedArticleProfileId = <string>profile.profileId
 
         const savedArticle: SavedArticle = {
             savedArticleArticleId,
             savedArticleProfileId,
+            savedArticleDateSaved: null,
         }
-        const select = await savedArticleIdId(save)
+
+        const select = await selectSavedArticleByArticleId(savedArticleArticleId)
+            let result = ""
         if (select[0]){
-            const result = await deleteSavedArticle(save)
+            result = await deleteSavedArticle(savedArticle)
         }else{
-            const result = await insertSavedArticle(save)
+            result = await insertSavedArticle(savedArticle)
         }
 
         const status: Status = {
             status: 200,
-            message: 'Article successfully saved',
+            message: result,
             data: null
         };
         return response.json(status);

@@ -1,5 +1,5 @@
 export interface SavedArticle {
     savedArticleProfileId: string,
     savedArticleArticleId: string,
-    savedArticleDateSaved: string
+    savedArticleDateSaved: null | string,
 }
