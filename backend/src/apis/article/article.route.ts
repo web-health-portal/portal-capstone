@@ -3,7 +3,7 @@ const {check} = require("express-validator");
 import {asyncValidatorController} from "../../utils/controllers/asyncValidator.controller";
 import {getAllArticleController} from "./article.controller";
 
-export const articleRoute = Router();
+export const ArticleRoute = Router();
 
 articleRoute.route("/:articleId")
     .get(

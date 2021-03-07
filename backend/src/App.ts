@@ -11,7 +11,7 @@ import {ProfileRoute} from './apis/profile/profile.route'
 import {passportStrategy} from "./apis/log-in/log-in.controller";
 import SignUpRoute from "./apis/sign-up/sign-up.route";
 import {LogOutRoute} from "./apis/log-out/log-out.route";
-import {articleRoute} from "./apis/article/article.route";
+import {ArticleRoute} from "./apis/article/article.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -59,7 +59,7 @@ export class App {
         this.app.use('/apis/log-in', logInRoute)
         this.app.use('/apis/sign-up', SignUpRoute)
         this.app.use('/apis/log-out', LogOutRoute)
-        this.app.use('/apis/article', articleRoute)
+        this.app.use('/apis/article', ArticleRoute)
 
     }
 

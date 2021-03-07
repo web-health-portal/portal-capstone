@@ -7,7 +7,6 @@ export async function getAllArticleController(request: Request, response: Respon
 
     try {
         const data = await selectAllArticles()
-        // return the response
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch(error) {
