@@ -6,7 +6,7 @@ const MemoryStore = require('memorystore')(session);
 import csrf from "csurf";
 // Routes
 import IndexRoutes from './apis/index.route'
-import {logInRoute} from "./apis/log-in/log-in.route";
+import {LogInRoute} from "./apis/log-in/log-in.route";
 import {ProfileRoute} from './apis/profile/profile.route'
 import {passportStrategy} from "./apis/log-in/log-in.controller";
 import SignUpRoute from "./apis/sign-up/sign-up.route";
@@ -56,7 +56,8 @@ export class App {
         // TODO add our defined "/apis"/routes here
         this.app.use('/apis', IndexRoutes)
         this.app.use('/apis/profile', ProfileRoute)
-        this.app.use('/apis/log-in', logInRoute)
+        this.app.use('/apis/log-in', LogInRoute)
+        this.app.use('/apis/log-out', LogOutRoute)
         this.app.use('/apis/sign-up', SignUpRoute)
         this.app.use('/apis/log-out', LogOutRoute)
         this.app.use('/apis/category', categoryRoute)
