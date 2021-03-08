@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import {getProfileByProfileActivationToken} from "../../utils/profile/getProfileByProfileActivationToken";
+import {selectProfileByProfileActivationToken} from "../../utils/profile/selectProfileByProfileActivationToken";
 import {Profile} from "../../utils/interfaces/Profile";
 import { updateProfile } from "../../utils/profile/updateProfile";
 
@@ -8,7 +8,7 @@ export async function activationController(request: Request, response: Response,
   const {activation} = request.params
   try {
 
-    const profile = await getProfileByProfileActivationToken(activation)
+    const profile = await selectProfileByProfileActivationToken(activation)
 
     const activationFailed = () => response.json({
       status: 400,

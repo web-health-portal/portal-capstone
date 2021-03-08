@@ -1,7 +1,7 @@
 import {connect} from "../database.utils";
 import {Profile} from "../interfaces/Profile";
 
-export async function getProfileByProfileEmail(profileEmailAddress: string) {
+export async function selectProfileByProfileEmail(profileEmailAddress: string) {
 	try {
 		const mysqlConnection = await connect();
 

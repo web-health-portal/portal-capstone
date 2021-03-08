@@ -1,6 +1,6 @@
 import {connect} from "../database.utils";
 
-export async function getArticleMyHealthFinderIdByMyHealthFinderId(articleMyHealthFinderId: string) {
+export async function selectArticleMyHealthFinderIdByMyHealthFinderId(articleMyHealthFinderId: string) {
 	try {
 		const mySqlConnection = await connect();
         const [rows] = await mySqlConnection.execute('SELECT  articleMyHealthFinderId FROM article WHERE articleMyHealthFinderId = :articleMyHealthFinderId', {articleMyHealthFinderId});
