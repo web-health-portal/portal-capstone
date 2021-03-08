@@ -1,7 +1,7 @@
 import {connect} from "../database.utils";
 import {PartialProfile} from "../interfaces/Profile";
 
-export async function getPartialProfileByProfileId(profileId: string) {
+export async function selectPartialProfileByProfileId(profileId: string) {
     try {
         //establish connection with the database
         const mySqlConnection = await connect();

@@ -6,7 +6,7 @@ import {Category} from "../interfaces/Category";
 import {insertArticle} from "../article/insertArticle";
 import {insertCategory} from "../category/insertCategory";
 import {insertArticleCategory} from "../articleCategory/insertArticleCategory"
-import {getArticleMyHealthFinderIdByMyHealthFinderId} from "../article/getArticleMyHealthFinderIdByMyHealthFinderId";
+import {selectArticleMyHealthFinderIdByMyHealthFinderId} from "../article/selectArticleMyHealthFinderIdByMyHealthFinderId";
 
 
 /*
@@ -80,7 +80,7 @@ function dataDownloader(): Promise<any> {
                 //@ts-ignore
                 const myHealthFinderId: string = <string>articlesEnglish[i].Id;
                 console.log("before awaiting getArticleMyHealthFinderIdByMyHealthFinderId");
-                const result = await getArticleMyHealthFinderIdByMyHealthFinderId(myHealthFinderId);
+                const result = await selectArticleMyHealthFinderIdByMyHealthFinderId(myHealthFinderId);
                 const articleMyHealthFinderId = <string>result?.articleMyHealthFinderId ?? undefined;
                 //check if article already exists -> use that as article id
                 // @ts-ignore

@@ -1,6 +1,6 @@
 import {connect} from "../database.utils";
 
-export async function getProfileByProfileActivationToken(profileActivationToken: string) {
+export async function selectProfileByProfileActivationToken(profileActivationToken: string) {
 	try {
 		const mysqlConnection = await connect();
 

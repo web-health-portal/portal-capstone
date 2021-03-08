@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {selectAllCategories} from "../../utils/category/selectAllCategories";
-import {getCategoryByCategoryId} from "../../utils/category/getCategoryByCategoryId";
+import {selectCategoryByCategoryId} from "../../utils/category/selectCategoryByCategoryId";
 
 export async function getAllCategoryController(request: Request, response: Response): Promise<Response | void> {
 
@@ -18,7 +18,7 @@ export async function getAllCategoryController(request: Request, response: Respo
 export async function getCategory(request: Request, response: Response): Promise<Response> {
     try {
         const {categoryId} = request.params;
-        const mySqlResult = await getCategoryByCategoryId(<string>categoryId);
+        const mySqlResult = await selectCategoryByCategoryId(<string>categoryId);
         const data = mySqlResult ?? null
         const status: Status = {status: 200, data, message: null}
         return response.json(status)

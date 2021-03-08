@@ -1,8 +1,8 @@
 import {Request, Response} from "express";
 import {PartialProfile, Profile} from "../../utils/interfaces/Profile";
-import {getPartialProfileByProfileId} from "../../utils/profile/getPartialProfileByProfileId";
+import {selectPartialProfileByProfileId} from "../../utils/profile/selectPartialProfileByProfileId";
 import {Status} from "../../utils/interfaces/Status";
-import {getProfileByProfileId} from "../../utils/profile/getProfileByProfileId";
+import {selectProfileByProfileId} from "../../utils/profile/selectProfileByProfileId";
 import {updateProfile} from "../../utils/profile/updateProfile";
 
 export async function putProfileController(request: Request, response: Response): Promise<Response> {
@@ -13,7 +13,7 @@ export async function putProfileController(request: Request, response: Response)
         const profileIdFromSession: string = <string>request.session?.profile.profileId
 
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
-            const previousProfile: Profile = await getPartialProfileByProfileId(<string>partialProfile.profileId)
+            const previousProfile: Profile = await selectPartialProfileByProfileId(<string>partialProfile.profileId)
             const newProfile: Profile = {...previousProfile, ...partialProfile}
             await updateProfile(newProfile)
             return response.json({status: 200, data: null, message: "Profile successfully updated"})
@@ -42,7 +42,7 @@ export async function putProfileController(request: Request, response: Response)
 export async function getProfile(request: Request, response: Response): Promise<Response> {
     try {
         const {profileId} = request.params;
-        const mySqlResult = await getProfileByProfileId(<string>profileId);
+        const mySqlResult = await selectProfileByProfileId(<string>profileId);
         const data = mySqlResult ?? null
         const status: Status = {status: 200, data, message: null}
         return response.json(status)

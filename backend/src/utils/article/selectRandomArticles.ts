@@ -1,6 +1,6 @@
 import {connect} from "../database.utils";
 
-export async function getArticleMyHealthFinderIdByMyHealthFinderId() {
+export async function selectRandomArticles() {
 	try {
 		const mySqlConnection = await connect();
 		//get 10 random article records
