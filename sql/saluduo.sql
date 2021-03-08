@@ -61,3 +61,32 @@ CREATE TABLE savedArticle (
     FOREIGN KEY(savedArticleProfileId) REFERENCES profile(profileId),
     PRIMARY KEY(savedArticleProfileId, savedArticleArticleId)
 );
+
+# SELECT
+#     BIN_TO_UUID(savedArticle.savedArticleProfileId) as profileId,
+#     BIN_TO_UUID(article.articleId) as articleId,
+#     article.articleEnglishTitle,
+#     article.articleEnglishDate,
+#     article.articleEnglishImageUrl,
+#     article.articleEnglishImageAlt,
+#     article.articleMyHealthFinderId,
+#     article.articleEnglishUrl,
+#     article.articleSpanishTitle,
+#     article.articleSpanishDate,
+#     article.articleSpanishImageUrl,
+#     article.articleSpanishImageAlt,
+#     article.articleSpanishUrl
+# FROM article
+# INNER JOIN savedArticle
+#     ON article.articleId = savedArticle.savedArticleArticleId
+# WHERE savedArticle.savedArticleProfileId = UUID_TO_BIN('29649625-7d41-11eb-8457-0242ac1d0002');
+#
+#
+# INSERT INTO savedArticle (savedArticleArticleId, savedArticleProfileId)
+# VALUES(UUID_TO_BIN('c6c22b30-7d33-11eb-9504-b17e29449160'), UUID_TO_BIN('29649625-7d41-11eb-8457-0242ac1d0002'));
+#
+# SELECT BIN_TO_UUID(savedArticleProfileId), BIN_TO_UUID(savedArticleArticleId) from savedArticle;
+#
+# SELECT BIN_TO_UUID(profileId) as profileId , profileEmailAddress FROM profile;
+#
+# SELECT BIN_TO_UUID(articleId) as articleId, articleEnglishTitle FROM article;
