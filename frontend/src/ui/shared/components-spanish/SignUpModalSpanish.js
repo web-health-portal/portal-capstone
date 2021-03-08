@@ -22,7 +22,7 @@ export const SignUpModalSpanish = () => {
                     <Form>
                         {/*-name*/}
                         <Form.Group controlId="formName">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Nombre</Form.Label>
                             <Form.Control type="name" placeholder="Name" />
                         </Form.Group>
                         {/*-email*/}
