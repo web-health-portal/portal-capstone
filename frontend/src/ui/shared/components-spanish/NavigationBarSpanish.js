@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {LogInModal} from "./LogInModal";
 import {SignUpModal} from "./SignUpModal";
 
-export const NavigationBar = () => {
+export const NavigationBarSpanish = () => {
     return (
         <>
             <Navbar bg="light" expand="lg">
@@ -13,10 +13,10 @@ export const NavigationBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Link to="/" className={"nav-link px-3"}>Home</Link>
-                        <Link to="/account" className={"nav-link px-3"}>Account</Link>
+                        <Link to="/" className={"nav-link px-3"}>Inicio</Link>
+                        <Link to="/account/AccountSpanish" className={"nav-link px-3"}>Perfil</Link>
                         <LogInModal/>
-                        <Link to="/log-out" className={"nav-link px-3"}>Log Out</Link>
+                        <Link to="/log-out" className={"nav-link px-3"}>Cerrar Sesión</Link>
                         <SignUpModal/>
                     </Nav>
                 </Navbar.Collapse>
