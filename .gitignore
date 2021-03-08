@@ -3,6 +3,8 @@
 .idea
 */.Ds_Store
 
+src/setupProxy.js
+
 /saluduo.env
 */.pnp
 */.pnp.js
