@@ -6,6 +6,7 @@ import React from 'react'
 import './shared/component.css'
 
 import {Account} from "./account/Account";
+// import {AccountSpanish} from "./account/AccountSpanish";
 import {NavigationBar} from "./shared/components/NavigationBar";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
