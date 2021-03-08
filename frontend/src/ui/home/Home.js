@@ -44,8 +44,8 @@ export const Home = () => {
 
         <Container>
             <Container className="text-center">
-                <h4>Popular Articles</h4>
-                <h6>Have a look at some of the most-read pages from our API:</h6>
+                <h4>Browse Articles</h4>
+                <h6>Have a look at some of the articles from our API:</h6>
             </Container>
                 <Row>
                     <Col md="6">
