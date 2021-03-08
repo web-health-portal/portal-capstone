@@ -14,8 +14,8 @@ import {Footer} from "./shared/components/Footer";
 import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 import {SearchResults} from "./search-results/SearchResults";
 import {LogInModal} from "./shared/components/LogInModal";
-// import {SignUpModal} from "./shared/components/SignUpModal";
-import {SignUpModalSpanish} from "./shared/components-spanish/SignUpModalSpanish";
+import {SignUpModal} from "./shared/components/SignUpModal";
+// import {SignUpModalSpanish} from "./shared/components-spanish/SignUpModalSpanish";
 
 
 
@@ -25,7 +25,7 @@ export const App = () => (
             <NavigationBar/>
             <Switch>
                 <Route exact path='/log-in' component={LogInModal}/>
-                <Route exact path='/sign-up' component={SignUpModalSpanish}/>
+                <Route exact path='/sign-up' component={SignUpModal}/>
                 <Route exact path='/search-results' component={SearchResults}/>
                 <Route exact path='/account' component={Account}/>
                 <Route exact path='/about-us' component={AboutUs}/>
