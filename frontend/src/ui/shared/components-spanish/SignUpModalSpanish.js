@@ -23,28 +23,28 @@ export const SignUpModalSpanish = () => {
                         {/*-name*/}
                         <Form.Group controlId="formName">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="name" placeholder="Name" />
+                            <Form.Control type="name" placeholder="Nombre" />
                         </Form.Group>
                         {/*-email*/}
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Label>Correo electrónico</Form.Label>
+                            <Form.Control type="email" placeholder="Correo electrónico" />
                         </Form.Group>
                         {/*password*/}
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control type="password" placeholder="Contraseña" />
                         </Form.Group>
                         {/*verify password*/}
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Retype Password</Form.Label>
-                            <Form.Control type="password" placeholder="Verify Password" />
+                            <Form.Label>Confirmar contraseña </Form.Label>
+                            <Form.Control type="password" placeholder="Confirme su contraseña" />
                         </Form.Group> {/*some verification code here*/}
                         {/*-language preference*/}
                         <Form.Group controlId="languagePreference">
-                            <Form.Label>Language Preference</Form.Label>
+                            <Form.Label>Idioma de preferencia</Form.Label>
                             <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
-                                <option value="0">Choose</option>
+                                <option value="Elegir Idioma"></option>
                                 <option value="English">English</option>
                                 <option value="Español">Español</option>
                             </Form.Control>
@@ -55,7 +55,7 @@ export const SignUpModalSpanish = () => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}>Submit</Button>
+                    <Button variant="primary" onClick={handleClose}>Enviar</Button>
                 </Modal.Footer>
             </Modal>
         </>
