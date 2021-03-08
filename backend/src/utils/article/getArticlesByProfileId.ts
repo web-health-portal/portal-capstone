@@ -6,7 +6,7 @@ export async function getArticlesByProfileId(profileId: string) : Promise<string
         const mySqlConnection = await connect();
         const query : string = "SELECT BIN_TO_UUID(articleId), articleMyHealthFinderId, articleEnglishTitle, articleEnglishDate, articleEnglishImageUrl, articleEnglishImageAlt, articleSpanishTitle, articleSpanishDate, articleSpanishImageUrl, articleSpanishUrl from article";
 
-        const [rows] = await mySqlConnection.execute(query, article);
+        const [rows] = await mySqlConnection.execute(query, {profileId: profileId});
         console.log();
         console.log("article successfully inserted");
         return "article successfully inserted";
