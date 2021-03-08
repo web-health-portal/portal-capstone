@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Modal, Form, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-export const SignUpModal = () => {
+export const SignUpModalSpanish = () => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -15,14 +15,14 @@ export const SignUpModal = () => {
             </Link>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Welcome!</Modal.Title>
+                    <Modal.Title>Bienvenido!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/*form*/}
                     <Form>
                         {/*-name*/}
                         <Form.Group controlId="formName">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Nombre</Form.Label>
                             <Form.Control type="name" placeholder="Name" />
                         </Form.Group>
                         {/*-email*/}
