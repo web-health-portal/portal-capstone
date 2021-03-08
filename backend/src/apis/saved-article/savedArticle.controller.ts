@@ -21,7 +21,7 @@ export async function savedArticle(request: Request, response: Response) {
             savedArticleDateSaved: null,
         }
 
-        const select = await selectSavedArticleByArticleId(savedArticleArticleId)
+        const select = await selectSavedArticleByArticleIdandProfileId(savedArticleArticleId)
             let result = ""
         if (select[0]){
             result = await deleteSavedArticle(savedArticle)
