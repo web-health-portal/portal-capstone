@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {LogInModal} from "./LogInModal";
 import {SignUpModal} from "./SignUpModal";
 
-export const NavigationBar = () => {
+export const NavigationBarSpanish = () => {
     return (
         <>
             <Navbar bg="light" expand="lg">
