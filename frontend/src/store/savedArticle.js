@@ -15,7 +15,7 @@ const savedArticleSlice = createSlice({
 export const {getAllSavedArticles} = savedArticleSlice.actions
 
 export const fetchAllSavedArticles = () => async (dispatch) => {
-    const {data} = await httpConfig("/apis/misquote")
+    const {data} = await httpConfig("/apis/") //TODO: add in URL for getSavedArticlesByProfileId
     dispatch(getAllSavedArticles(data))
 }
 
