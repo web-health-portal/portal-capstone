@@ -17,27 +17,29 @@ import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 import {SearchResults} from "./search-results/SearchResults";
 import {LogInModal} from "./shared/components/LogInModal";
 import {SignUpModal} from "./shared/components/SignUpModal";
+import {Provider} from "react-redux";
 // import {SignUpModalSpanish} from "./shared/components-spanish/SignUpModalSpanish";
 
 
-
-export const App = () => (
+export const App = (store) => (
     <>
-        <BrowserRouter>
-            <NavigationBar/>
-            <Switch>
-                <Route exact path='/log-in' component={LogInModal}/>
-                <Route exact path='/sign-up' component={SignUpModal}/>
-                <Route exact path='/search-results' component={SearchResults}/>
-                <Route exact path='/account' component={Account}/>
-                <Route exact path='/about-us' component={AboutUs}/>
-                <Route exact path='/' component={Home}/>
-                {/*<Route exact path='/' component={HomeSpanish}/>*/}
-                <Route component={FourOhFour}/>
-            </Switch>
-            <Footer/>
-            {/*<FooterSpanish/>*/}
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <NavigationBar/>
+                <Switch>
+                    <Route exact path='/log-in' component={LogInModal}/>
+                    <Route exact path='/sign-up' component={SignUpModal}/>
+                    <Route exact path='/search-results' component={SearchResults}/>
+                    <Route exact path='/account' component={Account}/>
+                    <Route exact path='/about-us' component={AboutUs}/>
+                    <Route exact path='/' component={Home}/>
+                    {/*<Route exact path='/' component={HomeSpanish}/>*/}
+                    <Route component={FourOhFour}/>
+                </Switch>
+                <Footer/>
+                {/*<FooterSpanish/>*/}
+            </BrowserRouter>
+        </Provider>
 
     </>
 )
