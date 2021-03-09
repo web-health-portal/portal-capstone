@@ -44,7 +44,7 @@ export const SignUpModalSpanish = () => {
                         <Form.Group controlId="languagePreference">
                             <Form.Label>Idioma de preferencia</Form.Label>
                             <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
-                                <option value="Elegir Idioma"></option>
+                                <option value="0">Elegir Idioma</option>
                                 <option value="English">English</option>
                                 <option value="Español">Español</option>
                             </Form.Control>

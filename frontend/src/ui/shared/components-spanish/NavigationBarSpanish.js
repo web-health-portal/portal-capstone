@@ -1,9 +1,9 @@
 import React from "react"
 import {Nav, Navbar} from "react-bootstrap";
-import {LanguageToggle} from "./LanguageToggle";
+import {LanguageToggle} from "./../components/LanguageToggle";
 import {Link} from "react-router-dom";
-import {LogInModal} from "./LogInModal";
-import {SignUpModal} from "./SignUpModal";
+import {LogInModalSpanish} from "./LogInModalSpanish";
+import {SignUpModalSpanish} from "./SignUpModalSpanish";
 
 export const NavigationBarSpanish = () => {
     return (
@@ -15,9 +15,9 @@ export const NavigationBarSpanish = () => {
                     <Nav className="ml-auto">
                         <Link to="/" className={"nav-link px-3"}>Inicio</Link>
                         <Link to="/account/AccountSpanish" className={"nav-link px-3"}>Perfil</Link>
-                        <LogInModal/>
+                        <LogInModalSpanish/>
                         <Link to="/log-out" className={"nav-link px-3"}>Cerrar Sesión</Link>
-                        <SignUpModal/>
+                        <SignUpModalSpanish/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
