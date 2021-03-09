@@ -44,7 +44,7 @@ export const AccountSpanish = () => {
                         </Row>
                     </Col>
                     <Col md={8} className={"pt-3"}>
-                        <h3>Buscar artículos guardados</h3>
+                        <h3>Buscar Artículos Guardados</h3>
                         <Row>
                             <Form inline className={"mx-3"}>
                                 <FormGroup className={"container d-flex justify-content-between"}>
