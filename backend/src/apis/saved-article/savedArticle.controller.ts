@@ -18,7 +18,6 @@ export async function savedArticle(request: Request, response: Response) {
         const savedArticle: SavedArticle = {
             savedArticleArticleId,
             savedArticleProfileId,
-            savedArticleDateSaved: null,
         }
 
         const select = await selectSavedArticleByArticleIdandProfileId(savedArticleArticleId)

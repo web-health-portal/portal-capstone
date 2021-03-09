@@ -7,9 +7,4 @@ export const savedArticleValidator: Schema = {
             errorMessage: 'please provide a valid savedArticleArticleId'
         }
     },
-    savedArticleProfileId: {
-        isUUID: {
-            errorMessage: 'please provide a valid savedArticleProfileId'
-        }
-    }
 }
