@@ -5,6 +5,7 @@ import {deleteSavedArticle} from "../../utils/saved-article/deleteSavedArticle";
 import {insertSavedArticle} from "../../utils/saved-article/insertSavedArticle";
 import {SavedArticle} from "../../utils/interfaces/SavedArticle";
 import {Status} from "../../utils/interfaces/Status";
+import {selectSavedArticleByArticleIdAndProfileId} from "../../utils/saved-article/selectSavedArticleByArticleIdAndProfileId";
 
 
 export async function savedArticle(request: Request, response: Response) {
@@ -20,7 +21,7 @@ export async function savedArticle(request: Request, response: Response) {
             savedArticleProfileId,
         }
 
-        const select = await selectSavedArticleByArticleIdandProfileId(savedArticleArticleId)
+        const select = await selectSavedArticleByArticleIdAndProfileId(savedArticleArticleId)
             let result = ""
         if (select[0]){
             result = await deleteSavedArticle(savedArticle)

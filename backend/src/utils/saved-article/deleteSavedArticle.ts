@@ -4,7 +4,7 @@ import {SavedArticle} from "../interfaces/SavedArticle";
 export async function deleteSavedArticle(savedArticle: SavedArticle) {
     try {
         const mySqlConnection = await connect()
-        const mySqlQuery = "'DELETE FROM `article` WHERE savedArticleArticleId = UUID_TO_BIN(:savedArticleArticleId) AND savedArticleProfileId = UUID_TO_BIN(:savedArticleProfileId)'";
+        const mySqlQuery = "DELETE FROM `savedArticle` WHERE savedArticleArticleId = UUID_TO_BIN(:savedArticleArticleId) AND savedArticleProfileId = UUID_TO_BIN(:savedArticleProfileId)";
 
         await mySqlConnection.execute(mySqlQuery, savedArticle)
         return "article deleted successfully"
