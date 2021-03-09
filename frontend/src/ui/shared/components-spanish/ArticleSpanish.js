@@ -12,16 +12,16 @@ export const Article = (props) => {
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={savedArticle.articles.articleImageUrl}
-                               alt={savedArticle.articleEnglishImageAlt}/>
+                        <Image rounded fluid src={savedArticle.articleSpanishImageUrl}
+                               alt={savedArticle.articleSpanishImageAlt}/>
                     </Col>
                     <Col lg={9}>
                         <Container>
                             <Row>
                                 <Col>
                                     {/*Title for article */}
-                                    <a href={savedArticle.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{savedArticle.articleEnglishTitle}</h4>
+                                    <a href={savedArticle.articleSpanishUrl} target="_blank" rel={"noreferrer"}>
+                                        <h4>{savedArticle.articleSpanishTitle}</h4>
                                     </a>
                                 </Col>
                             </Row>
@@ -32,13 +32,13 @@ export const Article = (props) => {
                                     {/*{props.articles.articleCategories[0].categoryEnglishName}*/}
                                 </p>
                                 <p>
-                                    Date Published: {savedArticle.articleEnglishDate}
+                                    Fecha de publicación: {savedArticle.articleSpanishDate}
                                     {/*{console.log(new Date(Number.parseInt(props.articles.articleEnglishDate)).toDateString())}*/}
 
                                 </p>
                             </Row>
                             <Row>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Remove</Link>
+                                <Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>
                             </Row>
                         </Container>
                     </Col>
