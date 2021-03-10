@@ -1,22 +1,24 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {httpConfig} from "../utils/httpConfig";
+import {httpConfig} from "/frontend/src/ui/shared/utils/http-config";
 
 
-const misquoteSlice = createSlice({
+const articleSlice = createSlice({
     name: "article",
     initialState: [],
     reducers: {
-        getAllArticles: (misquotes, action) => {
+        getArticleByArticleId: (article, action) => {
             return action.payload
         },
     },
 })
 
-export const {getAllMisquotes} = misquoteSlice.actions
+export const {getArticleByArticleId} = articleSlice.actions
 
-export const fetchAllMisquotes = () => async (dispatch) => {
-    const {data} = await httpConfig("/apis/misquote")
-    dispatch(getAllMisquotes(data))
+export const fetchArticleByArticleId = () => async (dispatch) => {
+    const {data} = await httpConfig("/apis/article")
+    dispatch(getArticleByArticleId(data))
 }
 
-export default misquoteSlice.reducer
+export default articleSlice.reducer
+
+
