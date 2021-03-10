@@ -3,7 +3,7 @@ const {check} = require("express-validator");
 import {asyncValidatorController} from "../../utils/controllers/asyncValidator.controller";
 import {
     getAllArticleController,
-    getArticleByArticleId,
+    getArticleByArticleId, getArticleByCategoryId,
     getArticleByProfileId,
     getRandomArticles
 } from "./article.controller";
@@ -33,6 +33,14 @@ ArticleRoute.route("/articleId/:articleId")
             check("articleId").isUUID()
         ]),
         getArticleByArticleId
+    )
+
+ArticleRoute.route("/categoryId/:categoryId")
+    .get(
+        asyncValidatorController([
+            check("categoryId").isUUID()
+        ]),
+        getArticleByCategoryId
     )
 
 
