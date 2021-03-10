@@ -29,7 +29,7 @@ export const App = () => (
                 <NavigationBar/>
                 <Switch>
                     <Route exact path='/log-in' component={LogInModal}/>
-                    <Route exact path='/sign-up' component={SignUpModalSpanish}/>
+                    <Route exact path='/sign-up' component={SignUpModal}/>
                     <Route exact path='/search-results' component={SearchResults}/>
                     <Route exact path='/account' component={Account}/>
                     <Route exact path='/about-us' component={AboutUs}/>
