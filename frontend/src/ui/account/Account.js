@@ -74,7 +74,7 @@ export const Account = () => {
                                 <Row>
                                     <Col>
                                         {/*TODO: Map over savedArticles to make <Article/> elements*/}
-                                        {savedArticles.map(savedArticle => key={savedArticle.articleId} savedArticle={savedArticle})}
+                                        {savedArticles.map(savedArticle => <Article key={savedArticle.articleId} savedArticle={savedArticle}/>)}
                                     </Col>
                                 </Row>
                             </Container>
