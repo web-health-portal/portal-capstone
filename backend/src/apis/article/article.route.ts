@@ -26,14 +26,16 @@ ArticleRoute.route("/random")
 
 ArticleRoute.route("/:profileId")
     .get(
-        getArticleByProfileId([
+        asyncValidatorController([
             check("profileId").isUUID()
-        ])
+        ]),
+        getArticleByProfileId
     )
 
 ArticleRoute.route("/:articleId")
     .get(
-        getArticleByArticleId([
+        asyncValidatorController([
             check("articleId").isUUID()
-        ])
+        ]),
+        getArticleByArticleId
     )
