@@ -4,6 +4,7 @@ import {Status} from "../../utils/interfaces/Status";
 import {selectArticleByProfileId} from "../../utils/article/selectArticleByProfileId";
 import {selectRandomArticles} from "../../utils/article/selectRandomArticles";
 import {selectArticleByArticleId} from "../../utils/article/selectArticleByArticleId";
+import {selectArticleByCategoryId} from "../../utils/article/selectArticleByCategoryId";
 
 
 export async function getAllArticleController(request: Request, response: Response): Promise<Response | void> {
@@ -35,6 +36,18 @@ export async function getArticleByProfileId(request: Request, response: Response
         // @ts-ignore
         const profileId = <string>request.session?.profile.profileId
         const data = await selectArticleByProfileId(profileId);
+        const status: Status = {status: 200, message: null, data};
+        return response.json(status);
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function getArticleByCategoryId(request: Request, response: Response): Promise<Response | void> {
+
+    try {
+        const     {categoryId} = request.params
+        const data = await selectArticleByCategoryId(categoryId)
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch(error) {
