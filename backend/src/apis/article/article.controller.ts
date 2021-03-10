@@ -1,8 +1,9 @@
 import {Request, Response} from "express";
 import {selectAllArticles} from "../../utils/article/selectAllArticles";
 import {Status} from "../../utils/interfaces/Status";
-import {selectArticlesByProfileId} from "../../utils/article/selectArticlesByProfileId";
+import {selectArticleByProfileId} from "../../utils/article/selectArticleByProfileId";
 import {selectRandomArticles} from "../../utils/article/selectRandomArticles";
+import {selectArticleByArticleId} from "../../utils/article/selectArticleByArticleId";
 
 
 export async function getAllArticleController(request: Request, response: Response): Promise<Response | void> {
@@ -31,7 +32,7 @@ export async function getArticleByArticleId(request: Request, response: Response
 export async function getArticleByProfileId(request: Request, response: Response): Promise<Response | void> {
 
     try {
-        const data = await selectArticlesByProfileId()
+        const data = await selectArticleByProfileId()
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch(error) {
