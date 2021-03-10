@@ -32,7 +32,9 @@ export async function getArticleByArticleId(request: Request, response: Response
 export async function getArticleByProfileId(request: Request, response: Response): Promise<Response | void> {
 
     try {
-        const data = await selectArticleByProfileId();
+        // @ts-ignore
+        const profileId = <string>request.session?.profile.profileId
+        const data = await selectArticleByProfileId(profileId);
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch(error) {
