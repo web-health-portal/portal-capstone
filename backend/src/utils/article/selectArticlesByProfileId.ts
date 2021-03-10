@@ -7,7 +7,6 @@ export async function selectArticlesByProfileId(profileId: string) {
 
         const [rows] = await mySqlConnection.execute(query, {profileId: profileId});
         await mySqlConnection.end();
-        console.log();
         console.log(rows);
         return rows;
     }
