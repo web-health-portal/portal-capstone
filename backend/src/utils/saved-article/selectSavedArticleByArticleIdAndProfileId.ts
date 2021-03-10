@@ -8,6 +8,7 @@ export async function selectSavedArticleByArticleIdAndProfileId(savedArticle: Sa
 
         const [rows] = await mySqlConnection.execute(mySqlQuery, savedArticle)
         await mySqlConnection.end()
+        console.log(rows)
         return rows
     }
 

@@ -23,6 +23,7 @@ export async function savedArticle(request: Request, response: Response) {
 
         const select = await selectSavedArticleByArticleIdAndProfileId(savedArticleArticleId)
             let result = ""
+        // @ts-ignore
         if (select[0]){
             result = await deleteSavedArticle(savedArticle)
         }else{
