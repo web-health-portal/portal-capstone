@@ -149,7 +149,7 @@ export const SignUpFormContent = (props) => {
                         Reset
                     </button>
                 </div>
-                <FormDebugger {...props}/>
+                {/*<FormDebugger {...props}/>*/}
             </form>
             {
                 status && (<div className={status.type}>{status.message}</div>)
