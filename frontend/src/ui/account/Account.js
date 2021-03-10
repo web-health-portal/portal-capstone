@@ -5,11 +5,27 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {Article} from "../shared/components/Article";
 import {fetchAllSavedArticles} from "../../store/savedArticle";
+import {useDispatch, useSelector} from "react-redux";
 
 library.add(faCamera, faUser);
 
 
 export const Account = () => {
+
+    // subscribe using useSelector to the slice of store you care about
+    const savedArticles = useSelector((state) => state.savedArticles ? state.savedArticles : [])
+
+    console.log("savedArticles from Redux slice", savedArticles)
+
+    // get access to dispatch from useDispatch()
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAllSavedArticles())
+    }
+
+    // using React.useEffect dispatch the action
+    React.useEffect(initialEffects, [dispatch])
+
     return (
         <>
             <h1 className={"mx-3"}>Account</h1>
@@ -58,6 +74,7 @@ export const Account = () => {
                                 <Row>
                                     <Col>
                                         {/*TODO: Map over savedArticles to make <Article/> elements*/}
+                                        {savedArticles.map(savedArticle => key={savedArticle.articleId} savedArticle={savedArticle})}
                                     </Col>
                                 </Row>
                             </Container>

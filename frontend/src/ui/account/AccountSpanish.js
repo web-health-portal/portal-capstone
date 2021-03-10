@@ -3,13 +3,29 @@ import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-b
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
-import {Article} from "../shared/components/Article";
+import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllSavedArticles} from "../../store/savedArticle";
 
 library.add(faCamera, faUser);
 
-// temporary placeholder to show an example article
 
 export const AccountSpanish = () => {
+
+    // subscribe using useSelector to the slice of store you care about
+    const savedArticles = useSelector((state) => state.savedArticles ? state.savedArticles : [])
+
+    console.log("savedArticles from Redux slice", savedArticles)
+
+    // get access to dispatch from useDispatch()
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAllSavedArticles())
+    }
+
+    // using React.useEffect dispatch the action
+    React.useEffect(initialEffects, [dispatch])
+
     return (
         <>
             <h1 className={"mx-3"}>Perfil</h1>
