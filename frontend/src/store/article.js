@@ -1,22 +1,23 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {httpConfig} from "/frontend/src/ui/shared/utils/http-config";
+import {getRandomArticles} from "../../../backend/src/apis/article/article.route";
 
 
 const articleSlice = createSlice({
     name: "article",
     initialState: [],
     reducers: {
-        getArticleByArticleId: (article, action) => {
+        getRandomArticles: (article, action) => {
             return action.payload
         },
     },
 })
 
-export const {getArticleByArticleId} = articleSlice.actions
+export const {getRandomArticles} = articleSlice.actions
 
-export const fetchArticleByArticleId = () => async (dispatch) => {
-    const {data} = await httpConfig("/apis/article")
-    dispatch(getArticleByArticleId(data))
+export const fetchRandomArticles = () => async (dispatch) => {
+    const {data} = await httpConfig("/apis/random")
+    dispatch(getRandomArticles(data))
 }
 
 export default articleSlice.reducer
