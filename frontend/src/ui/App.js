@@ -22,7 +22,7 @@ import store from "../store/store";
 // import {SignUpModalSpanish} from "./shared/components-spanish/SignUpModalSpanish";
 
 
-export const App = () => (
+export const App = (store) => (
     <>
         <Provider store={store}>
             <BrowserRouter>

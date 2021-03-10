@@ -1,6 +1,7 @@
 import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {fetchAllRandomArticles} from "../../../store/article";
 
 
 export const Article = (props) => {
@@ -8,6 +9,18 @@ export const Article = (props) => {
         //Takes in UNIX timestamp and converts to {Day of week} {Month} {Day of month} {Full year}
         let date = new Date(timestamp * 1000);
         return date.toDateString();
+
+        const misquotes = useSelector((state) => state.misquotes ? state.misquotes : [])
+
+        console.log("Random articles from Redux slice", misquotes)
+
+        const dispatch = useDispatch()
+        const initialEffects = () => {
+            dispatch(fetchAllRandomArticles())
+        }
+
+        React.useEffect(initialEffects, [dispatch])
+
     }
 
     return (
