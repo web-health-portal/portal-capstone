@@ -26,15 +26,13 @@ export const Article = (props) => {
                                 </Col>
                             </Row>
                             <Row className={"px-3"}>
-                                {/*Categories for article*/}
                                 <p>
+                                    {/*Categories for article*/}
                                     {/*<strong>Categories: </strong>*/}
                                     {/*{props.articles.articleCategories[0].categoryEnglishName}*/}
                                 </p>
                                 <p>
                                     Fecha de publicación: {savedArticle.articleSpanishDate}
-                                    {/*{console.log(new Date(Number.parseInt(props.articles.articleEnglishDate)).toDateString())}*/}
-
                                 </p>
                             </Row>
                             <Row>

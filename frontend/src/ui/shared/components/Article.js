@@ -12,7 +12,7 @@ export const Article = (props) => {
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={savedArticle.articles.articleImageUrl}
+                        <Image rounded fluid src={savedArticle.articleImageUrl}
                                alt={savedArticle.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
@@ -26,15 +26,14 @@ export const Article = (props) => {
                                 </Col>
                             </Row>
                             <Row className={"px-3"}>
-                                {/*Categories for article*/}
                                 <p>
+                                    {/*Categories for article*/}
                                     {/*<strong>Categories: </strong>*/}
+                                    {/*TODO: Figure out how to add categories*/}
                                     {/*{props.articles.articleCategories[0].categoryEnglishName}*/}
                                 </p>
                                 <p>
                                     Date Published: {savedArticle.articleEnglishDate}
-                                    {/*{console.log(new Date(Number.parseInt(props.articles.articleEnglishDate)).toDateString())}*/}
-
                                 </p>
                             </Row>
                             <Row>
