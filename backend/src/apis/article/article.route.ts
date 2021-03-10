@@ -7,16 +7,11 @@ import {
     getArticleByProfileId,
     getRandomArticles
 } from "./article.controller";
+import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 
 
 export const ArticleRoute = Router();
 
-ArticleRoute.route("/:articleId")
-    .get(
-        asyncValidatorController([
-            check("articleId").isUUID()
-        ])
-    )
 ArticleRoute.route("/")
     .get
         (getAllArticleController)
@@ -24,16 +19,20 @@ ArticleRoute.route("/")
 ArticleRoute.route("/random")
     .get(getRandomArticles)
 
-ArticleRoute.route("/:profileId")
+ArticleRoute.route("/profileId/:profileId")
     .get(
-        getArticleByProfileId([
+        isLoggedIn, asyncValidatorController([
             check("profileId").isUUID()
-        ])
+        ]),
+        getArticleByProfileId
     )
 
-ArticleRoute.route("/:articleId")
+ArticleRoute.route("/articleId/:articleId")
     .get(
-        getArticleByArticleId([
+        asyncValidatorController([
             check("articleId").isUUID()
-        ])
+        ]),
+        getArticleByArticleId
     )
+
+
