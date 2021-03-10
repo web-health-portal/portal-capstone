@@ -59,7 +59,7 @@ export class App {
         this.app.use('/apis/log-in', logInRoute)
         this.app.use('/apis/sign-up', SignUpRoute)
         this.app.use('/apis/log-out', LogOutRoute)
-        this.app.use('/apis/savedArticles', SavedArticleRoute)
+        this.app.use('/apis/savedArticle', SavedArticleRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
