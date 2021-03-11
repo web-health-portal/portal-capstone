@@ -12,7 +12,7 @@ export const LogInForm = () => {
     const dispatch = useDispatch()
 
     const validator = Yup.object().shape({
-        profileEmail: Yup.string()
+        profileEmailAddress: Yup.string()
             .email("email must be a valid email")
             .required('email is required'),
         profilePassword: Yup.string()
@@ -23,7 +23,7 @@ export const LogInForm = () => {
 
     //the initial values object defines what the request payload is.
     const logIn = {
-        profileEmail: "",
+        profileEmailAddress: "",
         profilePassword: ""
     };
 
