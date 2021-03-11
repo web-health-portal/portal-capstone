@@ -1,88 +1,44 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FormDebugger} from "../../FormDebugger";
-import React from "react";
+import React, {useState} from "react";
+import {Modal, Form, Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {LogInFormSpanish} from "./LogInFormSpanish";
 
-export const LogInFormContentSpanish = (props) => {
-    const {
-        status,
-        values,
-        errors,
-        touched,
-        dirty,
-        isSubmitting,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        handleReset
-    } = props;
+export const LogInModalSpanish = () => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                {/*controlId must match what is passed to the initialValues prop*/}
-                <div className="form-group">
-                    <label htmlFor="profileEmail">Email Address</label>
-                    <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="envelope"/>
-                            </div>
-                        </div>
-                        <input
-                            className="form-control"
-                            id="profileEmail"
-                            type="email"
-                            value={values.profileEmail}
-                            placeholder="Enter email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
+            <Link className={"nav-link px-3"} onClick={handleShow}>
+                Iniciar sesión
+            </Link>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        ¡Bienvenido de nuevo!
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/*form for email and password*/}
+                    <LogInFormSpanish/>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Correo electrónico</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email"/>
+                        </Form.Group>
 
-                        />
-                    </div>
-                    {
-                        errors.profileEmail && touched.profileEmail && (
-                            <div className="alert alert-danger">
-                                {errors.profileEmail}
-                            </div>
-                        )
-
-                    }
-                </div>
-                {/*controlId must match what is defined by the initialValues object*/}
-                <div className="form-group">
-                    <label htmlFor="profilePassword">Password</label>
-                    <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="key"/>
-                            </div>
-                        </div>
-                        <input
-                            id="profilePassword"
-                            className="form-control"
-                            type="password"
-                            placeholder="Password"
-                            value={values.profilePassword}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                    </div>
-                    {errors.profilePassword && touched.profilePassword && (
-                        <div className="alert alert-danger">{errors.profilePassword}</div>
-                    )}
-                </div>
-
-                <div className="form-group">
-                    <button className="btn btn-primary mb-2" type="submit">Submit</button>
-                    <button
-                        className="btn btn-danger mb-2"
-                        onClick={handleReset}
-                        disabled={!dirty || isSubmitting}
-                    >Reset
-                    </button>
-                </div>
-                <FormDebugger {...props} />
-            </form>
-            {status && (<div className={status.type}>{status.message}</div>)}
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control type="password" placeholder="Password"/>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Iniciar sesión</Button>
+                </Modal.Footer>
+            </Modal>
         </>
-    )
-};
+    );
+}

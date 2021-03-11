@@ -2,7 +2,7 @@ import React, {useEffect} from "react"
 import {Nav, Navbar} from "react-bootstrap";
 import {LanguageToggle} from "../components/LanguageToggle";
 import {Link} from "react-router-dom";
-import {LogInModalSpanish} from "./LogInModalSpanish";
+import {LogInModalSpanish} from "./log-in-spanish/LogInModalSpanish";
 import {SignUpModalSpanish} from "./sign-up/SignUpModalSpanish";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../../store/auth";

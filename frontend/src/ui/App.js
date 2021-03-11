@@ -8,14 +8,16 @@ import './shared/component.css'
 
 import {Account} from "./account/Account";
 // import {AccountSpanish} from "./account/AccountSpanish";
-import {NavigationBar} from "./shared/components/NavigationBar";
+// import {NavigationBar} from "./shared/components/NavigationBar";
+import {NavigationBarSpanish} from "./shared/components-spanish/NavigationBarSpanish";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
 import {AboutUsSpanish} from "./about-us/AboutUsSpanish";
 import {Footer} from "./shared/components/Footer";
 import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 import {SearchResults} from "./search-results/SearchResults";
-import {LogInModal} from "./shared/components/log-in/LogInModal";
+// import {LogInModal} from "./shared/components/log-in/LogInModal";
+import {LogInModalSpanish} from "./shared/components-spanish/log-in-spanish/LogInModalSpanish";
 import {SignUpModal} from "./shared/components/sign-up/SignUpModal";
 import {Provider} from "react-redux";
 import store from "../store/store";
@@ -26,9 +28,9 @@ export const App = () => (
     <>
         <Provider store={store}>
             <BrowserRouter>
-                <NavigationBar/>
+                <NavigationBarSpanish/>
                 <Switch>
-                    <Route exact path='/log-in' component={LogInModal}/>
+                    <Route exact path='/log-in' component={LogInModalSpanish}/>
                     <Route exact path='/sign-up' component={SignUpModal}/>
                     <Route exact path='/search-results' component={SearchResults}/>
                     <Route exact path='/account' component={Account}/>
