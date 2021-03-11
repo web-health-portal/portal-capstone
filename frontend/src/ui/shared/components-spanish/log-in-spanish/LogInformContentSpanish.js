@@ -20,7 +20,7 @@ export const LogInFormContentSpanish = (props) => {
             <form onSubmit={handleSubmit}>
                 {/*controlId must match what is passed to the initialValues prop*/}
                 <div className="form-group">
-                    <label htmlFor="profileEmail">Email Address</label>
+                    <label htmlFor="profileEmailAddress">Email Address</label>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
@@ -29,9 +29,9 @@ export const LogInFormContentSpanish = (props) => {
                         </div>
                         <input
                             className="form-control"
-                            id="profileEmail"
+                            id="profileEmailAddress"
                             type="email"
-                            value={values.profileEmail}
+                            value={values.profileEmailAddress}
                             placeholder="Enter email"
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -39,9 +39,9 @@ export const LogInFormContentSpanish = (props) => {
                         />
                     </div>
                     {
-                        errors.profileEmail && touched.profileEmail && (
+                        errors.profileEmailAddress && touched.profileEmailAddress && (
                             <div className="alert alert-danger">
-                                {errors.profileEmail}
+                                {errors.profileEmailAddress}
                             </div>
                         )
 

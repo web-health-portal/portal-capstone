@@ -4,7 +4,7 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import {LogInFormContentSpanish} from "./LogInformContentSpanish";
 import {useDispatch} from "react-redux";
-import * as jwtDecode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import { getAuth } from '../../../../store/auth'
 
 export const LogInFormSpanish = () => {
@@ -12,7 +12,7 @@ export const LogInFormSpanish = () => {
     const dispatch = useDispatch()
 
     const validator = Yup.object().shape({
-        profileEmail: Yup.string()
+        profileEmailAddress: Yup.string()
             .email("email must be a valid email")
             .required('email is required'),
         profilePassword: Yup.string()
@@ -23,7 +23,7 @@ export const LogInFormSpanish = () => {
 
     //the initial values object defines what the request payload is.
     const logIn = {
-        profileEmail: "",
+        profileEmailAddress: "",
         profilePassword: ""
     };
 
