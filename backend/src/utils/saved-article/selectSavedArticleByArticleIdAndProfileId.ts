@@ -9,9 +9,7 @@ export async function selectSavedArticleByArticleIdAndProfileId(savedArticle: Sa
         const [rows] = await mySqlConnection.execute(mySqlQuery, savedArticle)
         await mySqlConnection.end()
         return rows
-    }
-
-    catch (error) {
+    } catch (error) {
         console.log(error)
         throw error.message
     }
