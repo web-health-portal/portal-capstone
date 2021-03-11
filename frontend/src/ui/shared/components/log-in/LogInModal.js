@@ -22,9 +22,6 @@ export const LogInModal = () => {
                     {/*form for email and password*/}
                     <LogInForm/>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}>Log In</Button>
-                </Modal.Footer>
             </Modal>
         </>
     );

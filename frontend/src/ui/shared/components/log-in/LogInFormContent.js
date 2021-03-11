@@ -72,7 +72,7 @@ export const LogInFormContent = (props) => {
                 </div>
 
                 <div className="form-group">
-                    <button className="btn btn-primary mb-2" type="submit">Submit</button>
+                    <button className="btn btn-primary mb-2" type="submit">Log In</button>
                     <button
                         className="btn btn-danger mb-2"
                         onClick={handleReset}
@@ -80,7 +80,7 @@ export const LogInFormContent = (props) => {
                     >Reset
                     </button>
                 </div>
-                <FormDebugger {...props} />
+                {/*<FormDebugger {...props} />*/}
             </form>
             {status && (<div className={status.type}>{status.message}</div>)}
         </>
