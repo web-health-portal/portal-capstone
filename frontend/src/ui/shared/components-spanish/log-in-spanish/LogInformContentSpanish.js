@@ -20,7 +20,7 @@ export const LogInFormContentSpanish = (props) => {
             <form onSubmit={handleSubmit}>
                 {/*controlId must match what is passed to the initialValues prop*/}
                 <div className="form-group">
-                    <label htmlFor="profileEmailAddress">Email Address</label>
+                    <label htmlFor="profileEmailAddress">Correo electrónico</label>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
@@ -32,7 +32,7 @@ export const LogInFormContentSpanish = (props) => {
                             id="profileEmailAddress"
                             type="email"
                             value={values.profileEmailAddress}
-                            placeholder="Enter email"
+                            placeholder="Correo electrónico "
                             onChange={handleChange}
                             onBlur={handleBlur}
 
@@ -49,7 +49,7 @@ export const LogInFormContentSpanish = (props) => {
                 </div>
                 {/*controlId must match what is defined by the initialValues object*/}
                 <div className="form-group">
-                    <label htmlFor="profilePassword">Password</label>
+                    <label htmlFor="profilePassword">Contraseña</label>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <div className="input-group-text">
@@ -60,7 +60,7 @@ export const LogInFormContentSpanish = (props) => {
                             id="profilePassword"
                             className="form-control"
                             type="password"
-                            placeholder="Password"
+                            placeholder="Contraseña"
                             value={values.profilePassword}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -72,7 +72,7 @@ export const LogInFormContentSpanish = (props) => {
                 </div>
 
                 <div className="form-group">
-                    <button className="btn btn-primary mb-2" type="submit">Submit</button>
+                    <button className="btn btn-primary mb-2" type="submit">Enviar</button>
                     <button
                         className="btn btn-danger mb-2"
                         onClick={handleReset}

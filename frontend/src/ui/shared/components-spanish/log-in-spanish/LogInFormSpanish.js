@@ -13,11 +13,11 @@ export const LogInFormSpanish = () => {
 
     const validator = Yup.object().shape({
         profileEmailAddress: Yup.string()
-            .email("email must be a valid email")
-            .required('email is required'),
+            .email("Introduzca un correo electrónico válido")
+            .required('Correo electronico es requerido'),
         profilePassword: Yup.string()
-            .required("Password is required")
-            .min(8, "Password must be at least eight characters")
+            .required("Se requiere contraseña")
+            .min(8, "La contraseña debe tener al menos ocho caracteres")
     });
 
 
