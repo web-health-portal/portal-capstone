@@ -2,7 +2,7 @@ import React, {useEffect} from "react"
 import {Nav, Navbar} from "react-bootstrap";
 import {LanguageToggle} from "./LanguageToggle";
 import {Link} from "react-router-dom";
-import {LogInModal} from "./LogInModal";
+import {LogInModal} from "./log-in/LogInModal";
 import {SignUpModal} from "./sign-up/SignUpModal";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../../store/auth";

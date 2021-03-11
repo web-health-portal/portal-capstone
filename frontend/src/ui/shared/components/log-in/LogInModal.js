@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Modal, Form, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {LogInForm} from "./LogInForm";
 
 export const LogInModal = () => {
     const [show, setShow] = useState(false);
@@ -19,6 +20,7 @@ export const LogInModal = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {/*form for email and password*/}
+                    <LogInForm/>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>

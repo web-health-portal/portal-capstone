@@ -15,7 +15,7 @@ import {AboutUsSpanish} from "./about-us/AboutUsSpanish";
 import {Footer} from "./shared/components/Footer";
 import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 import {SearchResults} from "./search-results/SearchResults";
-import {LogInModal} from "./shared/components/LogInModal";
+import {LogInModal} from "./shared/components/log-in/LogInModal";
 import {SignUpModal} from "./shared/components/sign-up/SignUpModal";
 import {Provider} from "react-redux";
 import store from "../store/store";
