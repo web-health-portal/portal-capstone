@@ -63,8 +63,6 @@ export const Home = () => {
                 <Row>
                     <Col md="6">
                         {articles.map(article=><Article article={article}/>)}
-
-
                 </Col>
             </Row>
         </Container>
