@@ -2,6 +2,8 @@ import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllRandomArticles} from "../../store/article";
 
 // temporary placeholder to show an example article
 const placeHolderArticle = {
@@ -26,6 +28,17 @@ const placeHolderArticle = {
 }
 
 export const Home = () => {
+    const articles = useSelector((state) => state.articles ? state.articles : [])
+
+
+
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAllRandomArticles())
+    }
+
+    React.useEffect(initialEffects, [])
+    console.log("Random articles from Redux slice", articles)
     return (
         <>
         <Container>
@@ -49,16 +62,9 @@ export const Home = () => {
             </Container>
                 <Row>
                     <Col md="6">
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
-                </Col>
-                <Col md="6">
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
-                    <Article articles={placeHolderArticle}/>
+                        {articles.map(article=><Article article={article}/>)}
+
+
                 </Col>
             </Row>
         </Container>

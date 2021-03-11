@@ -2,43 +2,27 @@ import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {fetchAllRandomArticles} from "../../../store/article";
+import {useDispatch, useSelector} from "react-redux";
 
 
-export const Article = (props) => {
-    const convertTimestampToDate = (timestamp) => {
-        //Takes in UNIX timestamp and converts to {Day of week} {Month} {Day of month} {Full year}
-        let date = new Date(timestamp * 1000);
-        return date.toDateString();
-
-        const misquotes = useSelector((state) => state.misquotes ? state.misquotes : [])
-
-        console.log("Random articles from Redux slice", misquotes)
-
-        const dispatch = useDispatch()
-        const initialEffects = () => {
-            dispatch(fetchAllRandomArticles())
-        }
-
-        React.useEffect(initialEffects, [dispatch])
-
-    }
-
+export const Article = ({article}) => {
+console.log(article.articleImageUrl)
     return (
         <>
             <Container className={"pt-4"}>
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={props.articles.articleImageUrl}
-                               alt={props.articles.articleEnglishImageAlt}/>
+                        <Image rounded fluid src={article.articleEnglishImageUrl}
+                               alt={article.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
                         <Container>
                             <Row>
                                 <Col>
                                     {/*Title for article */}
-                                    <a href={props.articles.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{props.articles.articleEnglishTitle}</h4>
+                                    <a href={article.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
+                                        <h4>{article.articleEnglishTitle}</h4>
                                     </a>
                                 </Col>
                             </Row>
@@ -47,10 +31,10 @@ export const Article = (props) => {
                                 <p>
                                     <strong>Categories: </strong>
                                     {/*map over article categories to display in p tag*/}
-                                    {props.articles.articleCategories[0].categoryEnglishName}
+                                    {/*{article.articleCategories[0].categoryEnglishName}*/}
                                 </p>
                                 <p>
-                                    Date Published: {convertTimestampToDate(props.articles.articleEnglishDate)}
+                                    {/*Date Published: {convertTimestampToDate(props.articles.articleEnglishDate)}*/}
                                     {/*{console.log(new Date(Number.parseInt(props.articles.articleEnglishDate)).toDateString())}*/}
 
                                 </p>

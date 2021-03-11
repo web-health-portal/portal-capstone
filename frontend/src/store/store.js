@@ -1,7 +1,7 @@
 import auth from "./auth";
 import profile from "./profile"
-import article from "./article";
+import articles from "./article";
 
 import { configureStore,combineReducers} from '@reduxjs/toolkit'
-const reducer = combineReducers({auth,profile,article})
+const reducer = combineReducers({auth,profile,articles})
 export default configureStore({reducer});

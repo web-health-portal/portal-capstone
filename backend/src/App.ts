@@ -65,6 +65,7 @@ export class App {
         this.app.use('/apis/category', categoryRoute)
         this.app.use('/apis/savedArticles', SavedArticleRoute)
         this.app.use('/apis/article', ArticleRoute)
+
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
