@@ -6,6 +6,7 @@ import {insertSavedArticle} from "../../utils/saved-article/insertSavedArticle";
 import {SavedArticle} from "../../utils/interfaces/SavedArticle";
 import {Status} from "../../utils/interfaces/Status";
 import {selectSavedArticleByArticleIdAndProfileId} from "../../utils/saved-article/selectSavedArticleByArticleIdAndProfileId";
+import {SavedArticleRoute} from "./savedArticle.route";
 
 
 export async function savedArticle(request: Request, response: Response) {
@@ -21,8 +22,9 @@ export async function savedArticle(request: Request, response: Response) {
             savedArticleProfileId,
         }
 
-        const select = await selectSavedArticleByArticleIdAndProfileId(savedArticleArticleId)
+        const select = await selectSavedArticleByArticleIdAndProfileId(savedArticle)
             let result = ""
+        // @ts-ignore
         if (select[0]){
             result = await deleteSavedArticle(savedArticle)
         }else{
