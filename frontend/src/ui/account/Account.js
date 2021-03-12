@@ -4,7 +4,7 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {Article} from "../shared/components/Article";
-import {fetchAllSavedArticles} from "../../store/savedArticle";
+import savedArticle, {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {useDispatch, useSelector} from "react-redux";
 
 library.add(faCamera, faUser);
@@ -13,15 +13,19 @@ library.add(faCamera, faUser);
 export const Account = () => {
 
     // subscribe using useSelector to the slice of store you care about
-    const savedArticles = useSelector((state) => state.savedArticles ? state.savedArticles : [])
+    // const savedArticles = useSelector((state) => state.savedArticle ? state.savedArticle : [])
+    const englishSavedArticles = useSelector((state) => state.savedArticle.englishSavedArticle ? state.savedArticle.englishSavedArticle : [])
+    const spanishSavedArticles = useSelector((state) => state.savedArticle.spanishSavedArticle ? state.savedArticle.spanishSavedArticle : [])
 
-    console.log("savedArticles from Redux slice", savedArticles)
+    // console.log("savedArticles from Redux slice", savedArticles)
 
     // get access to dispatch from useDispatch()
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAllSavedArticles())
     }
+
+    console.log(englishSavedArticles);
 
     // using React.useEffect dispatch the action
     React.useEffect(initialEffects, [dispatch])
@@ -74,7 +78,7 @@ export const Account = () => {
                                 <Row>
                                     <Col>
                                         {/*TODO: Map over savedArticles to make <Article/> elements*/}
-                                        {savedArticles.map(savedArticle => <Article key={savedArticle.articleId} savedArticle={savedArticle}/>)}
+                                        {/*{englishSavedArticle.map(savedArticle => <Article key={savedArticle.articleId} savedArticle={savedArticle.englishSavedArticle}/>)}*/}
                                     </Col>
                                 </Row>
                             </Container>

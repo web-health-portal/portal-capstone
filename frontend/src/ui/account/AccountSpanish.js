@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllSavedArticles} from "../../store/savedArticle";
+import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 
 library.add(faCamera, faUser);
 

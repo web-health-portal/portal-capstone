@@ -7,13 +7,16 @@ export const Article = (props) => {
     const {savedArticle} = props;
     console.log(savedArticle);
 
+    //TODO: find out how to format date
+    // const formattedDate = new Date(savedArticle.)
+
     return (
         <>
             <Container className={"pt-4"}>
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={savedArticle.articleEnglishImageUrl}
+                        <Image rounded fluid src={"http://www.fillmurray.com/200/300"}
                                alt={savedArticle.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
@@ -22,7 +25,7 @@ export const Article = (props) => {
                                 <Col>
                                     {/*Title for article */}
                                     <a href={savedArticle.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{savedArticle.articleEnglishTitle}</h4>
+                                        <h4>{savedArticle.articleSpanishTitle}</h4>
                                     </a>
                                 </Col>
                             </Row>
@@ -31,9 +34,10 @@ export const Article = (props) => {
                                     {/*Categories for article*/}
                                     {/*<strong>Categories: </strong>*/}
                                     {/*TODO: Figure out how to add categories*/}
-                                    {/*{props.articles.articleCategories[0].categoryEnglishName}*/}
+                                    {/*{savedArticle.articleCategory.categoryEnglishName}*/}
                                 </p>
                                 <p>
+                                    {/*Date for articles - format with formatDate helper function*/}
                                     Date Published: {savedArticle.articleEnglishDate}
                                 </p>
                             </Row>

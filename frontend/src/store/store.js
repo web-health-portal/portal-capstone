@@ -1,8 +1,8 @@
 import auth from "./auth";
 import profile from "./profile"
+import savedArticle from "./savedArticle/savedArticle";
 
 import {configureStore, combineReducers} from '@reduxjs/toolkit'
-import savedArticle from "./savedArticle";
 
 const reducer = combineReducers({auth, profile, savedArticle})
-export default configureStore({reducer});
+export const store = configureStore({reducer});
