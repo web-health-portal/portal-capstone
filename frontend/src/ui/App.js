@@ -6,7 +6,7 @@ import React from 'react'
 import './shared/component.css'
 
 import {Account} from "./account/Account";
-// import {AccountSpanish} from "./account/AccountSpanish";
+import {AccountSpanish} from "./account/AccountSpanish";
 import {NavigationBar} from "./shared/components/NavigationBar";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
@@ -29,6 +29,7 @@ export const App = () => (
                 <Route exact path='/sign-up' component={SignUpModalSpanish}/>
                 <Route exact path='/search-results' component={SearchResults}/>
                 <Route exact path='/account' component={Account}/>
+                {/*<Route exact path='/account' component={AccountSpanish}/>*/}
                 <Route exact path='/about-us' component={AboutUs}/>
                 <Route exact path='/' component={Home}/>
                 <Route component={FourOhFour}/>
