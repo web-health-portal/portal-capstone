@@ -15,7 +15,7 @@ const savedArticleSlice = createSlice({
                         englishArticle[savedArticleKey] = savedArticle[savedArticleKey];
                     }
                 }
-                console.log(englishArticle);
+                // console.log(englishArticle);
                 return " ";
             })
 

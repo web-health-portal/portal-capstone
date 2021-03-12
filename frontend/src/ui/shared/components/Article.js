@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 
 export const Article = (props) => {
     const {savedArticle} = props;
+    console.log(savedArticle);
 
     return (
         <>

@@ -16,10 +16,10 @@ import {Footer} from "./shared/components/Footer";
 import {FooterSpanish} from "./shared/components-spanish/FooterSpanish";
 import {SearchResults} from "./search-results/SearchResults";
 import {LogInModal} from "./shared/components/LogInModal";
-import {SignUpModal} from "./shared/components/SignUpModal";
-import {Provider} from "react-redux";
-// import {SignUpModalSpanish} from "./shared/components-spanish/SignUpModalSpanish";
 
+import {SignUpModal} from "./shared/components/sign-up/SignUpModal";
+import {Provider} from "react-redux";
+import {SignUpModalSpanish} from "./shared/components-spanish/sign-up/SignUpModalSpanish";
 
 export const App = (store) => (
     <>
