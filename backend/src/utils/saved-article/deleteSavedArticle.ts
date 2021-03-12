@@ -7,7 +7,7 @@ export async function deleteSavedArticle(savedArticle: SavedArticle) {
         const mySqlQuery = "DELETE FROM `savedArticle` WHERE savedArticleArticleId = UUID_TO_BIN(:savedArticleArticleId) AND savedArticleProfileId = UUID_TO_BIN(:savedArticleProfileId)";
 
         await mySqlConnection.execute(mySqlQuery, savedArticle)
-        return "article deleted successfully"
+        return "saved article deleted successfully"
     }
 
     catch (error) {

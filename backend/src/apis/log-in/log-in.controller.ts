@@ -20,7 +20,7 @@ export async function logInController(request: Request, response: Response, next
             'local',
             {session: false},
             async (err: any, passportUser: Profile) => {
-                console.log(passportUser)
+                console.log("passportUser", passportUser)
                 const {profileId, profileEmailAddress} = passportUser;
                 const signature: string = uuid();
                 const authorization: string = generateJwt({profileId, profileEmailAddress}, signature);

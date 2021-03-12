@@ -6,7 +6,6 @@ import {insertSavedArticle} from "../../utils/saved-article/insertSavedArticle";
 import {SavedArticle} from "../../utils/interfaces/SavedArticle";
 import {Status} from "../../utils/interfaces/Status";
 import {selectSavedArticleByArticleIdAndProfileId} from "../../utils/saved-article/selectSavedArticleByArticleIdAndProfileId";
-import {SavedArticleRoute} from "./savedArticle.route";
 
 
 export async function savedArticle(request: Request, response: Response) {
