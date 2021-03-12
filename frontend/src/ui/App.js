@@ -1,7 +1,7 @@
 import {BrowserRouter} from 'react-router-dom'
 import {Route, Switch} from 'react-router'
-import {Home} from './home/Home'
-// import {HomeSpanish} from "./home/HomeSpanish";
+// import {Home} from './home/Home'
+import {HomeSpanish} from "./home/HomeSpanish";
 import {FourOhFour} from './FourOhFour'
 import React from 'react'
 import './shared/component.css'
@@ -33,8 +33,8 @@ export const App = (store) => (
                     <Route exact path='/search-results' component={SearchResults}/>
                     <Route exact path='/account' component={Account}/>
                     <Route exact path='/about-us' component={AboutUs}/>
-                    <Route exact path='/' component={Home}/>
-                    {/*<Route exact path='/' component={HomeSpanish}/>*/}
+                    {/*<Route exact path='/' component={Home}/>*/}
+                    <Route exact path='/' component={HomeSpanish}/>
                     <Route component={FourOhFour}/>
                 </Switch>
                 <Footer/>
