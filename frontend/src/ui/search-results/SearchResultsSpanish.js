@@ -24,7 +24,7 @@ const placeHolderArticle = {
     ],
 }
 
-export const SearchResults = ({keyword}) => {
+export const SearchResultsSpanish = ({keyword}) => {
     //set prop to dummy value for now
     keyword = "diabetes";
     return (
