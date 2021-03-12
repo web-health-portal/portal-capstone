@@ -1,6 +1,6 @@
 import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
-import {Article} from "../shared/components/Article.js";
+import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish.js";
 import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllRandomArticles} from "../../store/article";
@@ -62,7 +62,7 @@ export const HomeSpanish = () => {
                 </Container>
                 <Row>
                     <Col md="6">
-                        {articles.map(article=><Article article={article}/>)}
+                        {articles.map(article=><ArticleSpanish article={article}/>)}
                     </Col>
                 </Row>
             </Container>
