@@ -12,7 +12,7 @@ export const Article = (props) => {
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={savedArticle.articleImageUrl}
+                        <Image rounded fluid src={savedArticle.articleEnglishImageUrl}
                                alt={savedArticle.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>

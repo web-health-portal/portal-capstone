@@ -7,6 +7,18 @@ const savedArticleSlice = createSlice({
     initialState: [],
     reducers: {
         getAllSavedArticles: (savedArticles, action) => {
+            action.payload.map((savedArticle) => {
+                let englishArticle = {};
+                for (const savedArticleKey in savedArticle) {
+                    // console.log(`${savedArticleKey}: ${savedArticle[savedArticleKey]}`);
+                    if(savedArticleKey.includes("English")) {
+                        englishArticle[savedArticleKey] = savedArticle[savedArticleKey];
+                    }
+                }
+                console.log(englishArticle);
+                return " ";
+            })
+
             return action.payload
         },
     },
@@ -15,7 +27,7 @@ const savedArticleSlice = createSlice({
 export const {getAllSavedArticles} = savedArticleSlice.actions
 
 export const fetchAllSavedArticles = () => async (dispatch) => {
-    const {data} = await httpConfig("/apis/") //TODO: add in URL for getSavedArticlesByProfileId
+    const {data} = await httpConfig("/apis/article/random/") //TODO: add in URL for getSavedArticlesByProfileId
     dispatch(getAllSavedArticles(data))
 }
 
