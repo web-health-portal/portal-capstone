@@ -4,10 +4,9 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {Article} from "../shared/components/Article";
+import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish"
 import savedArticle, {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllEnglishSavedArticles} from "../../store/savedArticle/englishSavedArticle";
-import {getAllSpanishSavedArticles} from "../../store/savedArticle/spanishSavedArticle";
 
 library.add(faCamera, faUser);
 
@@ -18,6 +17,7 @@ export const Account = () => {
     const savedArticles = useSelector((state) => state.savedArticle ? state.savedArticle : [])
     const englishSavedArticle = useSelector((state) => state.savedArticle.englishSavedArticle ? state.savedArticle.englishSavedArticle : [])
     const spanishSavedArticle = useSelector((state) => state.savedArticle.spanishSavedArticle ? state.savedArticle.spanishSavedArticle : [])
+    const toggle = useSelector((state) => state.toggle ? state.toggle : false);
 
     // console.log("savedArticles from Redux slice", savedArticles)
 
@@ -27,7 +27,7 @@ export const Account = () => {
         dispatch(fetchAllSavedArticles())
     }
 
-    console.log("in account", englishSavedArticle);
+    // console.log("in account", englishSavedArticle);
 
     // using React.useEffect dispatch the action
     React.useEffect(initialEffects, [dispatch])
@@ -80,9 +80,17 @@ export const Account = () => {
                                 <Row>
                                     <Col>
                                         {/*TODO: Map over savedArticles to make <Article/> elements*/}
-                                        {console.log("in col Account", englishSavedArticle)}
-                                        {englishSavedArticle.map(article => <Article key={article.articleId}
-                                                                                     article={article}/>)}
+                                        {/*{console.log("in col Account", englishSavedArticle)}*/}
+                                        {
+                                            toggle === true && spanishSavedArticle.map(article => <ArticleSpanish
+                                                key={article.articleId}
+                                                article={article}/>)
+                                            ||
+                                                toggle === false && englishSavedArticle.map(article => <Article
+                                                key={article.articleId}
+                                                article={article}/>)
+                                        }
+
                                     </Col>
                                 </Row>
                             </Container>

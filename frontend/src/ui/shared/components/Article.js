@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export const Article = (props) => {
     const {article} = props;
-    console.log(article);
+    // console.log(article);
 
     //TODO: find out how to format date
     const formattedDate = new Date(article.articleEnglishDate).toDateString();

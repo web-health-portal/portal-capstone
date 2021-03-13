@@ -7,7 +7,7 @@ import React from 'react'
 import './shared/component.css'
 
 import {Account} from "./account/Account";
-// import {AccountSpanish} from "./account/AccountSpanish";
+import {AccountSpanish} from "./account/AccountSpanish";
 import {NavigationBar} from "./shared/components/NavigationBar";
 
 import {AboutUs} from "./about-us/AboutUsEnglish";
@@ -20,6 +20,9 @@ import {LogInModal} from "./shared/components/LogInModal";
 import {SignUpModal} from "./shared/components/sign-up/SignUpModal";
 import {Provider} from "react-redux";
 import {SignUpModalSpanish} from "./shared/components-spanish/sign-up/SignUpModalSpanish";
+import {HomeSpanish} from "./home/HomeSpanish";
+import {SearchResultsSpanish} from "./search-results/SearchResultsSpanish";
+import toggle from "../store/toggle";
 
 export const App = (store) => (
     <>

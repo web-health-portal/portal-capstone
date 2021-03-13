@@ -16,8 +16,9 @@ export const fetchAllSavedArticles = () => async (dispatch) => {
     const spanishSavedArticle = await filterArticlesByLanguage("Spanish", data);
 
     //check filtered articles
-    console.log("englishSavedArticle", englishSavedArticle)
-    console.log("spanishSavedArticle", spanishSavedArticle)
+    // console.log("englishSavedArticle", englishSavedArticle)
+    // console.log("spanishSavedArticle", spanishSavedArticle)
+
     //dispatch actions to child slices
     dispatch(setAllEnglishSavedArticles(englishSavedArticle))
     dispatch(setAllSpanishSavedArticles(spanishSavedArticle))
