@@ -30,14 +30,16 @@ export const ArticleSpanish = (props) => {
                             <Row className={"px-3"}>
                                 <p>
                                     {/*Categories for article*/}
+                                    {/*TODO: Figure out how to add categories*/}
                                     {/*<strong>Categories: </strong>*/}
-                                    {/*{props.articles.articleCategories[0].categoryEnglishName}*/}
+                                    {/*TODO: Do a map over categories here*/}
                                 </p>
                                 <p>
                                     Fecha de publicación: {formattedDate}
                                 </p>
                             </Row>
                             <Row>
+                                <Link to={"#"} className={"px-3 text-sm-left"}>Salvar</Link>
                                 <Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>
                             </Row>
                         </Container>

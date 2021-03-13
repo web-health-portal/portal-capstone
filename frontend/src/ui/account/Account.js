@@ -14,7 +14,6 @@ library.add(faCamera, faUser);
 export const Account = () => {
 
     // subscribe using useSelector to the slice of store you care about
-    const savedArticles = useSelector((state) => state.savedArticle ? state.savedArticle : [])
     const englishSavedArticle = useSelector((state) => state.savedArticle.englishSavedArticle ? state.savedArticle.englishSavedArticle : [])
     const spanishSavedArticle = useSelector((state) => state.savedArticle.spanishSavedArticle ? state.savedArticle.spanishSavedArticle : [])
     const toggle = useSelector((state) => state.toggle ? state.toggle : false);
@@ -79,8 +78,6 @@ export const Account = () => {
                             <Container>
                                 <Row>
                                     <Col>
-                                        {/*TODO: Map over savedArticles to make <Article/> elements*/}
-                                        {/*{console.log("in col Account", englishSavedArticle)}*/}
                                         {
                                             toggle === true && spanishSavedArticle.map(article => <ArticleSpanish
                                                 key={article.articleId}
@@ -90,7 +87,6 @@ export const Account = () => {
                                                 key={article.articleId}
                                                 article={article}/>)
                                         }
-
                                     </Col>
                                 </Row>
                             </Container>

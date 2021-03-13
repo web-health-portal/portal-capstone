@@ -5,11 +5,8 @@ import {Link} from "react-router-dom";
 
 export const Article = (props) => {
     const {article} = props;
-    // console.log(article);
 
-    //TODO: find out how to format date
     const formattedDate = new Date(article.articleEnglishDate).toDateString();
-
     return (
         <>
             <Container className={"pt-4"}>
@@ -32,17 +29,16 @@ export const Article = (props) => {
                             <Row className={"px-3"}>
                                 <p>
                                     {/*Categories for article*/}
-                                    {/*<strong>Categories: </strong>*/}
                                     {/*TODO: Figure out how to add categories*/}
-                                    {/*{savedArticle.articleCategory.categoryEnglishName}*/}
+                                    {/*<strong>Categories: </strong>*/}
+                                    {/*TODO: Do a map over categories here*/}
                                 </p>
                                 <p>
-                                    {/*Date for articles - format with formatDate helper function*/}
-                                    {/*Date Published: {article.articleEnglishDate}*/}
                                     Date Published: {formattedDate}
                                 </p>
                             </Row>
                             <Row>
+                                <Link to={"#"} className={"px-3 text-sm-left"}>Save</Link>
                                 <Link to={"#"} className={"px-3 text-sm-left"}>Remove</Link>
                             </Row>
                         </Container>
