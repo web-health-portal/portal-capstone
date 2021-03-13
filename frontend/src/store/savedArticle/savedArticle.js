@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {httpConfig} from "../../utils/httpConfig";
 import {combineReducers} from "@reduxjs/toolkit";
-import englishSavedArticle, {setAllEnglishSavedArticles} from "./englishSavedArticle";
-import spanishSavedArticle, {setAllSpanishSavedArticles} from "./spanishSavedArticle";
+import englishSavedArticle, {getAllEnglishSavedArticles, setAllEnglishSavedArticles} from "./englishSavedArticle";
+import spanishSavedArticle, {getAllSpanishSavedArticles, setAllSpanishSavedArticles} from "./spanishSavedArticle";
 import {filterArticlesByLanguage} from "../filterArticlesByLanguage";
 
 
@@ -21,6 +21,8 @@ export const fetchAllSavedArticles = () => async (dispatch) => {
     //dispatch actions to child slices
     dispatch(setAllEnglishSavedArticles(englishSavedArticle))
     dispatch(setAllSpanishSavedArticles(spanishSavedArticle))
+    dispatch(getAllEnglishSavedArticles(englishSavedArticle))
+    dispatch(getAllSpanishSavedArticles(spanishSavedArticle))
 }
 
 //combine reducers for each language

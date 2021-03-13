@@ -6,6 +6,8 @@ import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {Article} from "../shared/components/Article";
 import savedArticle, {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {useDispatch, useSelector} from "react-redux";
+import {getAllEnglishSavedArticles} from "../../store/savedArticle/englishSavedArticle";
+import {getAllSpanishSavedArticles} from "../../store/savedArticle/spanishSavedArticle";
 
 library.add(faCamera, faUser);
 
@@ -13,9 +15,9 @@ library.add(faCamera, faUser);
 export const Account = () => {
 
     // subscribe using useSelector to the slice of store you care about
-    // const savedArticles = useSelector((state) => state.savedArticle ? state.savedArticle : [])
-    const englishSavedArticles = useSelector((state) => state.savedArticle.englishSavedArticle ? state.savedArticle.englishSavedArticle : [])
-    const spanishSavedArticles = useSelector((state) => state.savedArticle.spanishSavedArticle ? state.savedArticle.spanishSavedArticle : [])
+    const savedArticles = useSelector((state) => state.savedArticle ? state.savedArticle : [])
+    const englishSavedArticle = useSelector((state) => state.savedArticle.englishSavedArticle ? state.savedArticle.englishSavedArticle : [])
+    const spanishSavedArticle = useSelector((state) => state.savedArticle.spanishSavedArticle ? state.savedArticle.spanishSavedArticle : [])
 
     // console.log("savedArticles from Redux slice", savedArticles)
 
@@ -25,7 +27,7 @@ export const Account = () => {
         dispatch(fetchAllSavedArticles())
     }
 
-    console.log(englishSavedArticles);
+    console.log("in account", englishSavedArticle);
 
     // using React.useEffect dispatch the action
     React.useEffect(initialEffects, [dispatch])
@@ -78,7 +80,9 @@ export const Account = () => {
                                 <Row>
                                     <Col>
                                         {/*TODO: Map over savedArticles to make <Article/> elements*/}
-                                        {/*{englishSavedArticle.map(savedArticle => <Article key={savedArticle.articleId} savedArticle={savedArticle.englishSavedArticle}/>)}*/}
+                                        {console.log("in col Account", englishSavedArticle)}
+                                        {englishSavedArticle.map(article => <Article key={article.articleId}
+                                                                                     article={article}/>)}
                                     </Col>
                                 </Row>
                             </Container>

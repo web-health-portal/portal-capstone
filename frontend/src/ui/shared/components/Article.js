@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 
 
 export const Article = (props) => {
-    const {savedArticle} = props;
-    console.log(savedArticle);
+    const {article} = props;
+    console.log(article);
 
     //TODO: find out how to format date
-    // const formattedDate = new Date(savedArticle.)
+    const formattedDate = new Date(article.articleEnglishDate).toDateString();
 
     return (
         <>
@@ -17,15 +17,15 @@ export const Article = (props) => {
                     <Col lg={3}>
                         {/*Image for article*/}
                         <Image rounded fluid src={"http://www.fillmurray.com/200/300"}
-                               alt={savedArticle.articleEnglishImageAlt}/>
+                               alt={article.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
                         <Container>
                             <Row>
                                 <Col>
                                     {/*Title for article */}
-                                    <a href={savedArticle.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{savedArticle.articleSpanishTitle}</h4>
+                                    <a href={article.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
+                                        <h4>{article.articleEnglishTitle}</h4>
                                     </a>
                                 </Col>
                             </Row>
@@ -38,7 +38,8 @@ export const Article = (props) => {
                                 </p>
                                 <p>
                                     {/*Date for articles - format with formatDate helper function*/}
-                                    Date Published: {savedArticle.articleEnglishDate}
+                                    {/*Date Published: {article.articleEnglishDate}*/}
+                                    Date Published: {formattedDate}
                                 </p>
                             </Row>
                             <Row>

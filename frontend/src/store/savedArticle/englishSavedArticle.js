@@ -8,9 +8,12 @@ const englishSavedArticleSlice = createSlice({
         setAllEnglishSavedArticles: (englishSavedArticle, action) => {
             englishSavedArticle.push(action.payload)
         },
+        getAllEnglishSavedArticles: (englishSavedArticle, action) => {
+            return action.payload
+        }
     },
 })
 
-export const {setAllEnglishSavedArticles} = englishSavedArticleSlice.actions
+export const {setAllEnglishSavedArticles, getAllEnglishSavedArticles} = englishSavedArticleSlice.actions
 
 export default englishSavedArticleSlice.reducer

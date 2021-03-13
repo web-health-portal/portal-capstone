@@ -1,17 +1,20 @@
 const {createSlice} = require("@reduxjs/toolkit");
 
 
-const spanishSavedArticles = createSlice({
+const spanishSavedArticleSlice = createSlice({
     name: "spanishSavedArticle",
     initialState: [],
     reducers: {
         setAllSpanishSavedArticles: (spanishSavedArticle, action) => {
             spanishSavedArticle.push(action.payload)
         },
+        getAllSpanishSavedArticles: (spanishSavedArticle, action) => {
+            return action.payload
+        }
     },
 })
 
-export const {setAllSpanishSavedArticles} = spanishSavedArticles.actions
+export const {setAllSpanishSavedArticles, getAllSpanishSavedArticles} = spanishSavedArticleSlice.actions
 
 
-export default spanishSavedArticles.reducer
+export default spanishSavedArticleSlice.reducer
