@@ -5,6 +5,7 @@ import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllRandomArticles} from "../../store/article/article";
 import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish";
+import {SearchBar} from "../shared/components/search-bar/SearchBar";
 
 
 export const Home = () => {
@@ -37,6 +38,7 @@ export const Home = () => {
                         <FormControl type="search" placeholder="What can we help you with?"/>
                         <Button variant="primary mx-2" type="search">Search!</Button>
                     </FormGroup>
+                    <SearchBar/>
                 </Jumbotron>
             </Container>
 
