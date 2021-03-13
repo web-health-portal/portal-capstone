@@ -7,7 +7,6 @@ const englishSavedArticleSlice = createSlice({
     reducers: {
         setAllEnglishSavedArticles: (englishSavedArticle, action) => {
             englishSavedArticle.push(action.payload)
-            // return action.payload
         },
     },
 })
