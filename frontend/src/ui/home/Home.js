@@ -34,10 +34,6 @@ export const Home = () => {
                         informed and healthy.
                         <p>Create an account with us to build your own library of articles you wish to come back to.</p>
                     </Container>
-                    <FormGroup className="container p-1 d-flex justify-content-md-between" controlId="searchArticles">
-                        <FormControl type="search" placeholder="What can we help you with?"/>
-                        <Button variant="primary mx-2" type="search">Search!</Button>
-                    </FormGroup>
                     <SearchBar/>
                 </Jumbotron>
             </Container>

@@ -2,6 +2,7 @@ import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
 import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
+import {SearchBarSpanish} from "../shared/components-spanish/SearchBarSpanish/SearchBarSpanish";
 
 export const HomeSpanish = () => {
     return (
@@ -13,10 +14,7 @@ export const HomeSpanish = () => {
                         SaluDuo es un portal de salud bilingüe, con el objetivo de proporcionar artículos en ingles y español para mantenerlo informado de su salud con la ayuda de un solo botón.
                         <p>Cree una cuenta con nosotros para crear su propia biblioteca de artículos que desee volver a ver en un futuro.</p>
                     </Container>
-                    <FormGroup className="container p-1 d-flex justify-content-md-between" controlId="searchArticles">
-                        <FormControl type="search" placeholder="¿En qué podemos ayudarle?"/>
-                        <Button variant="primary mx-2" type="search">¡Buscar!</Button>
-                    </FormGroup>
+                    <SearchBarSpanish/>
                 </Jumbotron>
             </Container>
 

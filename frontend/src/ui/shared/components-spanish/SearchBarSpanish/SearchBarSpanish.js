@@ -2,17 +2,17 @@ import React from 'react';
 import {httpConfig} from "../../utils/http-config"
 import * as Yup from "yup";
 import {Formik} from "formik";
-import {SearchBarContent} from "./SearchBarContent";
+import {SearchBarContentSpanish} from "./SeachBarContentSpanish";
 
-export const SearchBar = () => {
+export const SearchBarSpanish = () => {
 	const search = {
 		searchKeyword: "",
 	};
 
 	const validator = Yup.object().shape({
 		searchKeyword: Yup.string()
-			.required("Please enter a keyword to search by.")
-			.min(1, "A search keyword must be at least one character."),
+			.required("Introduzca una palabra clave por la que buscar.")
+			.min(1, "Una palabra clave de búsqueda debe tener al menos un carácter."),
 	});
 
 	const submitSearch = (values, {resetForm, setStatus}) => {
@@ -37,7 +37,7 @@ export const SearchBar = () => {
 			onSubmit={submitSearch}
 			validationSchema={validator}
 		>
-			{SearchBarContent}
+			{SearchBarContentSpanish}
 		</Formik>
 
 	)
