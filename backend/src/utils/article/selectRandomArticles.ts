@@ -9,6 +9,6 @@ export async function selectRandomArticles() {
 		// @ts-ignore is required so that rows can be interacted with like the array it is
 		return rows;
 	} catch (error) {
-	    throw new Error(error);
+		throw new Error(error);
 	}
 }

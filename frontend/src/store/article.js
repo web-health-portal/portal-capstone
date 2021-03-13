@@ -19,6 +19,12 @@ export const fetchAllRandomArticles = () => async (dispatch) => {
     dispatch(getRandomArticles(data))
 }
 
+// export const fetchAllRandomArticlesAndAllCategories = () => async (dispatch, getState) => {
+//     await dispatch(fetchAllRandomArticles())
+//     const articleIds = _.uniq(_.map(getState().posts, "postProfileId"));
+//     articleIds.forEach(id => dispatch(fetchProfileByProfileId(id)));
+// }
+
 export default articleSlice.reducer
 
 

@@ -32,6 +32,7 @@ console.log(article.articleImageUrl)
                                     <strong>Categories: </strong>
                                     {/*map over article categories to display in p tag*/}
                                     {/*{article.articleCategories[0].categoryEnglishName}*/}
+
                                 </p>
                                 <p>
                                     {/*Date Published: {convertTimestampToDate(props.articles.articleEnglishDate)}*/}
