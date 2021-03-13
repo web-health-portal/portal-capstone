@@ -21,7 +21,7 @@ export async function savedArticle(request: Request, response: Response) {
             savedArticleProfileId,
         }
 
-        const select = await selectSavedArticleByArticleIdAndProfileId(savedArticleArticleId)
+        const select = await selectSavedArticleByArticleIdAndProfileId(savedArticle)
             let result = ""
         // @ts-ignore
         if (select[0]){
