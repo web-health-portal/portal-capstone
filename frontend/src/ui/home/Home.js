@@ -3,8 +3,7 @@ import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "re
 import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllRandomArticles} from "../../store/article";
-import {fetchAllCategories} from "../../store/article";
+import {fetchAllRandomArticles, fetchAllRandomArticlesAndAllCategories} from "../../store/article";
 
 // temporary placeholder to show an example article
 // const placeHolderArticle = {
@@ -34,6 +33,7 @@ export const Home = () => {
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAllRandomArticles())
+        dispatch(fetchAllRandomArticlesAndAllCategories())
 
     }
 

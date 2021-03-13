@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {httpConfig} from "../ui/shared/utils/http-config";
+import {fetchAllCategories} from "./category";
 
 const articleSlice = createSlice({
     name: "articles",
@@ -19,11 +20,11 @@ export const fetchAllRandomArticles = () => async (dispatch) => {
     dispatch(getRandomArticles(data))
 }
 
-// export const fetchAllRandomArticlesAndAllCategories = () => async (dispatch, getState) => {
-//     await dispatch(fetchAllRandomArticles())
-//     const articleIds = _.uniq(_.map(getState().posts, "postProfileId"));
-//     articleIds.forEach(id => dispatch(fetchProfileByProfileId(id)));
-// }
+export const fetchAllRandomArticlesAndAllCategories = () => async (dispatch, getState, _) => {
+    await dispatch(fetchAllRandomArticles())
+    const articleIds = _.uniq(_.map(getState().articles(), "articleCategoryId"));
+    articleIds.forEach(id => dispatch(fetchAllCategories(id)));
+}
 
 export default articleSlice.reducer
 
