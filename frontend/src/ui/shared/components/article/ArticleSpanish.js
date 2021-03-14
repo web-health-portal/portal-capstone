@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 export const ArticleSpanish = (props) => {
     const {article} = props;
 
-    const formattedDate = new Date(article.articleSpanishDate).toDateString();
+    const formattedDate = new Date(article.articleSpanishDate).toLocaleDateString("es-MX");
     return (
         <>
             <Container className={"pt-4"}>
