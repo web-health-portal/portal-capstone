@@ -17,7 +17,7 @@ export const NavigationBarSpanish = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                         <Link to="/" className={"nav-link px-3"}>Inicio</Link>
-                        <Link to="/account/AccountSpanish" className={"nav-link px-3"}>Perfil</Link>
+                        <Link to="/account" className={"nav-link px-3"}>Perfil</Link>
                         <LogInModalSpanish/>
                         <Link to="/log-out" className={"nav-link px-3"}>Cerrar Sesión</Link>
                         <SignUpModalSpanish/>
