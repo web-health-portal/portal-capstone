@@ -3,6 +3,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
+
 export const ArticleEnglish = (props) => {
     const {article} = props;
 

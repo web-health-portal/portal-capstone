@@ -14,8 +14,8 @@ export const HomeSpanish = (props) => {
                 <Jumbotron className="background-image img-fluid">
                     <Container className="text-center p-1 mb-1 bg-light text-dark">
                         <h1>Busque artículos y temas relacionados con su salud.</h1>
-                        <h6>SaluDuo es un portal de salud bilingüe, con el objetivo de proporcionar artículos en ingles y español para mantenerlo informado de su salud con la ayuda de un solo botón.</h6>
-                        <h6>Cree una cuenta con nosotros para crear su propia biblioteca de artículos que desee volver a ver en un futuro.</h6>
+                        <h5>SaluDuo es un portal de salud bilingüe, con el objetivo de proporcionar artículos en ingles y español para mantenerlo informado de su salud con la ayuda de un solo botón.</h5>
+                        <h5>Cree una cuenta con nosotros para crear su propia biblioteca de artículos que desee volver a ver en un futuro.</h5>
                     </Container>
                     <SearchBarSpanish/>
                 </Jumbotron>
@@ -24,7 +24,7 @@ export const HomeSpanish = (props) => {
             <Container>
                 <Container className="text-center">
                     <h2>Artículos relevantes</h2>
-                    <h6>Estos son algunos temas y artículos que podrían interesarle:</h6>
+                    <h5>Estos son algunos temas y artículos que podrían interesarle:</h5>
                 </Container>
                 <Row>
                     <Col>
