@@ -30,13 +30,10 @@ export const App = (store) => (
             <BrowserRouter>
                 <NavigationBar/>
                 <Switch>
-                    <Route exact path='/log-in' component={LogInModal}/>
-                    <Route exact path='/sign-up' component={SignUpModal}/>
                     <Route exact path='/search-results' component={SearchResults}/>
                     <Route exact path='/account' component={Account}/>
                     <Route exact path='/about-us' component={AboutUs}/>
                     <Route exact path='/' component={Home}/>
-                    {/*<Route exact path='/' component={HomeSpanish}/>*/}
                     <Route component={FourOhFour}/>
                 </Switch>
                 <Footer/>
