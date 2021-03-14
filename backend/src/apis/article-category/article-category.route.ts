@@ -7,7 +7,7 @@ import {getArticleCategoryByArticleId, getArticleCategoryByCategoryId} from "./a
 
 export const ArticleCategoryRoute = Router();
 
-ArticleCategoryRoute.route("/articleCategory/:categoryId")
+ArticleCategoryRoute.route("/:categoryId")
     .get(
         asyncValidatorController([
             check("categoryId").isUUID()
@@ -15,7 +15,7 @@ ArticleCategoryRoute.route("/articleCategory/:categoryId")
         getArticleCategoryByCategoryId
     )
 
-ArticleCategoryRoute.route("/articleCategory/:articleId")
+ArticleCategoryRoute.route("/:articleId")
     .get(
         asyncValidatorController([
             check("articleId").isUUID()
