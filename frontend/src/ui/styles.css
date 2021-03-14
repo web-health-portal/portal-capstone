@@ -1,11 +1,14 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Noto+Serif&display=swap');
 
+*{
+    font-family: 'Abel', sans-serif;
 }
 
-h1, h3 {
-    font-family: 'Rubik', sans-serif;
+h1, h2{
+    font-family: 'Noto Serif', serif;
+    font-weight: bolder;
 }
 
-
-
-
+h4 {
+    font-family: 'Noto Serif', serif;
+}

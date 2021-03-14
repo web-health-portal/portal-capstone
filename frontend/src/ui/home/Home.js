@@ -33,8 +33,8 @@ export const Home = () => {
             <Jumbotron className="background-image img-fluid">
                 <Container className="text-center p-1 mb-1 bg-light text-dark">
                     <h1>Search here for health-related articles and topics.</h1>
-                    SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.
-                    <p>Create an account with us to build your own library of articles you wish to come back to.</p>
+                    <h5>SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you informed and healthy.</h5>
+                    <h5>Create an account with us to build your own library of articles you wish to come back to.</h5>
                 </Container>
                     <FormGroup className="container p-1 d-flex justify-content-md-between" controlId="searchArticles">
                     <FormControl type="search" placeholder="What can we help you with?"/>
@@ -45,7 +45,7 @@ export const Home = () => {
 
         <Container>
             <Container className="text-center">
-                <h4>Browse Articles</h4>
+                <h2>Browse Articles</h2>
                 <h6>Have a look at some of the articles from our API:</h6>
             </Container>
                 <Row>
