@@ -6,6 +6,7 @@ import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
+import "../styles.css"
 
 library.add(faCamera, faUser);
 

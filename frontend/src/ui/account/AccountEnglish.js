@@ -4,6 +4,7 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
+import "../styles.css"
 
 library.add(faCamera, faUser);
 
