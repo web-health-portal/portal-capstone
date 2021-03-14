@@ -3,10 +3,7 @@ import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-b
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
-import {Article} from "../shared/components/Article";
-import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish"
-import savedArticle, {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
-import {useDispatch, useSelector} from "react-redux";
+import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
 
 library.add(faCamera, faUser);
 
@@ -63,8 +60,8 @@ export const AccountEnglish = (props) => {
                                 <Row>
                                     <Col>
                                         {
-                                            englishSavedArticle.map(article => <Article key={article.articleId}
-                                                                                        article={article}/>)
+                                            englishSavedArticle.map(article => <ArticleEnglish key={article.articleId}
+                                                                                               article={article}/>)
                                         }
                                     </Col>
                                 </Row>

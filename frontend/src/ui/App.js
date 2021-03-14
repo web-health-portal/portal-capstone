@@ -5,13 +5,14 @@ import {FourOhFour} from './FourOhFour'
 import React from 'react'
 import './shared/component.css'
 import {Account} from "./account/Account";
-import {NavigationBar} from "./shared/components/NavigationBar";
-import {AboutUs} from "./about-us/AboutUsEnglish";
-import {Footer} from "./shared/components/Footer";
+import {NavigationBar} from "./shared/components/navigation-bar/NavigationBar";
+import {AboutUs} from "./about-us/AboutUs";
+import {Footer} from "./shared/components/footer/Footer";
 import {SearchResults} from "./search-results/SearchResults";
 import {Provider} from "react-redux";
 
-export const App = (store) => (
+export const App = (store) => {
+    return (
         <>
             <Provider store={store}>
                 <BrowserRouter>
@@ -28,3 +29,4 @@ export const App = (store) => (
             </Provider>
         </>
     )
+}

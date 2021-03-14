@@ -1,10 +1,12 @@
 import React from "react"
 import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
-import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
-import {SearchBarSpanish} from "../shared/components-spanish/SearchBarSpanish/SearchBarSpanish";
+import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
+import {SearchBarSpanish} from "../shared/components/search-bar/SearchBarSpanish";
 
-export const HomeSpanish = () => {
+export const HomeSpanish = (props) => {
+    const {spanishArticle} = props;
+
     return (
         <>
             <Container>
@@ -25,7 +27,9 @@ export const HomeSpanish = () => {
                 </Container>
                 <Row>
                     <Col>
-
+                        {
+                            spanishArticle.map(article => <ArticleSpanish key={article.articleId} article={article}/>)
+                        }
                     </Col>
                 </Row>
             </Container>

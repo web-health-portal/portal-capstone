@@ -3,7 +3,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
-export const Article = (props) => {
+export const ArticleEnglish = (props) => {
     const {article} = props;
 
     const formattedDate = new Date(article.articleEnglishDate).toDateString();
