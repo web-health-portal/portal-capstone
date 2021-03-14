@@ -1,8 +1,14 @@
-.backgroundImage {
-    background-image: url("backgroundimage.png");
-    position: relative;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Noto+Serif&display=swap');
+
+*{
+    font-family: 'Abel', sans-serif;
+}
+
+h1, h2{
+    font-family: 'Noto Serif', serif;
+    font-weight: bolder;
+}
+
+h4 {
+    font-family: 'Noto Serif', serif;
 }
