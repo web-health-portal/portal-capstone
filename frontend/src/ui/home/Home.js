@@ -4,6 +4,8 @@ import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllRandomArticles, fetchAllRandomArticlesAndAllCategories} from "../../store/article";
+import {fetchAllCategories, getAllCategories} from "../../store/category";
+
 
 // temporary placeholder to show an example article
 // const placeHolderArticle = {
@@ -33,7 +35,10 @@ export const Home = () => {
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAllRandomArticles())
-        dispatch(fetchAllRandomArticlesAndAllCategories())
+        dispatch(fetchAllCategories())
+        // dispatch(fetchAllRandomArticlesAndAllCategories())
+
+
 
     }
 

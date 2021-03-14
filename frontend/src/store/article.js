@@ -20,11 +20,18 @@ export const fetchAllRandomArticles = () => async (dispatch) => {
     dispatch(getRandomArticles(data))
 }
 
-export const fetchAllRandomArticlesAndAllCategories = () => async (dispatch, getState, _) => {
-    await dispatch(fetchAllRandomArticles())
-    const articleIds = _.uniq(_.map(getState().articles(), "articleCategoryId"));
-    articleIds.forEach(id => dispatch(fetchAllCategories(id)));
-}
+// export const fetchAllRandomArticlesAndAllCategories = () => async (dispatch, getState, _) => {
+//     await dispatch(fetchAllRandomArticles())
+//     const articlesIds = _.articles(_.map(getState().articles(), "articleCategoryId"));
+//     articlesIds.forEach(id => dispatch(fetchAllCategories(id)));
+// }
+
+// Original code from example
+// export const fetchAllPostsAndProfiles = () => async (dispatch, getState) => {
+//     await dispatch(fetchAllPosts())
+//     const profileIds = _.uniq(_.map(getState().posts, "postProfileId"));
+//     profileIds.forEach(id => dispatch(fetchProfileByProfileId(id)));
+// }
 
 export default articleSlice.reducer
 
