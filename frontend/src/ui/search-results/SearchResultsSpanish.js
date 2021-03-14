@@ -1,6 +1,7 @@
 import React from "react"
 import {Button, Col, Container, Form, FormControl, FormGroup, Row} from "react-bootstrap";
 import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
+import "../styles.css"
 
 export const SearchResultsSpanish = ({keyword}) => {
     //set prop to dummy value for now
