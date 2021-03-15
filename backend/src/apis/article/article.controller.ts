@@ -5,6 +5,7 @@ import {selectArticleByProfileId} from "../../utils/article/selectArticleByProfi
 import {selectRandomArticles} from "../../utils/article/selectRandomArticles";
 import {selectArticleByArticleId} from "../../utils/article/selectArticleByArticleId";
 import {selectArticleByCategoryId} from "../../utils/article/selectArticleByCategoryId";
+import {selectArticlesBySearchKeyword} from "../../utils/article/selectArticlesBySearchKeyword";
 
 
 export async function getAllArticleController(request: Request, response: Response): Promise<Response | void> {
@@ -13,7 +14,7 @@ export async function getAllArticleController(request: Request, response: Respon
         const data = await selectAllArticles()
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -21,11 +22,11 @@ export async function getAllArticleController(request: Request, response: Respon
 export async function getArticleByArticleId(request: Request, response: Response): Promise<Response | void> {
 
     try {
-        const     {articleId} = request.params
+        const {articleId} = request.params
         const data = await selectArticleByArticleId(articleId)
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -38,7 +39,7 @@ export async function getArticleByProfileId(request: Request, response: Response
         const data = await selectArticleByProfileId(profileId);
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -46,11 +47,11 @@ export async function getArticleByProfileId(request: Request, response: Response
 export async function getArticleByCategoryId(request: Request, response: Response): Promise<Response | void> {
 
     try {
-        const     {categoryId} = request.params
+        const {categoryId} = request.params
         const data = await selectArticleByCategoryId(categoryId)
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -58,6 +59,17 @@ export async function getArticleByCategoryId(request: Request, response: Respons
 export async function getRandomArticles(request: Request, response: Response): Promise<Response | void> {
     try {
         const data = await selectRandomArticles();
+        const status: Status = {status: 200, message: null, data};
+        return response.json(status);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getArticlesBySearchKeyword(request: Request, response: Response): Promise<Response | void> {
+    try {
+        const {keyword} = request.params;
+        const data = await selectArticlesBySearchKeyword(keyword);
         const status: Status = {status: 200, message: null, data};
         return response.json(status);
     } catch (error) {
