@@ -6,10 +6,10 @@ export default function formatUrlForSmallImages(url: string): string {
     //NOTE: We want the url to be formatted as small url
 
     //split the url into an array of strings
-    let splitUrl = url.split("/");
+    const splitUrl = url.split("/");
     //grab last two elements in path of url
-    let urlSlugs = splitUrl.slice(splitUrl.length - 2, splitUrl.length);
-    let baseUrl = "https://health.gov/sites/default/files/";
+    const urlSlugs = splitUrl.slice(splitUrl.length - 2, splitUrl.length);
+    const baseUrl = "https://health.gov/sites/default/files/";
     //return formatted string
     return `${baseUrl}/styles/myhf_topics_header_image/public/${urlSlugs[0]}/${urlSlugs[1]}`;
 }
