@@ -17,7 +17,6 @@ export const {getAllCategories} = categorySlice.actions
 
 export const fetchAllCategories = () => async (dispatch) => {
     const {data} = await httpConfig.get("/apis/category")
-    console.log("data", data)
     dispatch(getAllCategories(data))
 }
 

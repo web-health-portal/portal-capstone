@@ -5,7 +5,7 @@ import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
 
 import {fetchAllCategories} from "../../store/category";
-import {fetchAllArticleCategory} from "../../store/articleCategory";
+import {fetchArticleCategoryByArticleIds} from "../../store/articleCategory";
 import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish";
 import {fetchAllRandomArticles} from "../../store/article/article";
 
@@ -17,7 +17,6 @@ export const Home = () => {
     const toggle = useSelector((state) => state.toggle ? state.toggle : false);
     const categories = useSelector(state => state.categories ? state.categories : [])
     // get access to dispatch from useDispatch()
-    console.log(categories)
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAllCategories())
