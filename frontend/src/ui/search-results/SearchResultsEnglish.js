@@ -6,6 +6,7 @@ import "../styles.css"
 export const SearchResultsEnglish = ({keyword}) => {
     //set prop to dummy value for now
     keyword = "diabetes";
+    //api get request
     return (
         <>
         <Container className={"pt-4"}>

@@ -17,7 +17,7 @@ export const SearchBar = () => {
 
 	const submitSearch = (values, {resetForm, setStatus}) => {
 		//TODO: probably do this with Redux
-		httpConfig.get("/apis/article/")
+		httpConfig.get("/apis/article/search/")
 			.then(reply => {
 					let {message, type} = reply;
 
