@@ -14,6 +14,7 @@ import {LogOutRoute} from "./apis/log-out/log-out.route";
 import {categoryRoute} from "./apis/category/category.route";
 import {SavedArticleRoute} from "./apis/saved-article/savedArticle.route";
 import {ArticleRoute} from "./apis/article/article.route";
+import {ArticleCategoryRoute} from "./apis/article-category/article-category.route";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -65,6 +66,7 @@ export class App {
         this.app.use('/apis/category', categoryRoute)
         this.app.use('/apis/saved-article', SavedArticleRoute)
         this.app.use('/apis/article', ArticleRoute)
+        this.app.use('/apis/article-category', ArticleCategoryRoute)
 
     }
 
