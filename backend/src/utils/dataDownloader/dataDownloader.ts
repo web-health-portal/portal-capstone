@@ -7,6 +7,7 @@ import {insertArticle} from "../article/insertArticle";
 import {insertCategory} from "../category/insertCategory";
 import {insertArticleCategory} from "../articleCategory/insertArticleCategory"
 import {selectArticleMyHealthFinderIdByMyHealthFinderId} from "../article/selectArticleMyHealthFinderIdByMyHealthFinderId";
+import formatUrlForSmallImages from "./formatUrlForSmallImages";
 
 
 /*
@@ -95,7 +96,7 @@ function dataDownloader(): Promise<any> {
                         // @ts-ignore
                         articleMyHealthFinderId: articlesEnglish[i].Id,
                         // @ts-ignore
-                        articleEnglishImageUrl: articlesEnglish[i].ImageUrl,
+                        articleEnglishImageUrl:formatUrlForSmallImages(articlesEnglish[i].ImageUrl),
                         // @ts-ignore
                         articleEnglishImageAlt: articlesEnglish[i].ImageAlt,
                         // @ts-ignore
@@ -105,7 +106,7 @@ function dataDownloader(): Promise<any> {
                         // @ts-ignore
                         articleSpanishDate: convertTimestampToMySQLDate(articlesSpanish[i].LastUpdate),
                         // @ts-ignore
-                        articleSpanishImageUrl: articlesSpanish[i].ImageUrl,
+                        articleSpanishImageUrl:formatUrlForSmallImages(articlesSpanish[i].ImageUrl),
                         // @ts-ignore
                         articleSpanishImageAlt: articlesSpanish[i].ImageAlt,
                         // @ts-ignore
