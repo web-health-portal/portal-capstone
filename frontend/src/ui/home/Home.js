@@ -5,6 +5,7 @@ import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllRandomArticles} from "../../store/article";
 import {fetchAllCategories} from "../../store/category";
+import {fetchAllArticleCategory} from "../../store/articleCategory";
 
 
 // temporary placeholder to show an example article
@@ -31,15 +32,21 @@ import {fetchAllCategories} from "../../store/category";
 
 export const Home = () => {
     const articles = useSelector((state) => state.articles ? state.articles : [])
-    const categories = useSelector((state) => state.categories ? state.categories : [])
+    const categories = useSelector(state => {
+        console.log(state.categories
+        )
+        return state.categories
+    })
+
+
 
 
     const dispatch = useDispatch()
     const initialEffects = () => {
-        dispatch(fetchAllRandomArticles())
         dispatch(fetchAllCategories())
+        dispatch(fetchAllRandomArticles())
+        // dispatch(fetchAllArticleCategory())
         // dispatch(fetchAllRandomArticlesAndAllCategories())
-
     }
 
     React.useEffect(initialEffects, [dispatch])
@@ -67,8 +74,6 @@ export const Home = () => {
                 <Row>
                     <Col md="6">
                         {articles.map(article=><Article article={article}/>)}
-                        {/*{categories.map(category=><Article category={category}/>)}*/}
-                        {/*{categories.map(category=><Article key={category.categoryId} category={category}/>)}*/}
                     </Col>
                 </Row>
         </Container>

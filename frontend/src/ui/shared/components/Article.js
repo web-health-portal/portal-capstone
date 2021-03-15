@@ -13,8 +13,8 @@ console.log(article.articleImageUrl)
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={article.articleEnglishImageUrl}
-                               alt={article.articleEnglishImageAlt}/>
+                        {/*<Image rounded fluid src={article.articleEnglishImageUrl}*/}
+                        {/*       alt={article.articleEnglishImageAlt}/>*/}
                     </Col>
                     <Col lg={9}>
                         <Container>
@@ -32,6 +32,8 @@ console.log(article.articleImageUrl)
                                     <strong>Categories: </strong>
                                     {/*map over article categories to display in p tag*/}
                                     {/*{article.articleCategories[0].categoryEnglishName}*/}
+
+
 
                                 </p>
                                 <p>

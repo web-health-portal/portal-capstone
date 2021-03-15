@@ -15,8 +15,8 @@ const articleCategorySlice = createSlice({
 
 export const {getAllArticleCategories} = articleCategorySlice.actions
 
-export const fetchAllArticleCategories = () => async (dispatch) => {
-    const {data} = await httpConfig.get("/apis/category")
+export const fetchAllArticleCategory = () => async (dispatch) => {
+    const {data} = await httpConfig.get("/apis/article-category")
     console.log("data", data)
     dispatch(getAllArticleCategories(data))
 }
