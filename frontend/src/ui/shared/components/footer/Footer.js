@@ -3,9 +3,11 @@ import "../../component.css"
 import toggle from "../../../../store/toggle";
 import {FooterSpanish} from "./FooterSpanish";
 import {FooterEnglish} from "./FooterEnglish";
+import {useSelector} from "react-redux";
 
 
 export const Footer = () => {
+    const toggle = useSelector((state) => state.toggle ? state.toggle : false);
     return (
         <>
             {
@@ -13,7 +15,6 @@ export const Footer = () => {
                 ||
                 toggle === false && <FooterEnglish/>
             }
-            <FooterEnglish/>
         </>
     )
 }
