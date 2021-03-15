@@ -1,29 +1,17 @@
 import axios from "axios";
 import {v1 as uuid} from "uuid";
+//bring in TypeScript interfaces
 import {Article} from "../interfaces/Article";
 import {ArticleCategory} from "../interfaces/ArticleCategory";
 import {Category} from "../interfaces/Category";
+//bring in MySQL functions
 import {insertArticle} from "../article/insertArticle";
 import {insertCategory} from "../category/insertCategory";
 import {insertArticleCategory} from "../articleCategory/insertArticleCategory"
 import {selectArticleMyHealthFinderIdByMyHealthFinderId} from "../article/selectArticleMyHealthFinderIdByMyHealthFinderId";
+//bring in helper functions
 import formatUrlForSmallImages from "./formatUrlForSmallImages";
-
-
-/*
-Initial ideas:
-GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
-GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
-GET all English topics https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=topic
-GET all Spanish topics https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=topic
-Use those topic IDs and category IDs to GET all the topics and categories by ID for each language. It might be easier to insert all of the categories this way, but there is a better way to GET all topics.
-The articles are essentially topics here and you can get them by data.Result.Resources. This is where the array of objects containing our articles lives. You can all GET all by leaving off the topicID in the request URL like this: https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en
-Request this for both both languages and merge them?
- */
-
-//handle categories first
-//build insert
-
+import convertTimestampToMySQLDate from "./convertTimestampToMySQLDate";
 
 function dataDownloader(): Promise<any> {
     async function main() {
@@ -36,13 +24,11 @@ function dataDownloader(): Promise<any> {
 
     return main();
 
-
     async function fetchAndInsertAllDataFromApi() {
         // GET all English categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category
         const englishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=en&type=category');
         // GET all Spanish categories https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category
         const spanishCategories = await axios('https://health.gov/myhealthfinder/api/v3/itemlist.json?lang=es&type=category');
-
         //get total categories returned from API
         const totalCategories = englishCategories.data.Result.Total;
 
@@ -128,18 +114,8 @@ function dataDownloader(): Promise<any> {
                     await insertArticleCategory(articleCategory);
                 } //END if statement to check for duplicate articles
             } //END for loop articles
-
         } //END for loop categories
-
-        function convertTimestampToMySQLDate(timestamp: number) {
-            //MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format.
-            let date = new Date(timestamp * 1000);
-            //build date time string to be a format that MySQL expects
-            let dateTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
-
-            return dateTime;
-        }
     } //END fetchAndInsertAllDateFromApiFunction function
-} //END dataDownloaderFunction
+} //END dataDownloader function
 
 dataDownloader().catch(error => console.error(error));
