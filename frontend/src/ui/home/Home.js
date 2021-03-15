@@ -15,10 +15,12 @@ export const Home = () => {
     const englishArticle = useSelector((state) => state.article.englishArticle ? state.article.englishArticle : [])
     const spanishArticle = useSelector((state) => state.article.spanishArticle ? state.article.spanishArticle : [])
     const toggle = useSelector((state) => state.toggle ? state.toggle : false);
-
+    const categories = useSelector(state => state.categories ? state.categories : [])
     // get access to dispatch from useDispatch()
+    console.log(categories)
     const dispatch = useDispatch()
     const initialEffects = () => {
+        dispatch(fetchAllCategories())
         dispatch(fetchAllRandomArticles())
     }
 

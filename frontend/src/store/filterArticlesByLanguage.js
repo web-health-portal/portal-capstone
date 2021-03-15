@@ -5,7 +5,7 @@ export const filterArticlesByLanguage = async (language, data) => {
     language = language.charAt(0).toUpperCase() + language.slice(1)
     //map through data from http request
     const articles = data.map((article) => {
-        let articleByLanguage = {articleId: article['BIN_TO_UUID(articleId)'],};
+        let articleByLanguage = {articleId: article.articleId,};
         //iterate over keys in object
         for (const articleKey in article) {
             //check the key for the language given
