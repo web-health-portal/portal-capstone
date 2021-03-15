@@ -3,8 +3,8 @@ import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "re
 import {Article} from "../shared/components/Article.js";
 import "../home/styles.css"
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllRandomArticles, fetchAllRandomArticlesAndAllCategories} from "../../store/article";
-import {fetchAllCategories, getAllCategories} from "../../store/category";
+import {fetchAllRandomArticles} from "../../store/article";
+import {fetchAllCategories} from "../../store/category";
 
 
 // temporary placeholder to show an example article
@@ -31,6 +31,8 @@ import {fetchAllCategories, getAllCategories} from "../../store/category";
 
 export const Home = () => {
     const articles = useSelector((state) => state.articles ? state.articles : [])
+    const categories = useSelector((state) => state.categories ? state.categories : [])
+
 
     const dispatch = useDispatch()
     const initialEffects = () => {
@@ -38,11 +40,9 @@ export const Home = () => {
         dispatch(fetchAllCategories())
         // dispatch(fetchAllRandomArticlesAndAllCategories())
 
-
-
     }
 
-    React.useEffect(initialEffects, [])
+    React.useEffect(initialEffects, [dispatch])
     return (
         <>
         <Container>
@@ -67,9 +67,10 @@ export const Home = () => {
                 <Row>
                     <Col md="6">
                         {articles.map(article=><Article article={article}/>)}
-
-                </Col>
-            </Row>
+                        {/*{categories.map(category=><Article category={category}/>)}*/}
+                        {/*{categories.map(category=><Article key={category.categoryId} category={category}/>)}*/}
+                    </Col>
+                </Row>
         </Container>
 </>
 )
