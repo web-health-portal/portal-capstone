@@ -1,12 +1,23 @@
 import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
 export const ArticleSpanish = (props) => {
     const {article} = props;
 
     const formattedDate = new Date(article.articleSpanishDate).toDateString();
+    const categories = useSelector(state => {
+        const articleCategories = state.articleCategory.filter(articleCategory => {
+            return articleCategory.articleCategoryArticleId === article.articleId
+        })
+        let category = []
+        for (let articleCategory of articleCategories) {
+            category.push(state.categories.find(category => category.categoryId === articleCategory.articleCategoryCategoryId))
+        }
+        return category
+    })
     return (
         <>
             <Container className={"pt-4"}>
@@ -14,7 +25,7 @@ export const ArticleSpanish = (props) => {
                     <Col lg={3}>
                         {/*Image for article*/}
                         {/*<Image rounded fluid src={article.articleSpanishImageUrl}*/}
-                        <Image rounded fluid src={"http://www.fillmurray.com/200/300"}
+                        <Image rounded fluid src={article.articleSpanishImageUrl}
                                alt={article.articleSpanishImageAlt}/>
                     </Col>
                     <Col lg={9}>
@@ -29,10 +40,7 @@ export const ArticleSpanish = (props) => {
                             </Row>
                             <Row className={"px-3"}>
                                 <p>
-                                    {/*Categories for article*/}
-                                    {/*TODO: Figure out how to add categories*/}
-                                    {/*<strong>Categories: </strong>*/}
-                                    {/*TODO: Do a map over categories here*/}
+                                    {categories.map(category => <strong>Categoria: {category.categorySpanishName} </strong>)}
                                 </p>
                                 <p>
                                     Fecha de publicación: {formattedDate}

@@ -10,7 +10,7 @@ export const Article = (props) => {
     const formattedDate = new Date(article.articleEnglishDate).toDateString();
     const categories = useSelector(state => {
         const articleCategories = state.articleCategory.filter(articleCategory => {
-        return articleCategory.articleCategoryArticleId === article.articleId
+            return articleCategory.articleCategoryArticleId === article.articleId
         })
         let category = []
         for (let articleCategory of articleCategories) {
@@ -18,14 +18,13 @@ export const Article = (props) => {
         }
         return category
     })
-    console.log(categories)
     return (
         <>
             <Container className={"pt-4"}>
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={"http://www.fillmurray.com/200/300"}
+                        <Image rounded fluid src={article.articleEnglishImageUrl}
                                alt={article.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
