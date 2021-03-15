@@ -26,5 +26,3 @@ export const fetchProfileByProfileId = () => async (dispatch, getState) => {
 		dispatch(getProfileByProfileId(data))
 	}
 }
-
-

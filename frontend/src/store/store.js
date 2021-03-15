@@ -1,9 +1,12 @@
 import auth from "./auth";
 import profile from "./profile"
-import articles from "./article";
-import categories from "./article";
+import savedArticle from "./savedArticle/savedArticle";
+import toggle from "./toggle"
+import article from "./article/article";
+import category from "./category"
+import articleCategory from "./articleCategory";
+import {configureStore, combineReducers} from '@reduxjs/toolkit'
 
+const reducer = combineReducers({auth, profile, article, savedArticle, toggle, category,articleCategory})
+export const store = configureStore({reducer});
 
-import { configureStore,combineReducers} from '@reduxjs/toolkit'
-const reducer = combineReducers({auth,profile,articles,categories})
-export default configureStore({reducer});

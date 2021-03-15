@@ -20,3 +20,5 @@ export const fetchAllCategories = () => async (dispatch) => {
     console.log("data", data)
     dispatch(getAllCategories(data))
 }
+
+export default categorySlice.reducer

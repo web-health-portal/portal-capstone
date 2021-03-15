@@ -63,7 +63,7 @@ export class App {
         this.app.use('/apis/sign-up', SignUpRoute)
         this.app.use('/apis/log-out', LogOutRoute)
         this.app.use('/apis/category', categoryRoute)
-        this.app.use('/apis/savedArticles', SavedArticleRoute)
+        this.app.use('/apis/saved-article', SavedArticleRoute)
         this.app.use('/apis/article', ArticleRoute)
 
     }

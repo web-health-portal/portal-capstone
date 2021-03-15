@@ -20,3 +20,5 @@ export const fetchAllArticleCategory = () => async (dispatch) => {
     console.log("data", data)
     dispatch(getAllArticleCategories(data))
 }
+
+export default articleCategorySlice.reducer
