@@ -2,9 +2,9 @@ import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-import articleCategory from "../../../store/articleCategory";
 
-export const Article = (props) => {
+
+export const ArticleEnglish = (props) => {
     const {article} = props;
 
     const formattedDate = new Date(article.articleEnglishDate).toDateString();
@@ -33,7 +33,7 @@ export const Article = (props) => {
                                 <Col>
                                     {/*Title for article */}
                                     <a href={article.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{article.articleEnglishTitle}</h4>
+                                        <h5>{article.articleEnglishTitle}</h5>
                                     </a>
                                 </Col>
                             </Row>

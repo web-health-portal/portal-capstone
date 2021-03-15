@@ -34,7 +34,7 @@ export const ArticleSpanish = (props) => {
                                 <Col>
                                     {/*Title for article */}
                                     <a href={article.articleSpanishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h4>{article.articleSpanishTitle}</h4>
+                                        <h5>{article.articleSpanishTitle}</h5>
                                     </a>
                                 </Col>
                             </Row>

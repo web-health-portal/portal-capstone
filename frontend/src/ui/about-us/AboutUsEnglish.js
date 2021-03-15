@@ -8,7 +8,7 @@ import {faGithub, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import './style.css'
 
 
-export const AboutUs = () => {
+export const AboutUsEnglish = () => {
     return (
         <>
             {/*DEVELOPERS TITLE*/}

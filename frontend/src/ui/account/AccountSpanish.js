@@ -3,9 +3,10 @@ import {Form, Button, Col, Container, FormControl, FormGroup, Row} from "react-b
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
-import {ArticleSpanish} from "../shared/components-spanish/ArticleSpanish";
+import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
+import "../styles.css"
 
 library.add(faCamera, faUser);
 
