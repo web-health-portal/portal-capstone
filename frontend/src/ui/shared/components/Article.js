@@ -1,12 +1,24 @@
 import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import articleCategory from "../../../store/articleCategory";
 
 export const Article = (props) => {
     const {article} = props;
 
     const formattedDate = new Date(article.articleEnglishDate).toDateString();
-
+    const categories = useSelector(state => {
+        const articleCategories = state.articleCategory.filter(articleCategory => {
+        return articleCategory.articleCategoryArticleId === article.articleId
+        })
+        let category = []
+        for (let articleCategory of articleCategories) {
+            category.push(state.categories.find(category => category.categoryId === articleCategory.articleCategoryCategoryId))
+        }
+        return category
+    })
+    console.log(categories)
     return (
         <>
             <Container className={"pt-4"}>
@@ -28,11 +40,7 @@ export const Article = (props) => {
                             </Row>
                             <Row className={"px-3"}>
                                 <p>
-
-                                    {/*Categories for article*/}
-                                    {/*TODO: Figure out how to add categories*/}
-                                    {/*<strong>Categories: </strong>*/}
-                                    {/*TODO: Do a map over categories here*/}
+                                    {categories.map(category => <strong>Categories: {category.categoryEnglishName} </strong>)}
                                 </p>
                                 <p>
                                     Date Published: {formattedDate}

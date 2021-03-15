@@ -11,7 +11,7 @@ const articleCategorySlice = createSlice({
             return action.payload
         },
         setArticleCategory: (articleCategory, action) => {
-            articleCategory.push(action.payload)
+            articleCategory.push(...action.payload)
         }
     },
 })
@@ -20,7 +20,6 @@ export const {getAllArticleCategories, setArticleCategory} = articleCategorySlic
 
 export const fetchArticleCategoryByArticleIds = () => async (dispatch, getState) => {
     const articleIds = getState().article.articleId
-    console.log(articleIds)
     for(const articleId of articleIds){
         const {data} = await httpConfig.get(`/apis/article-category/articleId/${articleId}`)
         dispatch(setArticleCategory(data))
