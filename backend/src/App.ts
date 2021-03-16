@@ -47,7 +47,7 @@ export class App {
             maxAge: "3h"
         };
 
-        this.app.use(helmet());
+        // this.app.use(helmet());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(session(sessionConfig));
