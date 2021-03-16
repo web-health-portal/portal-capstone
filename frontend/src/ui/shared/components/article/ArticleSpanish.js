@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 export const ArticleSpanish = (props) => {
     const {article} = props;
 
-    const formattedDate = new Date(article.articleSpanishDate).toDateString();
+    const formattedDate = new Date(article.articleSpanishDate).toLocaleDateString("es-ES");
     const categories = useSelector(state => {
         const articleCategories = state.articleCategory.filter(articleCategory => {
             return articleCategory.articleCategoryArticleId === article.articleId
@@ -20,11 +20,10 @@ export const ArticleSpanish = (props) => {
     })
     return (
         <>
-            <Container className={"pt-4"}>
+            <Container className={"pt-4 border rounded"}>
                 <Row>
                     <Col lg={3}>
                         {/*Image for article*/}
-                        {/*<Image rounded fluid src={article.articleSpanishImageUrl}*/}
                         <Image rounded fluid src={article.articleSpanishImageUrl}
                                alt={article.articleSpanishImageAlt}/>
                     </Col>
@@ -39,15 +38,19 @@ export const ArticleSpanish = (props) => {
                                 </Col>
                             </Row>
                             <Row className={"px-3"}>
-                                <p>
-                                    <strong>Categoria:</strong>
+                                <Col className={"col-6"}>
+                                    <p>
+                                        <strong className={"mr-1"}>Categoria: </strong>
                                         {categories.map(category => category.categorySpanishName)}
-                                </p>
-                                <p>
-                                    Fecha de publicación: {formattedDate}
-                                </p>
+                                    </p>
+                                </Col>
+                                <Col className={"col-6"}>
+                                    <p>
+                                        Fecha de publicación: {formattedDate}
+                                    </p>
+                                </Col>
                             </Row>
-                            <Row>
+                            <Row className={"px-3"}>
                                 <Link to={"#"} className={"px-3 text-sm-left"}>Salvar</Link>
                                 <Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>
                             </Row>

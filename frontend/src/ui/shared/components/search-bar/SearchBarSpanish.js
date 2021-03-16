@@ -3,12 +3,18 @@ import {httpConfig} from "../../utils/http-config"
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {SearchBarContentSpanish} from "./SeachBarContentSpanish";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {fetchArticleSearchResults} from "../../../../store/article/article";
 
 export const SearchBarSpanish = () => {
+	let history = useHistory();
+
 	const search = {
 		searchKeyword: "",
 	};
 
+	const dispatch = useDispatch()
 	const validator = Yup.object().shape({
 		searchKeyword: Yup.string()
 			.required("Introduzca una palabra clave por la que buscar.")
@@ -16,15 +22,17 @@ export const SearchBarSpanish = () => {
 	});
 
 	const submitSearch = (values, {resetForm, setStatus}) => {
-		//TODO: probably do this with Redux
-		httpConfig.get("/apis/article/")
+		httpConfig.get(`/apis/article/search/${values.searchKeyword}`)
 			.then(reply => {
-					let {message, type} = reply;
+					let {message, type, data} = reply;
+					console.log(data)
 
 					if(reply.status === 200) {
 						resetForm();
 					}
-					setStatus({message, type});
+					dispatch(fetchArticleSearchResults(data))
+					history.push("/search-results");
+
 				}
 			);
 	};
