@@ -6,13 +6,14 @@ import {LogInModalSpanish} from "../log-in/LogInModalSpanish";
 import {SignUpModalSpanish} from "../sign-up/SignUpModalSpanish";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../../../store/auth";
+import saluduoLogo from "../../../images/saluduo-logo.png";
 
 export const NavigationBarSpanish = () => {
 
     return (
         <>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">SaluDuo</Navbar.Brand>
+                <Navbar.Brand href="#home"><img src={saluduoLogo} alt={"Saluduo Logo"} className={"logo-saluduo"} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
