@@ -40,7 +40,8 @@ export const ArticleSpanish = (props) => {
                             </Row>
                             <Row className={"px-3"}>
                                 <p>
-                                    {categories.map(category => <strong>Categoria: {category.categorySpanishName} </strong>)}
+                                    <strong>Categoria:</strong>
+                                        {categories.map(category => category.categorySpanishName)}
                                 </p>
                                 <p>
                                     Fecha de publicación: {formattedDate}

@@ -39,7 +39,8 @@ export const ArticleEnglish = (props) => {
                             </Row>
                             <Row className={"px-3"}>
                                 <p>
-                                    {categories.map(category => <strong>Categories: {category.categoryEnglishName} </strong>)}
+                                    <strong>Categories:</strong>
+                                    {categories.map(category => category.categoryEnglishName)}
                                 </p>
                                 <p>
                                     Date Published: {formattedDate}
