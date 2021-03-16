@@ -15,7 +15,7 @@ import {categoryRoute} from "./apis/category/category.route";
 import {SavedArticleRoute} from "./apis/saved-article/savedArticle.route";
 import {ArticleRoute} from "./apis/article/article.route";
 import {ArticleCategoryRoute} from "./apis/article-category/article-category.route";
-// import helmet from "helmet";
+import helmet from "helmet";
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -47,7 +47,7 @@ export class App {
             maxAge: "3h"
         };
 
-        // this.app.use(helmet());
+        this.app.use(helmet());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(session(sessionConfig));
