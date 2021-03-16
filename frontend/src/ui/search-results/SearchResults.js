@@ -4,7 +4,7 @@ import {SearchResultsEnglish} from "./SearchResultsEnglish";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchArticleCategoryByArticleIds} from "../../store/articleCategory";
 
-export const SearchResult = ({keyword}) => {
+export const SearchResults = ({keyword}) => {
 
     const toggle = useSelector((state) => state.toggle ? state.toggle : false);
     return (
