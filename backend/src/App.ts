@@ -3,7 +3,6 @@ import morgan from 'morgan'
 const session = require("express-session");
 const passport = require("passport");
 const MemoryStore = require('memorystore')(session);
-// const helmet = require("helmet");
 import csrf from "csurf";
 // Routes
 import IndexRoutes from './apis/index.route'
@@ -16,6 +15,7 @@ import {categoryRoute} from "./apis/category/category.route";
 import {SavedArticleRoute} from "./apis/saved-article/savedArticle.route";
 import {ArticleRoute} from "./apis/article/article.route";
 import {ArticleCategoryRoute} from "./apis/article-category/article-category.route";
+// import helmet from "helmet";
 
 // The following class creates the app and instantiates the server
 export class App {
