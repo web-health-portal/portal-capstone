@@ -3,12 +3,15 @@ import {httpConfig} from "../../utils/http-config"
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {SearchBarContent} from "./SearchBarContent";
+import {useDispatch} from "react-redux";
+import {fetchArticleSearchResults} from "../../../../store/article/article";
 
 export const SearchBar = () => {
 	const search = {
+
 		searchKeyword: "",
 	};
-
+	const dispatch = useDispatch()
 	const validator = Yup.object().shape({
 		searchKeyword: Yup.string()
 			.required("Please enter a keyword to search by.")
@@ -25,7 +28,7 @@ export const SearchBar = () => {
 					if(reply.status === 200) {
 						resetForm();
 					}
-					setStatus({message, type});
+					dispatch(fetchArticleSearchResults(data))
 				}
 			);
 	};

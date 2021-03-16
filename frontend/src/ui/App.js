@@ -18,7 +18,7 @@ export const App = (store) => {
                 <BrowserRouter>
                     <NavigationBar/>
                     <Switch>
-                        <Route exact path='/search-results' component={SearchResults}/>
+                        {/*<Route exact path='/search-results' component={SearchResults}/>*/}
                         <Route exact path='/account' component={Account}/>
                         <Route exact path='/about-us' component={AboutUs}/>
                         <Route exact path='/' component={Home}/>
