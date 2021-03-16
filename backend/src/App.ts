@@ -3,6 +3,7 @@ import morgan from 'morgan'
 const session = require("express-session");
 const passport = require("passport");
 const MemoryStore = require('memorystore')(session);
+const helmet = require("helmet");
 import csrf from "csurf";
 // Routes
 import IndexRoutes from './apis/index.route'
@@ -46,6 +47,7 @@ export class App {
             maxAge: "3h"
         };
 
+        this.app.use(helmet());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(session(sessionConfig));
