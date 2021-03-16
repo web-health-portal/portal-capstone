@@ -2,30 +2,26 @@ import React from "react"
 import {Button, Col, Container, Form, FormControl, FormGroup, Row} from "react-bootstrap";
 import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
 import "../styles.css"
+import {SearchBar} from "../shared/components/search-bar/SearchBar";
 
-export const SearchResultsEnglish = ({keyword}) => {
-    //set prop to dummy value for now
-    keyword = "diabetes";
+export const SearchResultsEnglish = (props) => {
+    const {keyword} = props
+    const {englishArticle} = props
     return (
         <>
         <Container className={"pt-4"}>
             <Col md={8} className={"pt-3"}>
                 <h3>Search Results for {keyword}</h3>
                 <Row>
-                    <Form inline className={"mx-3"}>
-                        <FormGroup className={"container d-flex justify-content-between"}>
-                            <FormControl type="text" placeholder="Another Search" className="mr-md-2"/>
-                            <Button variant="primary" className={"py-sm-2 ml-2"}>Search</Button>
-                        </FormGroup>
-                    </Form>
+                    <SearchBar/>
                 </Row>
             </Col>
         </Container>
         <Container>
             <Col>
-                {/*{*/}
-                {/*    englishSearchResult.map(keyword => <ArticleEnglish/>)*/}
-                {/*}*/}
+                {
+                    englishArticle.map(article => <ArticleEnglish key={article.articleId} article={article}/>)
+                }
             </Col>
 
         </Container>

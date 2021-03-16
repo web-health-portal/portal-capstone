@@ -5,9 +5,12 @@ import {Formik} from "formik";
 import {SearchBarContent} from "./SearchBarContent";
 import {useDispatch} from "react-redux";
 import {fetchArticleSearchResults} from "../../../../store/article/article";
+import {useHistory} from "react-router-dom";
 
 export const SearchBar = () => {
-	const search = {
+	let history = useHistory();
+
+	const searchResults = {
 
 		searchKeyword: "",
 	};
@@ -20,7 +23,7 @@ export const SearchBar = () => {
 
 	const submitSearch = (values, {resetForm, setStatus}) => {
 		//TODO: probably do this with Redux
-		httpConfig.get(`/apis/article/search/${search.searchKeyword}`)
+		httpConfig.get(`/apis/article/search/${values.searchKeyword}`)
 			.then(reply => {
 					let {message, type, data} = reply;
 					console.log(data)
@@ -29,6 +32,8 @@ export const SearchBar = () => {
 						resetForm();
 					}
 					dispatch(fetchArticleSearchResults(data))
+					history.push("/search-results");
+
 				}
 			);
 	};
@@ -37,7 +42,7 @@ export const SearchBar = () => {
 	return (
 
 		<Formik
-			initialValues={search}
+			initialValues={searchResults}
 			onSubmit={submitSearch}
 			validationSchema={validator}
 		>
