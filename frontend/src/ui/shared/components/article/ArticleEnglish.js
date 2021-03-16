@@ -1,5 +1,5 @@
 import React from "react"
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
@@ -20,11 +20,11 @@ export const ArticleEnglish = (props) => {
     })
     return (
         <>
-            <Container className={"pt-4 border rounded"}>
+            <Container className={"mt-4 py-2 border rounded drop-shadow"}>
                 <Row>
-                    <Col lg={3}>
+                    <Col lg={3} className={"flex-row justify-content-center"}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={article.articleEnglishImageUrl}
+                        <Image rounded fluid className={"article-image"} src={article.articleEnglishImageUrl}
                                alt={article.articleEnglishImageAlt}/>
                     </Col>
                     <Col lg={9}>
@@ -33,18 +33,18 @@ export const ArticleEnglish = (props) => {
                                 <Col>
                                     {/*Title for article */}
                                     <a href={article.articleEnglishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h5>{article.articleEnglishTitle}</h5>
+                                        <h5 className={"pt-2"}>{article.articleEnglishTitle}</h5>
                                     </a>
                                 </Col>
                             </Row>
-                            <Row className={"px-3"}>
-                                <Col className={"col-6"}>
+                            <Row className={"px-3 py-2"}>
+                                <Col className={"col-12"}>
                                     <p>
                                         <strong className={"mr-1"}>Category: </strong>
                                         {categories.map(category => category.categoryEnglishName)}
                                     </p>
                                 </Col>
-                                <Col className={"col-6"}>
+                                <Col className={"col-12"}>
                                     <p>
                                         Date Published: {formattedDate}
                                     </p>
