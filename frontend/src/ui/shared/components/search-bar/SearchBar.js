@@ -4,16 +4,16 @@ import * as Yup from "yup";
 import {Formik} from "formik";
 import {SearchBarContent} from "./SearchBarContent";
 import {useDispatch} from "react-redux";
-import {fetchArticleSearchResults} from "../../../../store/article/article";
 import {useHistory} from "react-router-dom";
+import {fetchArticleSearchResults} from "../../../../store/article/article";
 
 export const SearchBar = () => {
 	let history = useHistory();
 
 	const searchResults = {
-
 		searchKeyword: "",
 	};
+
 	const dispatch = useDispatch()
 	const validator = Yup.object().shape({
 		searchKeyword: Yup.string()
@@ -22,7 +22,6 @@ export const SearchBar = () => {
 	});
 
 	const submitSearch = (values, {resetForm, setStatus}) => {
-		//TODO: probably do this with Redux
 		httpConfig.get(`/apis/article/search/${values.searchKeyword}`)
 			.then(reply => {
 					let {message, type, data} = reply;
@@ -33,7 +32,6 @@ export const SearchBar = () => {
 					}
 					dispatch(fetchArticleSearchResults(data))
 					history.push("/search-results");
-
 				}
 			);
 	};
