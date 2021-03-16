@@ -23,7 +23,9 @@ export const SearchResultsEnglish = ({keyword}) => {
         </Container>
         <Container>
             <Col>
-                {/*TODO: map over articles here*/}
+                {/*{*/}
+                {/*    englishSearchResult.map(keyword => <ArticleEnglish/>)*/}
+                {/*}*/}
             </Col>
 
         </Container>

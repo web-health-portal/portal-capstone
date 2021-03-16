@@ -1,8 +1,8 @@
 import React from "react"
 import {SearchResultsSpanish} from "./SearchResultsSpanish";
 import {SearchResultsEnglish} from "./SearchResultsEnglish";
-import {useSelector} from "react-redux";
-
+import {useDispatch, useSelector} from "react-redux";
+import {fetchArticleCategoryByArticleIds} from "../../store/articleCategory";
 
 export const SearchResults = ({keyword}) => {
 
@@ -17,3 +17,7 @@ export const SearchResults = ({keyword}) => {
         </>
     )
 }
+
+
+
+

@@ -19,7 +19,8 @@ export const SearchBar = () => {
 		//TODO: probably do this with Redux
 		httpConfig.get("/apis/article/")
 			.then(reply => {
-					let {message, type} = reply;
+					let {message, type, data} = reply;
+					console.log(data)
 
 					if(reply.status === 200) {
 						resetForm();

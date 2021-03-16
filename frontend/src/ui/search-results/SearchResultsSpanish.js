@@ -2,6 +2,7 @@ import React from "react"
 import {Button, Col, Container, Form, FormControl, FormGroup, Row} from "react-bootstrap";
 import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
 import "../styles.css"
+import article from "../../store/article/article";
 
 export const SearchResultsSpanish = ({keyword}) => {
     //set prop to dummy value for now
@@ -24,7 +25,9 @@ export const SearchResultsSpanish = ({keyword}) => {
             <Container>
                 <Row>
                     <Col>
-                        {/*TODO: map over articles here*/}
+                        {/*{*/}
+                        {/*    spanishSearchResult.map(keyword => <ArticleSpanish/>)*/}
+                        {/*}*/}
                     </Col>
                 </Row>
             </Container>

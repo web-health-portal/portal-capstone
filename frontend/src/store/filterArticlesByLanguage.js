@@ -1,6 +1,6 @@
 import {httpConfig} from "../utils/httpConfig";
 
-export const filterArticlesByLanguage = async (language, data) => {
+export const filterArticlesByLanguage = (language, data) => {
     //ensure that the language passed in has an upper case letter for first letter
     language = language.charAt(0).toUpperCase() + language.slice(1)
     //map through data from http request

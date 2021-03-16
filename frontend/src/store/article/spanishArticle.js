@@ -10,10 +10,13 @@ const spanishArticleSlice = createSlice({
         },
         getAllRandomSpanishArticles: (spanishArticle, action) => {
             return action.payload
+        },
+        getSearchResultsSpanish: (spanishArticle, action) => {
+            return action.payload
         }
     },
 })
 
-export const {setAllRandomSpanishArticles, getAllRandomSpanishArticles} = spanishArticleSlice.actions
+export const {setAllRandomSpanishArticles, getAllRandomSpanishArticles, getSearchResultsSpanish} = spanishArticleSlice.actions
 
 export default spanishArticleSlice.reducer
