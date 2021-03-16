@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Container, Row, Col, FormControl, FormGroup, Jumbotron} from "react-bootstrap";
+import {Container, Row, Col, Jumbotron} from "react-bootstrap";
 import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
 import {SearchBar} from "../shared/components/search-bar/SearchBar";
 import "../home/styles.css"

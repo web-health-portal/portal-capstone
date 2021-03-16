@@ -20,11 +20,11 @@ export const ArticleSpanish = (props) => {
     })
     return (
         <>
-            <Container className={"pt-4 border rounded"}>
+            <Container className={"mt-4 py-2 border rounded drop-shadow"}>
                 <Row>
-                    <Col lg={3}>
+                    <Col lg={3} className={"flex-row justify-content-center"}>
                         {/*Image for article*/}
-                        <Image rounded fluid src={article.articleSpanishImageUrl}
+                        <Image rounded fluid className={"article-image"} src={article.articleSpanishImageUrl}
                                alt={article.articleSpanishImageAlt}/>
                     </Col>
                     <Col lg={9}>
@@ -33,18 +33,18 @@ export const ArticleSpanish = (props) => {
                                 <Col>
                                     {/*Title for article */}
                                     <a href={article.articleSpanishUrl} target="_blank" rel={"noreferrer"}>
-                                        <h5>{article.articleSpanishTitle}</h5>
+                                        <h5 className={"pt-2"}>{article.articleSpanishTitle}</h5>
                                     </a>
                                 </Col>
                             </Row>
-                            <Row className={"px-3"}>
-                                <Col className={"col-6"}>
+                            <Row className={"px-3 py-2"}>
+                                <Col className={"col-12"}>
                                     <p>
                                         <strong className={"mr-1"}>Categoria: </strong>
                                         {categories.map(category => category.categorySpanishName)}
                                     </p>
                                 </Col>
-                                <Col className={"col-6"}>
+                                <Col className={"col-12"}>
                                     <p>
                                         Fecha de publicación: {formattedDate}
                                     </p>

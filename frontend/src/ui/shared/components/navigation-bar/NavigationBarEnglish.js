@@ -1,5 +1,6 @@
 import React, {useEffect} from "react"
 import {Nav, Navbar} from "react-bootstrap";
+import saluduoLogo from "../../../images/saluduo-logo.png"
 import {LanguageToggle} from "../LanguageToggle";
 import {Link} from "react-router-dom";
 import {LogInModal} from "../log-in/LogInModal";
@@ -12,7 +13,7 @@ export const NavigationBarEnglish = () => {
     return (
         <>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">SaluDuo</Navbar.Brand>
+                <Navbar.Brand href="#home"><img src={saluduoLogo} alt={"Saluduo Logo"} className={"logo-saluduo"} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">

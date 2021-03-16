@@ -1,5 +1,9 @@
 /*FOOTER START*/
 
+:root {
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 section {
     margin-top: 10em;
     border-top: 2px solid;
@@ -20,5 +24,20 @@ section {
 .logo:hover {
     transform: translateY(-2px);
 }
+
+.logo-saluduo {
+    width: 10rem;
+    height: auto;
+}
+
+.article-image {
+    width: 20rem;
+    height: auto;
+}
+
+.drop-shadow {
+    box-shadow: var(--box-shadow);
+}
+
 
 /*FOOTER END*/
