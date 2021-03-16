@@ -21,4 +21,9 @@ section {
     transform: translateY(-2px);
 }
 
+.logo-saluduo {
+    width: 10rem;
+    height: auto;
+}
+
 /*FOOTER END*/
