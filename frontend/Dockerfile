@@ -1,6 +1,6 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:12 as build-stage
-RUN npm i npm@latest -g
+#RUN npm i npm@latest -g
 RUN mkdir /home/node/app
 WORKDIR ./home/node/app
 RUN chown node:node ./
