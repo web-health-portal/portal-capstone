@@ -44,7 +44,6 @@ export const ArticleEnglish = (props) => {
                                 </p>
                                 <p>
                                     Date Published: {formattedDate}
-
                                 </p>
                             </Row>
                             <Row>
