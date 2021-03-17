@@ -5,9 +5,21 @@ import {Link} from "react-router-dom";
 import {LogInModalSpanish} from "../log-in/LogInModalSpanish";
 import {SignUpModalSpanish} from "../sign-up/SignUpModalSpanish";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAuth} from "../../../../store/auth";
+import {fetchAuth, getAuth} from "../../../../store/auth";
+import {httpConfig} from "../../../../utils/httpConfig";
 
 export const NavigationBarSpanish = () => {
+    const dispatch = useDispatch()
+    const logOut = () => {
+        httpConfig.get('/apis/log-out/').then(reply => {
+
+            if (reply.status === 200) {
+                window.localStorage.removeItem('authorization')
+                dispatch(getAuth(null))
+
+            }
+        })
+    }
 
     return (
         <>
@@ -19,7 +31,7 @@ export const NavigationBarSpanish = () => {
                         <Link to="/" className={"nav-link px-3"}>Inicio</Link>
                         <Link to="/account" className={"nav-link px-3"}>Perfil</Link>
                         <LogInModalSpanish/>
-                        <Link to="/log-out" className={"nav-link px-3"}>Cerrar Sesión</Link>
+                        <Link className={"nav-link px-3"} onClick={logOut}>Cerrar Sesión</Link>
                         <SignUpModalSpanish/>
                     </Nav>
                 </Navbar.Collapse>
