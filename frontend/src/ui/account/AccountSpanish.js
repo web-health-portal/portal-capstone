@@ -48,15 +48,7 @@ export const AccountSpanish = (props) => {
                         </Row>
                     </Col>
                     <Col md={8} className={"pt-3"}>
-                        <h3>Buscar Artículos Guardados</h3>
-                        <Row>
-                            <Form inline className={"mx-3"}>
-                                <FormGroup className={"container d-flex justify-content-between"}>
-                                    <FormControl type="text" placeholder="Busque sus articulos" className="mr-md-2"/>
-                                    <Button variant="primary" className={"py-sm-2 ml-2"}>Buscar</Button>
-                                </FormGroup>
-                            </Form>
-                        </Row>
+                        <h3>Historial de Artículos Guardados</h3>
                         <Row>
                             <Container>
                                 <Row>
