@@ -22,11 +22,6 @@ export const LogInFormContentSpanish = (props) => {
                 <div className="form-group">
                     <label htmlFor="profileEmailAddress">Correo electrónico</label>
                     <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="envelope"/>
-                            </div>
-                        </div>
                         <input
                             className="form-control"
                             id="profileEmailAddress"
@@ -51,11 +46,6 @@ export const LogInFormContentSpanish = (props) => {
                 <div className="form-group">
                     <label htmlFor="profilePassword">Contraseña</label>
                     <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="key"/>
-                            </div>
-                        </div>
                         <input
                             id="profilePassword"
                             className="form-control"
@@ -72,7 +62,7 @@ export const LogInFormContentSpanish = (props) => {
                 </div>
 
                 <div className="form-group">
-                    <button className="btn btn-primary mb-2" type="submit">Enviar</button>
+                    <button className="btn btn-primary mb-2 mr-2" type="submit">Enviar</button>
                     <button
                         className="btn btn-danger mb-2"
                         onClick={handleReset}
@@ -80,7 +70,7 @@ export const LogInFormContentSpanish = (props) => {
                     >Reset
                     </button>
                 </div>
-                <FormDebugger {...props} />
+                {/*<FormDebugger {...props} />*/}
             </form>
             {status && (<div className={status.type}>{status.message}</div>)}
         </>

@@ -1,4 +1,3 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../FormDebugger";
 import React from "react";
 
@@ -22,11 +21,6 @@ export const LogInFormContent = (props) => {
                 <div className="form-group">
                     <label htmlFor="profileEmailAddress">Email Address</label>
                     <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="envelope"/>
-                            </div>
-                        </div>
                         <input
                             className="form-control"
                             id="profileEmailAddress"
@@ -51,11 +45,6 @@ export const LogInFormContent = (props) => {
                 <div className="form-group">
                     <label htmlFor="profilePassword">Password</label>
                     <div className="input-group">
-                        <div className="input-group-prepend">
-                            <div className="input-group-text">
-                                <FontAwesomeIcon icon="key"/>
-                            </div>
-                        </div>
                         <input
                             id="profilePassword"
                             className="form-control"
@@ -72,7 +61,7 @@ export const LogInFormContent = (props) => {
                 </div>
 
                 <div className="form-group">
-                    <button className="btn btn-primary mb-2" type="submit">Log In</button>
+                    <button className="btn btn-primary mb-2 mr-2" type="submit">Log In</button>
                     <button
                         className="btn btn-danger mb-2"
                         onClick={handleReset}
