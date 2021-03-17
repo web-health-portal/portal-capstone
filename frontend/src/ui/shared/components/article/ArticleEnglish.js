@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config";
 import {fetchAuth} from "../../../../store/auth";
-
+import _ from "lodash";
 
 export const ArticleEnglish = (props) => {
 
@@ -40,7 +40,7 @@ export const ArticleEnglish = (props) => {
         for (let articleCategory of articleCategories) {
             category.push(state.categories.find(category => category.categoryId === articleCategory.articleCategoryCategoryId))
         }
-        return category
+        return _.uniq(category)
     })
     return (
         <>

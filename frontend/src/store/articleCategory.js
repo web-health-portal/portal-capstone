@@ -1,12 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {httpConfig} from "../ui/shared/utils/http-config";
-import lodash from "lodash"
 
 const articleCategorySlice = createSlice({
     name: "articleCategory",
     initialState: [],
     reducers: {
-
         getAllArticleCategories: (articleCategory, action) => {
             return action.payload
         },
@@ -20,7 +18,7 @@ export const {getAllArticleCategories, setArticleCategory} = articleCategorySlic
 
 export const fetchArticleCategoryByArticleIds = () => async (dispatch, getState) => {
     const articleIds = getState().article.articleId
-    for(const articleId of articleIds){
+    for (const articleId of articleIds) {
         const {data} = await httpConfig.get(`/apis/article-category/articleId/${articleId}`)
         dispatch(setArticleCategory(data))
     }
