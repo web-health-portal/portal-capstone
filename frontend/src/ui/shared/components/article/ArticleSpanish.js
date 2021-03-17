@@ -2,6 +2,7 @@ import React from "react"
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import _ from "lodash";
 
 
 export const ArticleSpanish = (props) => {
@@ -16,7 +17,7 @@ export const ArticleSpanish = (props) => {
         for (let articleCategory of articleCategories) {
             category.push(state.categories.find(category => category.categoryId === articleCategory.articleCategoryCategoryId))
         }
-        return category
+        return _.uniq(category);
     })
     return (
         <>
