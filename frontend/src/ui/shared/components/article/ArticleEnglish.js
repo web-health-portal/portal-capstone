@@ -1,13 +1,37 @@
 import React from "react"
-import {Card, Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {httpConfig} from "../../utils/http-config";
+import {fetchAuth} from "../../../../store/auth";
 
 
 export const ArticleEnglish = (props) => {
+
     const {article} = props;
 
+
     const formattedDate = new Date(article.articleEnglishDate).toLocaleDateString("en-US");
+
+
+    const saveArticleOnClick = () => {
+        httpConfig.post("/apis/saved-article/", {savedArticleArticleId: article.articleId})
+            .then(reply => {
+                if (reply.status === 200) {
+                }
+                alert(reply.message)
+            })
+    }
+
+    const auth = useSelector(state => state.auth ? state.auth : null);
+    console.log(auth)
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAuth())
+    }
+
+    React.useEffect(initialEffects,[dispatch])
+
     const categories = useSelector(state => {
         const articleCategories = state.articleCategory.filter(articleCategory => {
             return articleCategory.articleCategoryArticleId === article.articleId
@@ -50,9 +74,8 @@ export const ArticleEnglish = (props) => {
                                     </p>
                                 </Col>
                             </Row>
-                            <Row className={"px-3"}>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Save</Link>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Remove</Link>
+                            <Row>
+                                {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Save</Button> </>}
                             </Row>
                         </Container>
                     </Col>
