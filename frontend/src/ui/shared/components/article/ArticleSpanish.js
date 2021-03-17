@@ -67,7 +67,7 @@ export const ArticleSpanish = (props) => {
                                 </Col>
                                 <Col className={"col-12"}>
                                     <p>
-                                        Fecha de publicación: {formattedDate}
+                                        <strong>Fecha de publicación:</strong> {formattedDate}
                                     </p>
                                 </Col>
                             </Row>
