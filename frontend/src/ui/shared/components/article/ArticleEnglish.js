@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config";
 import {fetchAuth} from "../../../../store/auth";
+import savedArticle from "../../../../store/savedArticle/savedArticle";
+
 
 
 export const ArticleEnglish = (props) => {
@@ -19,6 +21,17 @@ export const ArticleEnglish = (props) => {
                 alert(reply.message)
             })
     }
+
+    const deleteSavedArticleOnClick = () => {
+        httpConfig.post("/apis/saved-article/", {savedArticleArticleId: article.articleId})
+            .then(reply => {
+                if (reply.status === 200) {
+                }
+                alert(reply.message)
+            })
+    }
+
+
 
     const auth = useSelector(state => state.auth ? state.auth : null);
     console.log(auth)
@@ -70,6 +83,9 @@ export const ArticleEnglish = (props) => {
                             </Row>
                             <Row>
                                 {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Save</Button> </>}
+                                {auth !== null && <><Button onClick={deleteSavedArticleOnClick} className={"mx-3 px-3 text-sm-left"}>Delete</Button> </>}
+
+                                {/*{logged in profile id === tweet.tweetProfileId ? <button onclick={deleteTweet}>Delete</button> : ""}*/}
                                 {/*<Link to={"#"} className={"px-3 text-sm-left"}>Save</Link>*/}
                                 {/*<Link to={"#"} className={"px-3 text-sm-left"}>Remove</Link>*/}
                             </Row>
