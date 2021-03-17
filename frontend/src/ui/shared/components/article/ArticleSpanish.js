@@ -1,11 +1,32 @@
 import React from "react"
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {httpConfig} from "../../utils/http-config";
+import {fetchAuth} from "../../../../store/auth";
 
 
 export const ArticleSpanish = (props) => {
+
     const {article} = props;
+
+    const saveArticleOnClick = () => {
+        httpConfig.post("/apis/saved-article/", {savedArticleArticleId: article.articleId})
+            .then(reply => {
+                if (reply.status === 200) {
+                }
+                alert(reply.message)
+            })
+    }
+
+    const auth = useSelector(state => state.auth ? state.auth : null);
+    console.log(auth)
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAuth())
+    }
+
+    React.useEffect(initialEffects,[dispatch])
 
     const formattedDate = new Date(article.articleSpanishDate).toDateString();
     const categories = useSelector(state => {
@@ -48,8 +69,9 @@ export const ArticleSpanish = (props) => {
                                 </p>
                             </Row>
                             <Row>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Salvar</Link>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>
+                                {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Guardar</Button> </>}
+                                {/*<Link to={"#"} className={"px-3 text-sm-left"}>Salvar</Link>*/}
+                                {/*<Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>*/}
                             </Row>
                         </Container>
                     </Col>

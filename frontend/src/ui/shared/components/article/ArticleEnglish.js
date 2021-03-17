@@ -2,9 +2,7 @@ import React from "react"
 import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import savedArticle from "../../../../store/savedArticle/savedArticle";
 import {httpConfig} from "../../utils/http-config";
-import {getAllEnglishSavedArticles} from "../../../../store/savedArticle/englishSavedArticle";
 import {fetchAuth} from "../../../../store/auth";
 
 
