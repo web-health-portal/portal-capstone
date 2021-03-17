@@ -12,12 +12,13 @@ library.add(faCamera, faUser);
 
 
 export const AccountEnglish = (props) => {
-
     const {englishSavedArticle} = props;
+    const {username} = props;
 
     return (
         <>
             <h1 className={"mx-3"}>Account</h1>
+            <h3 className={"mx-3"}>{`Hello ${username}`}</h3>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>
@@ -34,19 +35,11 @@ export const AccountEnglish = (props) => {
                         </Row>
                     </Col>
                     <Col md={8} className={"pt-3"}>
-                        <h3>Search Saved Articles</h3>
-                        <Row>
-                            <Form inline className={"mx-3"}>
-                                <FormGroup className={"container d-flex justify-content-between"}>
-                                    <FormControl type="text" placeholder="Search Your Articles" className="mr-md-2"/>
-                                    <Button variant="primary" className={"py-sm-2 ml-2"}>Search</Button>
-                                </FormGroup>
-                            </Form>
-                        </Row>
+                        <h3>Your Saved Articles</h3>
                         <Row>
                             <Container>
                                 <Row>
-                                    <Col>
+                                    <Col className={"article-grid"}>
                                         {
                                             englishSavedArticle.map(article => <ArticleEnglish key={article.articleId}
                                                                                                article={article}/>)

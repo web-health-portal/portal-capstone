@@ -9,23 +9,23 @@ export const SearchResultsEnglish = (props) => {
     const {englishArticle} = props
     return (
         <>
-        <Container className={"pt-4"}>
-            <Col md={8} className={"pt-3"}>
-                <h3>Search Results for {keyword}</h3>
-                <Row>
-                    <SearchBar/>
-                </Row>
-            </Col>
-        </Container>
-        <Container>
-            <Col>
-                {
-                    englishArticle.map(article => <ArticleEnglish key={article.articleId} article={article}/>)
-                }
-            </Col>
+            <Container className={"pt-4 border rounded drop-shadow"}>
+                <Col md={8} className={"pt-3"}>
+                    <h3>Search Results for {keyword}</h3>
+                    <Row>
+                        <SearchBar/>
+                    </Row>
+                </Col>
+            </Container>
+            <Container>
+                <Col className={"article-grid"}>
+                    {
+                        englishArticle.map(article => <ArticleEnglish key={article.articleId} article={article}/>)
+                    }
+                </Col>
 
-        </Container>
+            </Container>
 
-    </>
-)
+        </>
+    )
 }

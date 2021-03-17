@@ -1,13 +1,34 @@
 import React from "react"
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {httpConfig} from "../../utils/http-config";
+import {fetchAuth} from "../../../../store/auth";
+import _ from "lodash";
 
 
 export const ArticleSpanish = (props) => {
     const {article} = props;
 
     const formattedDate = new Date(article.articleSpanishDate).toLocaleDateString("es-ES");
+
+    const saveArticleOnClick = () => {
+        httpConfig.post("/apis/saved-article/", {savedArticleArticleId: article.articleId})
+            .then(reply => {
+                if (reply.status === 200) {
+                }
+                alert(reply.message)
+            })
+    }
+
+    const auth = useSelector(state => state.auth ? state.auth : null);
+    const dispatch = useDispatch()
+    const initialEffects = () => {
+        dispatch(fetchAuth())
+    }
+
+    React.useEffect(initialEffects, [dispatch])
+
     const categories = useSelector(state => {
         const articleCategories = state.articleCategory.filter(articleCategory => {
             return articleCategory.articleCategoryArticleId === article.articleId
@@ -16,7 +37,7 @@ export const ArticleSpanish = (props) => {
         for (let articleCategory of articleCategories) {
             category.push(state.categories.find(category => category.categoryId === articleCategory.articleCategoryCategoryId))
         }
-        return category
+        return _.uniq(category);
     })
     return (
         <>
@@ -46,13 +67,12 @@ export const ArticleSpanish = (props) => {
                                 </Col>
                                 <Col className={"col-12"}>
                                     <p>
-                                        Fecha de publicación: {formattedDate}
+                                        <strong>Fecha de publicación:</strong> {formattedDate}
                                     </p>
                                 </Col>
                             </Row>
-                            <Row className={"px-3"}>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Salvar</Link>
-                                <Link to={"#"} className={"px-3 text-sm-left"}>Borrar</Link>
+                            <Row className={"d-flex justify-content-end"}>
+                                {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Guardar</Button> </>}
                             </Row>
                         </Container>
                     </Col>

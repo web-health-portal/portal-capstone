@@ -6,9 +6,21 @@ import {Link} from "react-router-dom";
 import {LogInModal} from "../log-in/LogInModal";
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAuth} from "../../../../store/auth";
+import {getAuth} from "../../../../store/auth";
+import {httpConfig} from "../../../../utils/httpConfig";
 
 export const NavigationBarEnglish = () => {
+    const dispatch = useDispatch()
+    const logOut = () => {
+        httpConfig.get('/apis/log-out/').then(reply => {
+
+            if (reply.status === 200) {
+                window.localStorage.removeItem('authorization')
+                dispatch(getAuth(null))
+
+            }
+        })
+    }
 
     return (
         <>
@@ -20,7 +32,7 @@ export const NavigationBarEnglish = () => {
                         <Link to="/" className={"nav-link px-3"}>Home</Link>
                         <Link to="/account" className={"nav-link px-3"}>Account</Link>
                         <LogInModal/>
-                        <Link to="/log-out" className={"nav-link px-3"}>Log Out</Link>
+                        <Link className={"nav-link px-3"} onClick={logOut}>Log Out</Link>
                         <SignUpModal/>
                     </Nav>
                 </Navbar.Collapse>

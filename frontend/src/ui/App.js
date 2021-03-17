@@ -10,6 +10,7 @@ import {AboutUs} from "./about-us/AboutUs";
 import {Footer} from "./shared/components/footer/Footer";
 import {SearchResults} from "./search-results/SearchResults";
 import {Provider} from "react-redux";
+import {PrivateRoute} from "./shared/components/PrivateRoute";
 
 export const App = (store) => {
     return (
@@ -19,7 +20,9 @@ export const App = (store) => {
                     <NavigationBar/>
                     <Switch>
                         <Route exact path='/search-results' component={SearchResults}/>
-                        <Route exact path='/account' component={Account}/>
+                        <PrivateRoute path='/account'>
+                            <Account/>
+                        </PrivateRoute>
                         <Route exact path='/about-us' component={AboutUs}/>
                         <Route exact path='/' component={Home}/>
                         <Route component={FourOhFour}/>

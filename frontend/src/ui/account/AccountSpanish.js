@@ -8,20 +8,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {AccountPreferencesSpanish} from "../shared/components/account-preferences/AccountPreferencesSpanish";
 import "../styles.css"
-import {AccountPreferencesEnglish} from "../shared/components/account-preferences/AccountPreferencesEnglish";
 import profile from "../../store/profile";
 
 library.add(faCamera, faUser);
 
 
 export const AccountSpanish = (props) => {
-
-    // subscribe using useSelector to the slice of store you care about
     const {spanishSavedArticle} = props;
+    const {username} = props;
 
     return (
         <>
             <h1 className={"mx-3"}>Perfil</h1>
+            <h3 className={"mx-3"}>{`Bienvenido ${username}`}</h3>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>
@@ -38,19 +37,11 @@ export const AccountSpanish = (props) => {
                         </Row>
                     </Col>
                     <Col md={8} className={"pt-3"}>
-                        <h3>Buscar Artículos Guardados</h3>
-                        <Row>
-                            <Form inline className={"mx-3"}>
-                                <FormGroup className={"container d-flex justify-content-between"}>
-                                    <FormControl type="text" placeholder="Busque sus articulos" className="mr-md-2"/>
-                                    <Button variant="primary" className={"py-sm-2 ml-2"}>Buscar</Button>
-                                </FormGroup>
-                            </Form>
-                        </Row>
+                        <h3>Historial de Artículos Guardados</h3>
                         <Row>
                             <Container>
                                 <Row>
-                                    <Col>
+                                    <Col className={"article-grid"}>
                                         {
                                             spanishSavedArticle.map(article => <ArticleSpanish key={article.articleId}
                                                                                                article={article}/>)
