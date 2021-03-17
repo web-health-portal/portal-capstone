@@ -31,7 +31,6 @@ export const Account = () => {
 
     return (
         <>
-
             {
                 toggle === true && <AccountSpanish spanishSavedArticle={spanishSavedArticle}/>
                 ||

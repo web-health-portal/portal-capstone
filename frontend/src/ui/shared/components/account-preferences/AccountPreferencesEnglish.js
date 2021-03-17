@@ -16,9 +16,8 @@ export const AccountPreferencesEnglish = (props) => {
             .required('email is required'),
     });
 
-    function submitEditedProfile(values, {resetForm, setStatus}) {
+    function submitEditedProfile(values, updatedProfile, {resetForm, setStatus}) {
 
-        const submitUpdatedProfile = (updatedProfile) => {
             httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
                 .then(reply => {
                     let {message, type} = reply;
@@ -29,22 +28,6 @@ export const AccountPreferencesEnglish = (props) => {
                     setStatus({message, type});
                     return (reply)
                 })
-        };
-        if (values.profileId !== undefined) {
-            httpConfig.post(`/apis/profile/`, values.profileId)
-                .then(reply => {
-                        let {message, type} = reply;
-
-                        if (reply.status === 200) {
-                            submitUpdatedProfile({...values, profileId:message})
-                        } else {
-                            setStatus({message, type});
-                        }
-                    }
-                );
-        } else {
-            submitUpdatedProfile(values);
-        }
     }
 
     return (

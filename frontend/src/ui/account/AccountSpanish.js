@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {AccountPreferencesSpanish} from "../shared/components/account-preferences/AccountPreferencesSpanish";
 import "../styles.css"
+import {AccountPreferencesEnglish} from "../shared/components/account-preferences/AccountPreferencesEnglish";
+import profile from "../../store/profile";
 
 library.add(faCamera, faUser);
 
@@ -73,6 +75,12 @@ export const AccountSpanish = (props) => {
                             </Container>
                         </Row>
                     </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {profile && <AccountPreferencesSpanish profile={profile}/>}
+                    </Col>
+
                 </Row>
 
             </Container>

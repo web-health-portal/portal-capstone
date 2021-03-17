@@ -6,6 +6,7 @@ import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
 import {AccountPreferencesEnglish} from "../shared/components/account-preferences/AccountPreferencesEnglish";
 import "../styles.css"
+import profile from "../../store/profile";
 
 library.add(faCamera, faUser);
 
@@ -71,8 +72,15 @@ export const AccountEnglish = (props) => {
                         </Row>
                     </Col>
                 </Row>
+                <Row>
+                    <Col>
+                        {profile && <AccountPreferencesEnglish profile={profile}/>}
+                    </Col>
+
+                </Row>
 
             </Container>
         </>
+
     )
 }
