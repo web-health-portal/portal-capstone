@@ -5,20 +5,18 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleEnglish} from "../shared/components/article/ArticleEnglish";
 import "../styles.css"
-import {httpConfig} from "../shared/utils/http-config";
-import {getAllEnglishSavedArticles} from "../../store/savedArticle/englishSavedArticle";
-import {useDispatch} from "react-redux";
 
 library.add(faCamera, faUser);
 
 
 export const AccountEnglish = (props) => {
-
     const {englishSavedArticle} = props;
+    const {username} = props;
 
     return (
         <>
             <h1 className={"mx-3"}>Account</h1>
+            <h3 className={"mx-3"}>{`Hello ${username}`}</h3>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>

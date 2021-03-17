@@ -4,21 +4,19 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faCamera} from "@fortawesome/free-solid-svg-icons";
 import {ArticleSpanish} from "../shared/components/article/ArticleSpanish";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import "../styles.css"
 
 library.add(faCamera, faUser);
 
 
 export const AccountSpanish = (props) => {
-
-    // subscribe using useSelector to the slice of store you care about
     const {spanishSavedArticle} = props;
+    const {username} = props;
 
     return (
         <>
             <h1 className={"mx-3"}>Perfil</h1>
+            <h3 className={"mx-3"}>{`Hello ${username}`}</h3>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>

@@ -5,6 +5,7 @@ import {fetchAllSavedArticles} from "../../store/savedArticle/savedArticle";
 import {useDispatch, useSelector} from "react-redux";
 import {AccountSpanish} from "./AccountSpanish";
 import {AccountEnglish} from "./AccountEnglish";
+import {fetchAuth} from "../../store/auth";
 
 library.add(faCamera, faUser);
 
@@ -25,6 +26,9 @@ export const Account = () => {
         dispatch(fetchAllSavedArticles())
     }
 
+    //grab username
+    const username = auth.profileEmailAddress.split("@")[0];
+
     // console.log("in account", englishSavedArticle);
 
     // using React.useEffect dispatch the action
@@ -33,9 +37,9 @@ export const Account = () => {
     return (
         <>
             {
-                toggle === true && <AccountSpanish spanishSavedArticle={spanishSavedArticle}/>
+                toggle === true && <AccountSpanish username={username} spanishSavedArticle={spanishSavedArticle}/>
                 ||
-                toggle === false && <AccountEnglish englishSavedArticle={englishSavedArticle}/>
+                toggle === false && <AccountEnglish username={username} englishSavedArticle={englishSavedArticle}/>
             }
         </>
     )
