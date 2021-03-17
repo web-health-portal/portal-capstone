@@ -4,10 +4,9 @@ import {Button, Form, FormGroup} from "react-bootstrap";
 
 export const AccountPrefFormContentSpanish = (props) => {
     const {
-
+        values
     } = props;
     console.log(values)
-    }
 
 
         return (

@@ -26,25 +26,10 @@ export const AccountEnglish = (props) => {
                             <FontAwesomeIcon icon={faCamera} size="lg" className={"mx-2"}/>
                         </Row>
                         <Row className={"mt-1 justify-content-center"}>
-                            <Form className={"px-3"}>
-                                <FormGroup>
-                                    <Form.Label>Name:</Form.Label>
-                                    <Form.Control type={"text"} placeholder={"Name"}/>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Form.Label>Email:</Form.Label>
-                                    <Form.Control type={"email"} placeholder={"name@your-email.com"}/>
-                                </FormGroup>
-                                <Form.Group controlId="language-selector">
-                                    <Form.Label>Language:</Form.Label>
-                                    <Form.Control as="select">
-                                        <option>English</option>
-                                        <option>Español</option>
-                                    </Form.Control>
-                                </Form.Group>
-                                <Button variant={"primary"}>Save</Button>
-                            </Form>
-                        </Row>
+                                <Col>
+                                    {profile && <AccountPreferencesEnglish profile={profile}/>}
+                                </Col>
+                            </Row>
                         <Row className={"mt-1"}>
                         </Row>
                     </Col>
@@ -71,12 +56,6 @@ export const AccountEnglish = (props) => {
                             </Container>
                         </Row>
                     </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {profile && <AccountPreferencesEnglish profile={profile}/>}
-                    </Col>
-
                 </Row>
 
             </Container>

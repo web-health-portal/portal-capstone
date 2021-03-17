@@ -3,7 +3,7 @@ import {Button, Form, FormGroup} from "react-bootstrap";
 
 export const AccountPrefFormContent = (props) => {
     const {
-
+        values
     } = props;
     console.log(values)
 
