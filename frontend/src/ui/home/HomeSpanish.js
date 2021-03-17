@@ -11,7 +11,7 @@ export const HomeSpanish = (props) => {
     return (
         <>
             <Container>
-                <Jumbotron className="background-image img-fluid">
+                <Jumbotron className="background-image img-fluid drop-shadow">
                     <Container className="text-center p-1 mb-1 bg-light text-dark">
                         <h1>Busque artículos y temas relacionados con su salud.</h1>
                         <h5>SaluDuo es un portal de salud bilingüe, con el objetivo de proporcionar artículos en ingles y español para mantenerlo informado de su salud con la ayuda de un solo botón.</h5>

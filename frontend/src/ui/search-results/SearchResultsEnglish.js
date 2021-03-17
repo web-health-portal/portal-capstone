@@ -9,7 +9,7 @@ export const SearchResultsEnglish = (props) => {
     const {englishArticle} = props
     return (
         <>
-            <Container className={"pt-4"}>
+            <Container className={"pt-4 border rounded drop-shadow"}>
                 <Col md={8} className={"pt-3"}>
                     <h3>Search Results for {keyword}</h3>
                     <Row>
