@@ -25,7 +25,6 @@ export const ArticleSpanish = (props) => {
     }
 
     const auth = useSelector(state => state.auth ? state.auth : null);
-    console.log(auth)
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAuth())

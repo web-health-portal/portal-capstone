@@ -5,10 +5,10 @@ import spanishSavedArticle, {getAllSpanishSavedArticles, setAllSpanishSavedArtic
 import {filterArticlesByLanguage} from "../filterArticlesByLanguage";
 
 
-export const fetchAllSavedArticles = () => async (dispatch) => {
+export const fetchAllSavedArticles = () => async (dispatch, getState) => {
+    const profileId = getState().auth.profileId;
     //fetch data from our API
-    const {data} = await httpConfig("/apis/article/random/") //TODO: add in URL for getSavedArticlesByProfileId
-    // console.log(data);
+    const {data} = await httpConfig(`/apis/article/profileId/${profileId}`) //TODO: add in URL for getSavedArticlesByProfileId
 
     //filter articles by language with data from API
     const englishSavedArticle = await filterArticlesByLanguage("English", data);

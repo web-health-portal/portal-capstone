@@ -18,6 +18,7 @@ export const Account = () => {
 
     // console.log("savedArticles from Redux slice", savedArticles)
 
+    const auth = useSelector(state => state.auth ? state.auth : null);
     // get access to dispatch from useDispatch()
     const dispatch = useDispatch()
     const initialEffects = () => {
@@ -31,13 +32,11 @@ export const Account = () => {
 
     return (
         <>
-
             {
                 toggle === true && <AccountSpanish spanishSavedArticle={spanishSavedArticle}/>
                 ||
                 toggle === false && <AccountEnglish englishSavedArticle={englishSavedArticle}/>
             }
-
         </>
     )
 }
