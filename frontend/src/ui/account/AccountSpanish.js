@@ -16,7 +16,7 @@ export const AccountSpanish = (props) => {
     return (
         <>
             <h1 className={"mx-3"}>Perfil</h1>
-            <h3 className={"mx-3"}>{`Hola ${username}`}</h3>
+            <h3 className={"mx-3"}>{`Bienvenido ${username}`}</h3>
             <Container as={"section"} fluid className={"p-3"}>
                 <Row>
                     <Col md={4} className={"border-right border-dark md-auto"}>

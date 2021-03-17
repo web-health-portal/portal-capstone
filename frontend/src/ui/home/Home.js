@@ -17,8 +17,6 @@ export const Home = () => {
         dispatch(fetchAllCategories())
         dispatch(fetchAllRandomArticles())
     }
-    // console.log("in account", englishSavedArticle);
-    // using React.useEffect dispatch the action
 
     React.useEffect(initialEffects, [dispatch])
     return (

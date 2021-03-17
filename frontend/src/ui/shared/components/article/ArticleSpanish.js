@@ -9,9 +9,7 @@ import _ from "lodash";
 
 
 export const ArticleSpanish = (props) => {
-
     const {article} = props;
-
 
     const formattedDate = new Date(article.articleSpanishDate).toLocaleDateString("es-ES");
 

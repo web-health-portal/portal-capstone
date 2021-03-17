@@ -7,12 +7,8 @@ import {fetchAuth} from "../../../../store/auth";
 import _ from "lodash";
 
 export const ArticleEnglish = (props) => {
-
     const {article} = props;
-
-
     const formattedDate = new Date(article.articleEnglishDate).toLocaleDateString("en-US");
-
 
     const saveArticleOnClick = () => {
         httpConfig.post("/apis/saved-article/", {savedArticleArticleId: article.articleId})
