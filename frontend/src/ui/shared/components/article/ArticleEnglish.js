@@ -1,5 +1,5 @@
 import React from "react"
-import {Col, Container, Image, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import savedArticle from "../../../../store/savedArticle/savedArticle";
@@ -71,7 +71,7 @@ export const ArticleEnglish = (props) => {
                                 </p>
                             </Row>
                             <Row>
-                                {auth !== null && <><button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Save</button> </>}
+                                {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Save</Button> </>}
                                 {/*<Link to={"#"} className={"px-3 text-sm-left"}>Save</Link>*/}
                                 {/*<Link to={"#"} className={"px-3 text-sm-left"}>Remove</Link>*/}
                             </Row>
