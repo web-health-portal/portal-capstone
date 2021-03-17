@@ -65,7 +65,7 @@ export const ArticleEnglish = (props) => {
                                 </Col>
                                 <Col className={"col-12"}>
                                     <p>
-                                        Date Published: {formattedDate}
+                                        <strong>Date Published:</strong> {formattedDate}
                                     </p>
                                 </Col>
                             </Row>
