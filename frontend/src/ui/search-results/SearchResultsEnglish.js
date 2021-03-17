@@ -11,7 +11,7 @@ export const SearchResultsEnglish = (props) => {
         <>
         <Container className={"pt-4"}>
             <Col md={8} className={"pt-3"}>
-                <h3>Search Results for {keyword}</h3>
+                <h3>Search Results</h3>
                 <Row>
                     <SearchBar/>
                 </Row>
