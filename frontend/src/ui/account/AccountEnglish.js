@@ -60,7 +60,7 @@ export const AccountEnglish = (props) => {
                         <Row>
                             <Container>
                                 <Row>
-                                    <Col>
+                                    <Col className={"article-grid"}>
                                         {
                                             englishSavedArticle.map(article => <ArticleEnglish key={article.articleId}
                                                                                                article={article}/>)

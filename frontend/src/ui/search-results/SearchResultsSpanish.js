@@ -19,7 +19,7 @@ export const SearchResultsSpanish = (props) => {
             </Container>
             <Container>
                 <Row>
-                    <Col>
+                    <Col className={"article-grid"}>
                         {
                             spanishArticle.map(article => <ArticleSpanish key={article.articleId} article={article}/>)
                         }

@@ -27,7 +27,7 @@ export const HomeSpanish = (props) => {
                     <h5>Estos son algunos temas y artículos que podrían interesarle:</h5>
                 </Container>
                 <Row>
-                    <Col>
+                    <Col className={"article-grid"}>
                         {
                             spanishArticle.map(article => <ArticleSpanish key={article.articleId} article={article}/>)
                         }
