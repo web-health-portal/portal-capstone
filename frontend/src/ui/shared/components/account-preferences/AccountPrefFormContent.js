@@ -1,23 +1,24 @@
 import React from "react";
 import {Formik} from "formik";
 
-export const AccountPrefFormContent = () => {
+export const AccountPrefFormContent = (props) => {
     const {
+        status,
+        values,
+        errors,
+        touched,
+        dirty,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        handleReset
+    } = props;
+    console.log(values)
 
 
-        return
-    (
+    return ( //form here
 
     )
 
-    return (
-        <Formik
-            initialValues={save}
-            onSubmit={savePreferences}
-            validationSchema={validator}
-        >
-            {AccountPrefFormContent}
-        </Formik>
-    )
-}
 }
