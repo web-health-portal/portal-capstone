@@ -69,7 +69,7 @@ export const ArticleEnglish = (props) => {
                                     </p>
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className={"d-flex justify-content-end"}>
                                 {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Save</Button> </>}
                             </Row>
                         </Container>

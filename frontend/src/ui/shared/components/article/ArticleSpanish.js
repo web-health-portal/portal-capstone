@@ -7,7 +7,6 @@ import {fetchAuth} from "../../../../store/auth";
 import _ from "lodash";
 
 
-
 export const ArticleSpanish = (props) => {
     const {article} = props;
 
@@ -28,7 +27,7 @@ export const ArticleSpanish = (props) => {
         dispatch(fetchAuth())
     }
 
-    React.useEffect(initialEffects,[dispatch])
+    React.useEffect(initialEffects, [dispatch])
 
     const categories = useSelector(state => {
         const articleCategories = state.articleCategory.filter(articleCategory => {
@@ -72,7 +71,7 @@ export const ArticleSpanish = (props) => {
                                     </p>
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className={"d-flex justify-content-end"}>
                                 {auth !== null && <><Button onClick={saveArticleOnClick} className={"px-3 text-sm-left"}>Guardar</Button> </>}
                             </Row>
                         </Container>

@@ -11,7 +11,7 @@ export const HomeEnglish = (props) => {
     return (
         <>
             <Container>
-                <Jumbotron className="background-image img-fluid">
+                <Jumbotron className="background-image img-fluid drop-shadow">
                     <Container className="text-center p-1 mb-1 bg-light text-dark">
                         <h1>Search here for health-related articles and topics.</h1>
                         <h5>SaluDuo is an English-Spanish bilingual health portal, featuring articles to help keep you
