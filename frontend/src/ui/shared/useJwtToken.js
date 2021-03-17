@@ -12,7 +12,7 @@ export function useJwtToken () {
 
   const [isLoading, setIsLoading] = React.useState(true)
   const jwt = useSelector((state) =>state.auth)
-  const authenticatedUser = jwt?.auth ?? null
+  const authenticatedUser = jwt ?? null
 
   const dispatch = useDispatch();
 

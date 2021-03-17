@@ -27,7 +27,7 @@ export const Account = () => {
     }
 
     //grab username
-    const username = auth.profileEmailAddress.split("@")[0];
+    const username = auth.profileFirstName;
 
     // using React.useEffect dispatch the action
     React.useEffect(initialEffects, [dispatch])
