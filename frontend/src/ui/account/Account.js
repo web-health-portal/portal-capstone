@@ -31,7 +31,6 @@ export const Account = () => {
 
     // using React.useEffect dispatch the action
     React.useEffect(initialEffects, [dispatch])
-    const {authenticatedUser} = useJwtToken();
 
     return (
         <>
