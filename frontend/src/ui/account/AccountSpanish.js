@@ -52,12 +52,6 @@ export const AccountSpanish = (props) => {
                         </Row>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        {profile && <AccountPreferencesSpanish profile={profile}/>}
-                    </Col>
-
-                </Row>
 
             </Container>
         </>
