@@ -1,6 +1,6 @@
-#ERD CONCEPTUAL MODEL
+# ERD CONCEPTUAL MODEL
 
-##Article
+## Article
 - PK: articleId
 - articleEnglishTitle
 - articleEnglishDate
@@ -13,17 +13,17 @@
 - articleSpanishImageAlt
 - articleSpanishUrl
 
-##ArticleCategory (weak entity)
+## ArticleCategory (weak entity)
 - FK: articleCategoryCategoryId
 - FK: articleCategoryArticleId
 
-##Category
+## Category
 - PK: categoryId
 - categoryMyHealthFinderId
 - categoryEnglishName
 - categorySpanishName
 
-##Profile
+## Profile
 - PK: profileId
 - profileFirstName
 - profileLastName
@@ -33,7 +33,7 @@
 - profileHash
 - profileImage
 
-##SavedArticle (weak entity)
+## SavedArticle (weak entity)
 - FK: savedArticleProfileId
 - FK: savedArticleArticleId 
 - savedArticleDateSaved
